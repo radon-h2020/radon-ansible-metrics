@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.com/stefanodallapalma/ansible-metrics.svg?token=5ombixLKK1T1YhFSj8KX&branch=master)](https://travis-ci.com/stefanodallapalma/ansible-metrics)
+[![Build Status](https://travis-ci.com/radon-h2020/radon-ansible-metrics.svg?token=5ombixLKK1T1YhFSj8KX&branch=master)](https://travis-ci.com/radon-h2020/radon-ansible-metrics)
 
 
 # ansible-metrics
 A python module that provides metrics for Ansible scripts.
 
 This repository contains 50 metrics currently implemented in Python 3.6. Although, there are 5 more implicit metrics that can be derived by combining the implemented ones.
-See the [documentation](https://github.com/stefanodallapalma/ansible-metrics/blob/master/docs/README.md) for further details.
+See the [documentation](https://github.com/radon-h2020/radon-ansible-metrics/blob/master/docs/README.md) for further details.
 
 
 ## How to install and import modules locally
@@ -67,15 +67,15 @@ optional arguments:
 
 First, clone the repository as following:
 
-```git clone https://github.com/stefanodallapalma/ansible-metrics.git```
+```git clone https://github.com/radon-h2020/radon-ansible-metrics.git```
 
 Then, move to the folder location and run
 
-```pip install configuration/requirements.txt```
+```pip3 install requirements.txt```
 
 to install dependencies.
 
-Execute ```pytest``` to run the test suite.
+Execute ```pytest tests``` to run the test suite.
 
 
 ### Step 1: Create a new branch to work on the metric
@@ -88,7 +88,7 @@ Move to project folder and run the following commands:
 
 
 ### Step 2: Document metric
-In [docs/README.md](https://github.com/stefanodallapalma/ansible-metrics/tree/master/docs/README.md) insert the name of the metrics and link it to its documentation in the folder [docs/playbook](https://github.com/stefanodallapalma/ansible-metrics/tree/master/docs/playbook).
+In [docs/README.md](https://github.com/radon-h2020/radon-ansible-metrics/tree/master/docs/README.md) insert the name of the metrics and link it to its documentation in the folder [docs/playbook](https://github.com/radon-h2020/radon-ansible-metrics/tree/master/docs/playbook).
 
 Name the documentation file as the extended metric name, in uppercase with underscores (\_) in places of blank spaces. For example, if the metric is *"Number of loops"* then create the file *docs/playbook/NUMBER_OF_LOOPS.md*.
 
@@ -128,4 +128,4 @@ Move to project folder and run the following commands:
 * Finally, ```git push origin/<branch_name>``` and open a pull request if you desire to integrate your changes to the master branch.
 
 
-For further information about the implemented classes, please refer to the [wiki](https://github.com/stefanodallapalma/ansible-metrics/wiki).
+For further information about the implemented classes, please refer to the [wiki](https://github.com/radon-h2020/radon-ansible-metrics/wiki).
