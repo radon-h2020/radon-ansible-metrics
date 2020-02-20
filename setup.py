@@ -23,8 +23,9 @@ setup(name='ansiblemetrics',
          "Development Status :: 4 - Beta",
          "Intended Audience :: Developers",
          "Programming Language :: Python :: 3.6",
-         "License :: Apache 2",
-         "Operating System :: Linux"
+         "License :: OSI Approved :: Apache Software License",
+         "Topic :: Software Development :: Libraries :: Python Modules",
+         "Operating System :: OS Independent"
       ],
       insall_requires=[
         'PyYAML',
