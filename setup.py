@@ -28,7 +28,7 @@ setup(name='ansiblemetrics',
       ],
       insall_requires=[
         'PyYAML',
-        'python-interface,
+        'python-interface',
         'statistics',
         'parameterized',
         'pytest'
