@@ -1,66 +1,87 @@
 [![Build Status](https://travis-ci.com/radon-h2020/radon-ansible-metrics.svg?token=5ombixLKK1T1YhFSj8KX&branch=master)](https://travis-ci.com/radon-h2020/radon-ansible-metrics)
 
 
-# ansible-metrics
-A python module that provides metrics for Ansible scripts.
 
-This repository contains 50 metrics currently implemented in Python 3.6. Although, there are 5 more implicit metrics that can be derived by combining the implemented ones.
-See the [documentation](https://github.com/radon-h2020/radon-ansible-metrics/blob/master/docs/README.md) for further details.
+For full documentation visit the [radon-h2020.github.io](https://radon-h2020.github.io/radon-ansible-metrics/).
+
+# AnsibleMetrics
+
+**AnsibleMetrics** is a Python-based static source code analyzer for Ansible blueprints that helps to quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
+It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.
+
+It represents a step forward towards closing the gap for the implementation of software quality in-struments to support DevOps engineers when developing and maintaining infrastructure code and the development of measurement models for its quality!
 
 
-## How to install and import modules locally
+## How to install
 
-First, install the necessary dependencies with the command:
+Installation is made simple by the PyPI repository.
+Download the tool and install it with:
 
-```pip3 install -r requirements.txt```
+```pip install ansible-metrics```
 
-You can install the package locally from the project root folder with the command:
+or, alternatively from the source code project directory:
 
-```pip3 install . ```
-
-Once the installation succeed you can import the module in your python application with:
-
-```python
-import ansiblemetrics
+```
+pip3 install -r requirements.txt
+pip install .
 ```
 
-For example, if you want to call the metric LOC, execute the following instructions:
-
-```python
-from ansiblemetrics.general.loc import LOC
-from io import StringIO
-
-metric = LOC(StringIO('key:value'))
-print(metric.count())
-```
-
-The general pattern is 
-
-```python
-from ansiblemetrics.<general|playbook|tasks>.<Metric> import <Metric>
-metric = <Metric>('StringIO object representing a playbook')
-print(metric.count())
-```
 
 ## How to use
 
-Once installed, typing ```ansible-metrics``` will return information on usage:
+### **Command-line interface**
+
+Run ```ansible-metrics --help``` for instructions about the usage:
 
 ```
-usage: ansible-metrics [-h] [-v] file
+usage: ansible-metrics [-h] [-o] [-v] src dest
 
-Extract metrics from Ansible scripts. If no optional parameter is passed, the
-tool computes only the general metrics which are suitable for both playbooks
-and task files.
+Extract metrics from Ansible scripts.
 
 positional arguments:
-  file           input file path (playbook or tasks file)
+  src            source file (a playbook or directory of playbooks)
+  dest           destination file to save results
 
 optional arguments:
-  -h, --help     show this help message and exit
-  -v, --version  show program's version number and exit
+  -h, --help     shows this help message and exit
+  -o, --output   shows output
+  -v, --version  shows program's version number and exit
+```
 
- ```
+
+### **Python**
+
+
+```python
+from io import StringIO
+from ansiblemetrics.<general|playbook>.<metric> import <Metric>
+
+script = 'a valid yaml script'
+value = <Metric>(StringIO(script).count()
+```
+
+For example, if one wants to count the number of lines of code:
+
+```python
+from io import StringIO
+from ansiblemetrics.general.loc import LOC
+
+script = """
+---
+- hosts: all
+
+  tasks:
+  - name: This is a task!
+    debug:
+      msg: "Hello World"
+"""
+
+metric = LOC(StringIO(script))
+print('Lines of executable code:', metric.count())
+
+# This will result in 
+# > Lines of executable code: 5
+```
 
 
 ## How to contribute
@@ -71,61 +92,53 @@ First, clone the repository as following:
 
 Then, move to the folder location and run
 
-```pip3 install requirements.txt```
+```pip install -r requirements.txt```
 
 to install dependencies.
 
-Execute ```pytest tests``` to run the test suite.
+Execute ```pytest``` to run the test suite.
 
 
-### Step 1: Create a new branch to work on the metric
-Create a branch on purpose to work on the metric implementation and testing.
+### **Step 1: Create a new branch to work on the metric**
+Create a branch to implement (or update) and test a given metrics.
 
 Move to project folder and run the following commands:
 * ```git checkout master``` to move to branch ```master```
 * ```git pull``` to be sure to be updated with the latest version
-* ```git checkout -b <metric_name>``` to create and move to the new working branch. The name is up to you, but it would be usefull to call it with the metric's name or acronym
+* ```git checkout -b <metric_name>``` to create and move to the new working branch.
 
 
-### Step 2: Document metric
-In [docs/README.md](https://github.com/radon-h2020/radon-ansible-metrics/tree/master/docs/README.md) insert the name of the metrics and link it to its documentation in the folder [docs/playbook](https://github.com/radon-h2020/radon-ansible-metrics/tree/master/docs/playbook).
+### **Step 2: Document metric**
 
-Name the documentation file as the extended metric name, in uppercase with underscores (\_) in places of blank spaces. For example, if the metric is *"Number of loops"* then create the file *docs/playbook/NUMBER_OF_LOOPS.md*.
+First, document the new metric with the intended behaviour and examples in the [docs](docs/) folder.
 
-The documentation should contain at least the following elements:
-
-* a **unique name**;
-* an **acronym** (3/4 letters) to be used to identify it and to name the script implementing it;
-* a **description** that explains its purpose;
-* the **input** parameters;
-* the **output** type;
-* an **example of a playbook** for the problem at hand and the expected result of the metric wrt that playbook. The playbook of the example must be included in the test case testing the metric, along with further examples, if needed.
-* an **example on how to call** the method that implement the metric. 
+Name the documentation file with the metric name and follow the format present in the existing metrics to describe it.
 
 
-### Step 3: Create Test Case
-* Create a test case in the tests folder and name it with *tests_<metric_acronym>_<method_to_test>.py*. For example, to test the method ```count()``` of metric "Number of loops (NLP)", the script path would results like *tests/playbook/test_nlp_count.py*.
+### **Step 3: Create Test Case**
 
-<TODO: To insert example of test case>
+Create a test case in the [tests](tests/) folder and name it as **tests_\<metric\>_count.py**. 
 
-### Step 4: Implement metric
-Create a script in folder *ansiblemetrics/playbook/* and name it as *<metric_acronym>.py*. 
+
+### **Step 4: Implement metric**
+Finally, create the script that implement the metric in the folder [ansiblemetrics/<general|playbook>](ansiblemetrics/).
 
 Define the method to test with an empty body.
 
 Run ```pytest``` to make sure test cases implemented at Step 3 **fail**.
 
-Implement the body of the function.
+Implement the body of the method.
 
 Run ```pytest``` again to make sure test cases implemented at Step 3 **pass**.
 
 
-### Step 4: Commit your work
+### **Step 4: Commit your work**
 Move to project folder and run the following commands:
-* ```git add <modified_file>``` for each modified files, ```git add .``` to add all modified files (be carefull that the right files are added whn using this option)
-* ```git status``` is helpful to check what files have been changed/added/deleted.
-* Once ready, run ```git commit -m "A message describing the work done"```
-* Finally, ```git push origin/<branch_name>``` and open a pull request if you desire to integrate your changes to the master branch.
 
+* ```git add <modified_file>``` for each modified files, ```git add .``` to add all modified files (be carefull that the right files are added when using this option);
 
-For further information about the implemented classes, please refer to the [wiki](https://github.com/radon-h2020/radon-ansible-metrics/wiki).
+* ```git status``` is helpful to check what files have been changed/added/deleted;
+
+* Once ready, run ```git commit -m "A message describing the work done"```;
+
+* Finally, ```git push origin/<branch_name>``` and open a pull request if you desire to integrate your changes to the master branch;
