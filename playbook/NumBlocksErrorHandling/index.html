@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Number of block error handling - AnsibleMetrics</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Number of block error handling";
+    var mkdocs_page_input_path = "playbook/NumBlocksErrorHandling.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> AnsibleMetrics</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Quick Start</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Metrics</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/LinesBlank/">Lines blank</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/LinesCode/">Lines of code</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/LinesComment/">Lines of comment</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumConditions/">Number of conditions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumDecisions/">Number of decisions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumDeprecatedKeywords/">Number of deprecated keywords</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumKeys/">Number of keys</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumMathOperations/">Number of math operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumSuspiciousComments/">Number of suspicious comments</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/NumTokens/">Number of tokens</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../general/TextEntropy/">Text entropy</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Playbook</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../AvgPlaySize/">Average play size</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../AvgTaskSize/">Average task size</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumBlocks/">Number of blocks</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Number of block error handling</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-use">How to use</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumCommands/">Number of commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumDeprecatedModules/">Number of deprecated modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumDistinctModules/">Number of distinct modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumExternalModules/">Number of external modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumFactModules/">Number of fact modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumFileExists/">Number of file extists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumFileMode/">Number of file mode</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumFileModules/">Number of file modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumFilters/">Number of filters</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumIgnoreErrors/">Number of ignore_errors</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumImportPlaybook/">Number of import_playbook</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumImportRole/">Number of import_role</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumImportTasks/">Number of import_tasks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumInclude/">Number of include</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumIncludeRole/">Number of include_role</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumIncludeTasks/">Number of include_tasks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumIncludeVars/">Number of include_vars</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumLookups/">Number of lookups</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumLoops/">Number of loops</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumNameWithVars/">Number of name with variables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumParameters/">Number of parameters</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumPaths/">Number of paths</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumRegex/">Number of regex</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumPlays/">Number of plays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumRoles/">Number of roles</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumAuthorizedKey/">Number of SSH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumTasks/">Number of tasks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumUniqueNames/">Number of unique names</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumUserInteraction/">Number of user interactions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumUri/">Number of urls</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NumVars/">Number of variables</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="../../about.md">About</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">AnsibleMetrics</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Playbook &raquo;</li>
+        
+      
+        
+          <li>Metrics &raquo;</li>
+        
+      
+    
+    <li>Number of block error handling</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/radon-h2020/radon-ansible-metrics/edit/master/docs/playbook/NumBlocksErrorHandling.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="blocks-error-handling">Blocks error handling</h1>
+<p>It measures the number of times <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_blocks.html">errors are handled within the blocks</a> in its tasks.</p>
+<p>Blocks introduce the ability to handle errors in a way similar to exceptions in most programming languages.
+The tasks in the block would execute normally, if there is any error the rescue section would get executed with whatever you need to do to recover from the previous error. The always section runs no matter what previous error did or did not occur in the block and rescue sections.</p>
+<hr />
+<h2 id="example">Example</h2>
+<p>The following example has 1 block error handling.</p>
+<pre><code class="yaml">- name: Attempt and graceful roll back demo
+  block:          # This block handle errors with rescue and always
+    - debug:
+        msg: 'I execute normally'
+    - name: i force a failure
+      command: /bin/false
+    - debug:
+        msg: 'I never execute, due to the above task failing, :-('
+  rescue:
+    - debug:
+        msg: 'I caught an error'
+    - name: i force a failure in middle of recovery! &gt;:-)
+      command: /bin/false
+    - debug:
+        msg: 'I also never execute :-('
+  always:
+    - debug:
+        msg: &quot;This always executes&quot;
+
+- name: A task with a block that does not handle errors
+  block:        # This block does not
+    - debug:
+        msg: 'I execute normally'
+    - name: i force a failure
+      command: /bin/false
+    - debug:
+        msg: 'I never execute, due to the above task failing, :-('
+</code></pre>
+
+<hr />
+<h2 id="parameters">Parameters</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td><code>io.StringIO</code></td>
+<td>An ansible playbook</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td><code>unsigned int</code></td>
+<td>The number of blocks error handling</td>
+</tr>
+<tr>
+<td><strong>Exception</strong></td>
+<td><code>TypeError</code></td>
+<td>If the type of the input parameter is not io.StringIO</td>
+</tr>
+<tr>
+<td></td>
+<td><code>yaml.YAMLError</code></td>
+<td>If the input file is not a valid yaml</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-to-use">How to use</h2>
+<p>Below an example on how to call the metric and the expected output for the provided example:</p>
+<pre><code class="python">from io import StringIO
+from ansiblemetrics.playbook.num_blocks_error_handling import NumBlocksErrorHandling
+
+str = '- name: Attempt and graceful roll back demo\n\tblock:\t\t\t\t\t# This block handle errors with rescue and always\n\t\t- debug:\n\t\t\t\tmsg: \'I execute normally\'\n\t\t- name: i force a failure\n\t\t\tcommand: /bin/false\n\t\t- debug:\n\t\t\t\tmsg: \'I never execute, due to the above task failing, :-(\'\n\trescue:\n\t\t- debug:\n\t\t\t\tmsg: \'I caught an error\'\n\t\t- name: i force a failure in middle of recovery! &gt;:-)\n\t\t\tcommand: /bin/false\n\t\t- debug:\n\t\t\t\tmsg: \'I also never execute :-(\'\n\talways:\n\t\t- debug:\n\t\t\t\tmsg: &quot;This always executes&quot;\n\n- name: A task with a block that does not handle errors\n\tblock:\t\t\t\t# This block does not\n\t\t- debug:\n\t\t\t\tmsg: \'I execute normally\'\n\t\t- name: i force a failure\n\t\t\tcommand: /bin/false\n\t\t- debug:\n\t\t\t\tmsg: \'I never execute, due to the above task failing, :-(\'' 
+script = StringIO(str.expands(2)) # substitute \t with 2 spaces and create the StringIO object
+count = NumBlocksErrorHandling(script).count()
+print('Number of blocks with rescue/always: ', count)
+
+&gt;&gt;&gt; Number of blocks with rescue/always: 1
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../NumCommands/" class="btn btn-neutral float-right" title="Number of commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../NumBlocks/" class="btn btn-neutral" title="Number of blocks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/radon-h2020/radon-ansible-metrics/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../NumBlocks/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../NumCommands/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

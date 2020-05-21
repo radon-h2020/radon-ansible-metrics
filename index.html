@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Quick Start - AnsibleMetrics</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Quick Start";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> AnsibleMetrics</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Quick Start</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-install">How to install</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command-line interface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#python">Python</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#general">General</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#playbook">Playbook</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Metrics</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="general/LinesBlank/">Lines blank</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/LinesCode/">Lines of code</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/LinesComment/">Lines of comment</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumConditions/">Number of conditions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumDecisions/">Number of decisions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumDeprecatedKeywords/">Number of deprecated keywords</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumKeys/">Number of keys</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumMathOperations/">Number of math operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumSuspiciousComments/">Number of suspicious comments</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/NumTokens/">Number of tokens</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="general/TextEntropy/">Text entropy</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Playbook</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/AvgPlaySize/">Average play size</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/AvgTaskSize/">Average task size</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumBlocks/">Number of blocks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumBlocksErrorHandling/">Number of block error handling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumCommands/">Number of commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumDeprecatedModules/">Number of deprecated modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumDistinctModules/">Number of distinct modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumExternalModules/">Number of external modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFactModules/">Number of fact modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFileExists/">Number of file extists</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFileMode/">Number of file mode</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFileModules/">Number of file modules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFilters/">Number of filters</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIgnoreErrors/">Number of ignore_errors</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumImportPlaybook/">Number of import_playbook</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumImportRole/">Number of import_role</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumImportTasks/">Number of import_tasks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumInclude/">Number of include</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIncludeRole/">Number of include_role</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIncludeTasks/">Number of include_tasks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIncludeVars/">Number of include_vars</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumLookups/">Number of lookups</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumLoops/">Number of loops</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumNameWithVars/">Number of name with variables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumParameters/">Number of parameters</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumPaths/">Number of paths</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumRegex/">Number of regex</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumPlays/">Number of plays</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumRoles/">Number of roles</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumAuthorizedKey/">Number of SSH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumTasks/">Number of tasks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumUniqueNames/">Number of unique names</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumUserInteraction/">Number of user interactions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumUri/">Number of urls</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumVars/">Number of variables</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="about.md">About</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">AnsibleMetrics</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Getting Started &raquo;</li>
+        
+      
+    
+    <li>Quick Start</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/radon-h2020/radon-ansible-metrics/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
+<h1 id="welcome-to-the-ansiblemetrics-documentation">Welcome to the AnsibleMetrics documentation</h1>
+<p><strong>AnsibleMetrics</strong> is a Python-based static source code analyzer for Ansible blueprints that helps to quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
+It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.</p>
+<p>It represents a step forward towards closing the gap for the implementation of software quality in-struments to support DevOps engineers when developing and maintaining infrastructure code and the development of measurement models for its quality!</p>
+<h2 id="how-to-install">How to install</h2>
+<p>Installation is made simple by the PyPI repository.
+Download the tool and install it with:</p>
+<p><code>pip install ansible-metrics</code></p>
+<p>or, alternatively from the source code project directory:</p>
+<pre><code>pip install -r requirements.txt
+pip install .
+</code></pre>
+
+<h2 id="how-to-use">How to use</h2>
+<h3 id="command-line-interface"><strong>Command-line interface</strong></h3>
+<p>Run <code>ansible-metrics --help</code> for instructions about the usage:</p>
+<pre><code>usage: ansible-metrics [-h] [-o] [-v] src dest
+
+Extract metrics from Ansible scripts.
+
+positional arguments:
+  src            source file (a playbook or directory of playbooks)
+  dest           destination file to save results
+
+optional arguments:
+  -h, --help     shows this help message and exit
+  -o, --output   shows output
+  -v, --version  shows program's version number and exit
+</code></pre>
+
+<h3 id="python"><strong>Python</strong></h3>
+<pre><code class="python">from io import StringIO
+from ansiblemetrics.&lt;general|playbook&gt;.&lt;metric&gt; import &lt;Metric&gt;
+
+script = 'a valid yaml script'
+value = &lt;Metric&gt;(StringIO(script).count()
+</code></pre>
+
+<p>For example, if one wants to count the number of lines of code:</p>
+<pre><code class="python">from io import StringIO
+from ansiblemetrics.general.loc import LOC
+
+script = &quot;&quot;&quot;
+---
+- hosts: all
+
+  tasks:
+  - name: This is a task!
+    debug:
+      msg: &quot;Hello World&quot;
+&quot;&quot;&quot;
+
+metric = LOC(StringIO(script))
+print('Lines of executable code:', metric.count())
+
+# This will result in 
+# &gt; Lines of executable code: 5
+</code></pre>
+
+<h2 id="metrics">Metrics</h2>
+<p>AnsibleMetrics currently supports up to 46 source code metrics, implemented in Python.</p>
+<p>Import <code>ansiblemetrics.metrics_extractor</code> to extract all the metrics at once (in this case the return value will be a json object):</p>
+<pre><code class="python">from io import StringIO
+from ansiblemetrics.metrics_extractor import MetricsExtractor
+
+script = &quot;&quot;&quot;
+---
+- hosts: all
+
+  tasks:
+  - name: This is a task!
+    debug:
+      msg: &quot;Hello World&quot;
+&quot;&quot;&quot;
+
+metrics = MetricsExtractor.run(StringIO(script))
+print('Lines of executable code:', metrics['lines_code'])
+
+# This will result in 
+# &gt; Lines of executable code: 5
+</code></pre>
+
+<p>Alternatively, import the <code>ansiblemetrics.playbook.&lt;metric&gt;</code> or the <code>ansiblemetrics.general.&lt;metric&gt;</code> (where \texttt{<metric>} has to be replaced with the name of the desired metric) module to compute the value of a specific metric.</p>
+<p>The difference between the <em>general</em> and the <em>playbook</em> modules lies in the fact that the <em>playbook</em> module contains metrics specific to playbooks (for example, the number of plays and tasks), while the <em>general</em> module contains metrics that can be generalized to other languages (for example, the lines of code).</p>
+<p>Below the list of the implemented metrics.</p>
+<h3 id="general">General</h3>
+<ul>
+<li><a href="general/LinesBlank/">Lines blank</a></li>
+<li><a href="general/LinesCode/">Lines of code</a></li>
+<li><a href="general/LinesComment/">Lines of comment</a></li>
+<li><a href="general/NumConditions/">Number of conditions</a></li>
+<li><a href="general/NumDecisions/">Number of decisions</a></li>
+<li><a href="general/NumDeprecatedKeywords/">Number of deprecated keywords</a></li>
+<li><a href="general/NumKeys/">Number of keys</a></li>
+<li><a href="general/NumMathOperations/">Number of math operations</a></li>
+<li><a href="general/NumSuspiciousComments/">Number of suspicious comments</a></li>
+<li><a href="general/NumTokens/">Number of tokens</a></li>
+<li><a href="general/TextEntropy/">Text entropy</a></li>
+</ul>
+<h3 id="playbook">Playbook</h3>
+<ul>
+<li><a href="playbook/AvgPlaySize/">Average play size</a></li>
+<li><a href="playbook/AvgTaskSize/">Average task size</a></li>
+<li><a href="playbook/NumBlocks/">Number of blocks</a></li>
+<li><a href="playbook/NumBlocksErrorHandling/">Number of block error handling</a></li>
+<li><a href="playbook/NumCommands/">Number of commands</a></li>
+<li><a href="playbook/NumDeprecatedModules/">Number of deprecated modules</a></li>
+<li><a href="playbook/NumDistinctModules/">Number of distinct modules</a></li>
+<li><a href="playbook/NumExternalModules/">Number of external modules</a></li>
+<li><a href="playbook/NumFactModules/">Number of fact modules</a></li>
+<li><a href="playbook/NumFactModules/">Number of fact modules</a></li>
+<li><a href="playbook/NumFileExists/">Number of file extists</a></li>
+<li><a href="playbook/NumFileMode/">Number of file mode</a></li>
+<li><a href="playbook/NumFileModules/">Number of file modules</a></li>
+<li><a href="playbook/NumFilters/">Number of filters</a></li>
+<li><a href="playbook/NumIgnoreErrors/">Number of ignore_error</a></li>
+<li><a href="playbook/NumImportPlaybook/">Number of import_playbook</a></li>
+<li><a href="playbook/NumImportRole/">Number of import_role</a></li>
+<li><a href="playbook/NumImportTasks/">Number of import_tasks</a></li>
+<li><a href="playbook/NumInclude/">Number of include</a></li>
+<li><a href="playbook/NumIncludeRole/">Number of include_role</a></li>
+<li><a href="playbook/NumIncludeTasks/">Number of include_tasks</a></li>
+<li><a href="playbook/NumIncludeVars/">Number of include_vars</a></li>
+<li><a href="playbook/NumLookups/">Number of lookups</a></li>
+<li><a href="playbook/NumLoops/">Number of loops</a></li>
+<li><a href="playbook/NumNameWithVars/">Number of name with variables</a></li>
+<li><a href="playbook/NumParameters/">Number of parameters</a></li>
+<li><a href="playbook/NumPaths/">Number of paths</a></li>
+<li><a href="playbook/NumRegex/">Number of regex</a></li>
+<li><a href="playbook/NumPlays/">Number of plays</a></li>
+<li><a href="playbook/NumRoles/">Number of roles</a></li>
+<li><a href="playbook/NumAuthorizedKey/">Number of SSH</a></li>
+<li><a href="playbook/NumTasks/">Number of tasks</a></li>
+<li><a href="playbook/NumUniqueNames/">Number of unique names</a></li>
+<li><a href="playbook/NumUri/">Number of urls</a></li>
+<li><a href="playbook/NumUserInteraction/">Number of user interactions</a></li>
+<li><a href="playbook/NumVars/">Number of variables</a></li>
+</ul>
+<!--
+## Project layout
+
+    ansiblemetrics/
+        ansible_metric.py   # Abstract class inherited by all the metrics
+        ansible_modules.py  # List of modules and deprecated modules mantained by the Ansible community
+        command_line.py # The comman line interface
+        import_metrics.py   # List of implemented metrics
+        lines_metric.py        # Abstract class inherited by all the metrics for counting lines
+        metrics_extractor.py    # Main class
+        utils.py    # Contains common methods 
+        general/    # Contains metrics tha can be used for languages besides Ansible
+        playbook/   # Metrics specific for Ansible
+    docs/
+        index.md  # The documentation homepage.
+        general/  # The documentation of general metrics
+        playbook/ # The documentation of playbook and task list metrics
+-->
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="general/LinesBlank/" class="btn btn-neutral float-right" title="Lines blank">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/radon-h2020/radon-ansible-metrics/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="general/LinesBlank/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
