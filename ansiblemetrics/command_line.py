@@ -5,20 +5,15 @@ import yaml
 import re
 from io import StringIO
 
-#import sys
-#path = os.path.join(os.path.dirname(__file__), os.pardir)
-#sys.path.append(path)
-
 from ansiblemetrics.metrics_extractor import extract_all
 
-VERSION = '0.3'
+VERSION = '0.3.2'
 
 def get_parser():
     description = 'Extract metrics from Ansible scripts.\n\nIf no optional parameter is passed, the tool computes only the general metrics which are suitable for both playbooks and task files.'
 
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(action='store', dest='src', help='source file (playbook or tasks file) or directory')
-    #parser.add_argument(action='store', dest='dest', help='destination path to save results')
     parser.add_argument('-d', '--dest', help='destination path to save results')
     parser.add_argument('-o', '--output', action='store_true', help='shows output')
     parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + VERSION)
