@@ -88,7 +88,7 @@ Import ```ansiblemetrics.metrics_extractor``` to extract all the metrics at once
 
 ```python
 from io import StringIO
-from ansiblemetrics.metrics_extractor import MetricsExtractor
+from ansiblemetrics.metrics_extractor import extract_all
 
 script = """
 ---
@@ -100,7 +100,7 @@ script = """
       msg: "Hello World"
 """
 
-metrics = MetricsExtractor.run(StringIO(script))
+metrics = extract_all(StringIO(script))
 print('Lines of executable code:', metrics['lines_code'])
 
 # This will result in 

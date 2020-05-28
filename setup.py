@@ -2,7 +2,13 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.0.2'
+VERSION = '0.3'
+
+with open('requirements.txt') as reqs_file:
+    requirements = reqs_file.read().splitlines()
+
+with open('test-requirements.txt') as reqs_file:
+    test_requirements = reqs_file.read().splitlines()
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -19,7 +25,7 @@ setup(name='ansiblemetrics',
       download_url=f'https://github.com/radon-h2020/radon-ansible-metrics/archive/{VERSION}.tar.gz',
       packages=find_packages(exclude=('test',)),
       entry_points = {
-        'console_scripts': ['ansible-metrics=ansiblemetrics.command_line:main'],
+        'console_scripts': ['ansible-metrics=ansiblemetrics.command_line:cli'],
       },
       classifiers=[
          "Development Status :: 4 - Beta",
@@ -29,11 +35,6 @@ setup(name='ansiblemetrics',
          "Topic :: Software Development :: Libraries :: Python Modules",
          "Operating System :: OS Independent"
       ],
-      insall_requires=[
-        'PyYAML',
-        'python-interface',
-        'statistics',
-        'parameterized',
-        'pytest'
-      ]
+      insall_requires=requirements,
+      test_requirements=requirements + test_requirements
 )

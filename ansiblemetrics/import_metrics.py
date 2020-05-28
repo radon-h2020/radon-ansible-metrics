@@ -1,116 +1,101 @@
 # General metrics
-from ansiblemetrics.general.loc   import LOC
-from ansiblemetrics.general.bloc  import BLOC
-from ansiblemetrics.general.cloc  import CLOC
-from ansiblemetrics.general.dpt   import DPT
-from ansiblemetrics.general.etp   import ETP 
-from ansiblemetrics.general.ncd   import NCD
-from ansiblemetrics.general.nco   import NCO
-from ansiblemetrics.general.nfl   import NFL
-from ansiblemetrics.general.ndk   import NDK
-from ansiblemetrics.general.nicd  import NICD
-from ansiblemetrics.general.nkeys import NKEYS
-from ansiblemetrics.general.nlk   import NLK
-from ansiblemetrics.general.nlo   import NLO
-from ansiblemetrics.general.nmo   import NMO
-from ansiblemetrics.general.nnnv  import NNNV
-from ansiblemetrics.general.nnwv  import NNWV
-from ansiblemetrics.general.nscm  import NSCM
-from ansiblemetrics.general.ntkn  import NTKN
-from ansiblemetrics.general.nun   import NUN
+from ansiblemetrics.general.lines_code import LinesCode
+from ansiblemetrics.general.lines_blank import LinesBlank
+from ansiblemetrics.general.lines_comment import LinesComment
+from ansiblemetrics.general.num_conditions import NumConditions
+from ansiblemetrics.general.num_decisions import NumDecisions
+from ansiblemetrics.general.num_deprecated_keywords import NumDeprecatedKeywords
+from ansiblemetrics.general.num_keys import NumKeys
+from ansiblemetrics.general.num_math_operations import NumMathOperations
+from ansiblemetrics.general.num_suspicious_comments import NumSuspiciousComments
+from ansiblemetrics.general.num_tokens import NumTokens
+from ansiblemetrics.general.text_entropy import TextEntropy
 
 # Playbook scope
-from ansiblemetrics.playbook.apls  import APLS
-from ansiblemetrics.playbook.niu   import NIU
-from ansiblemetrics.playbook.npl   import NPL
-from ansiblemetrics.playbook.npnn  import NPNN
-from ansiblemetrics.playbook.npun  import NPUN
-from ansiblemetrics.playbook.npvr  import NPVR
-from ansiblemetrics.playbook.nrgv  import NRGV
-from ansiblemetrics.playbook.nrl   import NRL
-from ansiblemetrics.playbook.nrvr  import NRVR
-from ansiblemetrics.playbook.nvr   import NVR
+from ansiblemetrics.playbook.avg_play_size import AveragePlaySize
+from ansiblemetrics.playbook.avg_task_size import AvgTaskSize
+from ansiblemetrics.playbook.num_authorized_key import NumAuthorizedKey
+from ansiblemetrics.playbook.num_blocks import NumBlocks
+from ansiblemetrics.playbook.num_blocks_error_handling import NumBlocksErrorHandling
+from ansiblemetrics.playbook.num_commands import NumCommands
+from ansiblemetrics.playbook.num_deprecated_modules import NumDeprecatedModules
+from ansiblemetrics.playbook.num_distinct_modules import NumDistinctModules
+from ansiblemetrics.playbook.num_external_modules import NumExternalModules
+from ansiblemetrics.playbook.num_fact_modules import NumFactModules
+from ansiblemetrics.playbook.num_file_exists import NumFileExists
+from ansiblemetrics.playbook.num_file_mode import NumFileMode
+from ansiblemetrics.playbook.num_file_modules import NumFileModules
+from ansiblemetrics.playbook.num_filters import NumFilters
+from ansiblemetrics.playbook.num_ignore_errors import NumIgnoreErrors
+from ansiblemetrics.playbook.num_import_playbook import NumImportPlaybook
+from ansiblemetrics.playbook.num_import_role import NumImportRole
+from ansiblemetrics.playbook.num_import_tasks import NumImportTasks
+from ansiblemetrics.playbook.num_include import NumInclude
+from ansiblemetrics.playbook.num_include_role import NumIncludeRole
+from ansiblemetrics.playbook.num_include_tasks import NumIncludeTasks
+from ansiblemetrics.playbook.num_include_vars import NumIncludeVars
+from ansiblemetrics.playbook.num_lookups import NumLookups
+from ansiblemetrics.playbook.num_loops import NumLoops
+from ansiblemetrics.playbook.num_name_with_vars import NumNameWithVars
+from ansiblemetrics.playbook.num_parameters import NumParameters
+from ansiblemetrics.playbook.num_paths import NumPaths
+from ansiblemetrics.playbook.num_plays import NumPlays
+from ansiblemetrics.playbook.num_regex import NumRegex
+from ansiblemetrics.playbook.num_roles import NumRoles
+from ansiblemetrics.playbook.num_tasks import NumTasks
+from ansiblemetrics.playbook.num_unique_names import NumUniqueNames
+from ansiblemetrics.playbook.num_uri import NumUri
+from ansiblemetrics.playbook.num_user_interaction import NumUserInteraction
+from ansiblemetrics.playbook.num_vars import NumVars
 
-# Tasks scope
-from ansiblemetrics.tasks.atss  import ATSS
-from ansiblemetrics.tasks.nbeh  import NBEH
-from ansiblemetrics.tasks.nbl   import NBL
-from ansiblemetrics.tasks.ncmd  import NCMD
-from ansiblemetrics.tasks.ndm   import NDM
-from ansiblemetrics.tasks.nemd  import NEMD
-from ansiblemetrics.tasks.nfmd  import NFMD
-from ansiblemetrics.tasks.nierr import NIERR
-from ansiblemetrics.tasks.nimpp import NIMPP
-from ansiblemetrics.tasks.nimpr import NIMPR
-from ansiblemetrics.tasks.nimpt import NIMPT
-from ansiblemetrics.tasks.ninc  import NINC
-from ansiblemetrics.tasks.nincr import NINCR
-from ansiblemetrics.tasks.ninct import NINCT
-from ansiblemetrics.tasks.nincv import NINCV
-from ansiblemetrics.tasks.nlp   import NLP
-from ansiblemetrics.tasks.nmd   import NMD
-from ansiblemetrics.tasks.nsh   import NSH
-from ansiblemetrics.tasks.ntnn  import NTNN
-from ansiblemetrics.tasks.nts   import NTS
-from ansiblemetrics.tasks.ntun  import NTUN
-from ansiblemetrics.tasks.ntvr  import NTVR
-
-general_metrics ={
-    'loc'   :   LOC, 
-    'bloc'  :   BLOC, 
-    'cloc'  :   CLOC,
-    'dpt'   :   DPT, 
-    'etp'   :   ETP, 
-    'ncd'   :   NCD, 
-    'nco'   :   NCO, 
-    'ndk'   :   NDK, 
-    'nfl'   :   NFL, 
-    'nicd'  :   NICD, 
-    'nkeys' :   NKEYS, 
-    'nlk'   :   NLK, 
-    'nlo'   :   NLO, 
-    'nmo'   :   NMO, 
-    'nnnv'  :   NNNV, 
-    'nnwv'  :   NNWV,
-    'nscm'  :   NSCM, 
-    'ntkn'  :   NTKN, 
-    'nun'   :   NUN
+general_metrics = {
+    'lines_code': LinesCode,
+    'lines_blank': LinesBlank,
+    'lines_comment': LinesComment,
+    'num_conditions': NumConditions,
+    'num_decisions': NumDecisions,
+    'num_deprecated_keywords': NumDeprecatedKeywords,
+    'num_keys': NumKeys,
+    'num_math_operations': NumMathOperations,
+    'num_suspicious_comments': NumSuspiciousComments,
+    'num_tokens': NumTokens,
+    'text_entropy': TextEntropy
 }
 
 playbook_metrics = {
-    'apls'  :   APLS, 
-    'niu'   :   NIU, 
-    'npl'   :   NPL, 
-    'npnn'  :   NPNN, 
-    'npun'  :   NPUN, 
-    'npvr'  :   NPVR, 
-    'nrgv'  :   NRGV, 
-    'nrl'   :   NRL, 
-    'nrvr'  :   NRVR,  
-    'nvr'   :   NVR
-}
-
-tasks_metrics = {
-    'atss'  :   ATSS, 
-    'nbeh'  :   NBEH, 
-    'nbl'   :   NBL, 
-    'ncmd'  :   NCMD, 
-    'ndm'   :   NDM, 
-    'nemd'  :   NEMD, 
-    'nfmd'  :   NFMD, 
-    'nierr' :   NIERR,
-    'nimpp' :   NIMPP, 
-    'nimpr' :   NIMPR, 
-    'nimpt' :   NIMPT, 
-    'ninc'  :   NINC, 
-    'nincr' :   NINCR, 
-    'ninct' :   NINCT, 
-    'nincv' :   NINCV,
-    'nlp'   :   NLP, 
-    'nmd'   :   NMD, 
-    'nsh'   :   NSH, 
-    'ntnn'  :   NTNN, 
-    'nts'   :   NTS, 
-    'ntun'  :   NTUN, 
-    'ntvr'  :   NTVR
+    'avg_play_size': AveragePlaySize,
+    'avg_task_size': AvgTaskSize,
+    'num_authorized_key': NumAuthorizedKey,
+    'num_blocks': NumBlocks,
+    'num_block_error_handling': NumBlocksErrorHandling,
+    'num_commands': NumCommands,
+    'num_deprecated_modules': NumDeprecatedModules,
+    'num_distinct_modules': NumDistinctModules,
+    'num_external_modules': NumExternalModules,
+    'num_fact_modules': NumFactModules,
+    'num_file_exists': NumFileExists,
+    'num_file_mode': NumFileMode,
+    'num_file_modules': NumFileModules,
+    'num_filters': NumFilters,
+    'num_ignore_errors': NumIgnoreErrors,
+    'num_import_playbook': NumImportPlaybook,
+    'num_import_role': NumImportRole,
+    'num_import_tasks': NumImportTasks,
+    'num_include': NumInclude,
+    'num_include_role': NumIncludeRole,
+    'num_include_tasks': NumIncludeTasks,
+    'num_include_vars': NumIncludeVars,
+    'num_lookups': NumLookups,
+    'num_loops': NumLoops,
+    'num_names_with_vars': NumNameWithVars,
+    'num_parameters': NumParameters,
+    'num_paths': NumPaths,
+    'num_plays': NumPlays,
+    'num_regex': NumRegex,
+    'num_roles': NumRoles,
+    'num_tasks': NumTasks,
+    'num_unique_names': NumUniqueNames,
+    'num_uri': NumUri,
+    'num_user_interaction': NumUserInteraction,
+    'num_vars': NumVars
 }
