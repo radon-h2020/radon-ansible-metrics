@@ -2,13 +2,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3'
-
-with open('requirements.txt') as reqs_file:
-    requirements = reqs_file.read().splitlines()
-
-with open('test-requirements.txt') as reqs_file:
-    test_requirements = reqs_file.read().splitlines()
+VERSION = '0.3.2'
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -35,6 +29,10 @@ setup(name='ansiblemetrics',
          "Topic :: Software Development :: Libraries :: Python Modules",
          "Operating System :: OS Independent"
       ],
-      insall_requires=requirements,
-      test_requirements=requirements + test_requirements
+      insall_requires=[
+        'pyyaml==5.3.1'
+      ],
+      test_requirements=[
+        'pytest==5.4.2'
+      ]
 )
