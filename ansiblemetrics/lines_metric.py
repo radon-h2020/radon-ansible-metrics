@@ -17,12 +17,12 @@ class LinesMetric():
             # Check if is a valid yaml
             self.__yml = yaml.safe_load(script.getvalue())
             if self.__yml is None:
-                raise yaml.YAMLError
+                raise TypeError("Expected a not empty Ansible script")
 
             self.__yml = script.getvalue()
 
         except yaml.YAMLError:
-            raise yaml.YAMLError
+            raise TypeError("Expected a valid Ansible script")
 
     @property
     def yml(self):
