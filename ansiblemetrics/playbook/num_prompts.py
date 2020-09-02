@@ -3,7 +3,7 @@ from ansiblemetrics.utils import key_value_list
 from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
-class NumUserInteraction(AnsibleMetric):
+class NumPrompts(AnsibleMetric):
     """ This class implements the metric 'Number Of Interactions with User' in an Ansible script. """
 
     def count(self):

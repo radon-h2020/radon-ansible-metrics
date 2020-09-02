@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = '0.3.3'
+VERSION = '0.3.4'
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -29,7 +29,7 @@ setup(name='ansiblemetrics',
          "Topic :: Software Development :: Libraries :: Python Modules",
          "Operating System :: OS Independent"
       ],
-      insall_requires=[
+      install_requires=[
         'pyyaml==5.3.1'
       ],
       test_requirements=[

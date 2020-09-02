@@ -1,4 +1,4 @@
-# Number of interactions with user
+# Number of prompts
 
 It measures the number of interactions with users by means of the module [```prompts```](https://docs.ansible.com/ansible/2.5/user_guide/playbooks_prompts.html) in the script.
 

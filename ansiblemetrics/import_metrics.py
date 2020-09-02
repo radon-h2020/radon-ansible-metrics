@@ -40,12 +40,12 @@ from ansiblemetrics.playbook.num_name_with_vars import NumNameWithVars
 from ansiblemetrics.playbook.num_parameters import NumParameters
 from ansiblemetrics.playbook.num_paths import NumPaths
 from ansiblemetrics.playbook.num_plays import NumPlays
+from ansiblemetrics.playbook.num_prompts import NumPrompts
 from ansiblemetrics.playbook.num_regex import NumRegex
 from ansiblemetrics.playbook.num_roles import NumRoles
 from ansiblemetrics.playbook.num_tasks import NumTasks
 from ansiblemetrics.playbook.num_unique_names import NumUniqueNames
 from ansiblemetrics.playbook.num_uri import NumUri
-from ansiblemetrics.playbook.num_user_interaction import NumUserInteraction
 from ansiblemetrics.playbook.num_vars import NumVars
 
 general_metrics = {
@@ -91,11 +91,11 @@ playbook_metrics = {
     'num_parameters': NumParameters,
     'num_paths': NumPaths,
     'num_plays': NumPlays,
+    'num_prompts': NumPrompts,
     'num_regex': NumRegex,
     'num_roles': NumRoles,
     'num_tasks': NumTasks,
     'num_unique_names': NumUniqueNames,
     'num_uri': NumUri,
-    'num_user_interaction': NumUserInteraction,
     'num_vars': NumVars
 }

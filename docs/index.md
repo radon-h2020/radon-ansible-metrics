@@ -160,14 +160,14 @@ Below the list of the implemented metrics.
 * [Number of name with variables](playbook/NumNameWithVars.md)
 * [Number of parameters](playbook/NumParameters.md)
 * [Number of paths](playbook/NumPaths.md)
-* [Number of regex](playbook/NumRegex.md)
 * [Number of plays](playbook/NumPlays.md)
+* [Number of prompts](playbook/NumPrompts.md)
+* [Number of regex](playbook/NumRegex.md)
 * [Number of roles](playbook/NumRoles.md)
 * [Number of SSH](playbook/NumAuthorizedKey.md)
 * [Number of tasks](playbook/NumTasks.md)
 * [Number of unique names](playbook/NumUniqueNames.md)
 * [Number of urls](playbook/NumUri.md)
-* [Number of user interactions](playbook/NumUserInteraction.md)
 * [Number of variables](playbook/NumVars.md)
 
 

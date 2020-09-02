@@ -142,3 +142,12 @@ Move to project folder and run the following commands:
 * Once ready, run ```git commit -m "A message describing the work done"```;
 
 * Finally, ```git push origin/<branch_name>``` and open a pull request if you desire to integrate your changes to the master branch;
+
+<br>
+
+
+## CHANGELOG
+### **0.3.4**
+
+- Added parameter ***--omit-zero-metrics*** to omit metrics equal to 0.
+- Metrics *NumUserInteraction* renamed to *NumPrompts*.
