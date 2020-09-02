@@ -29,7 +29,7 @@ def test(script, expected):
 
     try:
         metric = LinesMetric(script)
-    except YAMLError:
+    except TypeError:
         raised = Raised.TRUE
     finally:
         script.close()

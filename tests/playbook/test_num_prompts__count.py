@@ -1,6 +1,6 @@
 import pytest
 from io import StringIO
-from ansiblemetrics.playbook.num_user_interaction import NumUserInteraction
+from ansiblemetrics.playbook.num_prompts import NumPrompts
 
 #script_loops
 script_0 = '- name: An example pool playbook\n\thosts: bigip\n\tconnection: local\n\n\tvars_prompt:\n\t\t- name: "username"\n'
@@ -16,6 +16,6 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = StringIO(script.expandtabs(2))
-    count = NumUserInteraction(script).count()
+    count = NumPrompts(script).count()
     script.close()
     assert count == expected
