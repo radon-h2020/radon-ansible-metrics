@@ -29,28 +29,96 @@ pip install .
 
 ## How to use
 
-### **Command-line interface**
+### **Command-line**
 
 Run ```ansible-metrics --help``` for instructions about the usage:
 
 ```
-usage: ansible-metrics [-h] [-o] [-v] src dest
+usage: ansible-metrics [-h] [--omit-zero-metrics] [-d DEST] [-o] [-v] src
 
 Extract metrics from Ansible scripts.
 
 positional arguments:
-  src            source file (a playbook or directory of playbooks)
-  dest           destination file to save results
+  src                   source file (playbook or tasks file) or
+                        directory
 
 optional arguments:
-  -h, --help     shows this help message and exit
-  -o, --output   shows output
-  -v, --version  shows program's version number and exit
+  -h, --help            show this help message and exit
+  --omit-zero-metrics   omit metrics with value equal 0
+  -d DEST, --dest DEST  destination path to save results
+  -o, --output          shows output
+  -v, --version         show program's version number and exit
 ```
 
+Assume that the following example is named *playbook1.yml*:
+
+```yaml
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+  remote_user: root
+
+  tasks:
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+      
+- hosts: databases
+  remote_user: root
+
+  tasks:
+  - name: ensure postgresql is at the latest version
+    yum:
+      name: postgresql
+      state: latest
+      
+  - name: ensure that postgresql is started
+    service:
+      name: postgresql
+      state: started
+      
+```
+
+and is located within the folder *playbooks* as follows:
+
+playbooks <br>
+&nbsp;&nbsp;&nbsp;|- playbook1.yml <br>
+&nbsp;&nbsp;&nbsp;|- playbook3.yml <br>
+&nbsp;&nbsp;&nbsp;|- playbook3.yml <br>
+
+
+Also, assume the user's working directory is the *playbooks* folder. Then, it is possible to extract source code characteristics from that blueprint by running the following command:
+
+```ansible-metrics --omit-zero-metrics playbook1.yml --dest report.json```
+
+For this example, the \textit{report.json} will result in 
+
+```
+{
+    "filepath": "playbook1.yml",
+    "avg_play_size": 10,
+    "avg_task_size": 4,
+    "lines_blank": 4,
+    "lines_code": 20,
+    "num_keys": 20,
+    "num_parameters": 6,
+    "num_plays": 2,
+    "num_tasks": 3,
+    "num_tokens": 50,
+    "num_unique_names": 3,
+    "num_vars": 1,
+    "text_entropy": 4.37
+}
+```
+
+<br>
 
 ### **Python**
 
+*AnsibleMetrics* currently supports up to 46 source code metrics, implemented in Python. 
+To extract the value for a given metric follow this pattern:
 
 ```python
 from io import StringIO
@@ -60,7 +128,10 @@ script = 'a valid yaml script'
 value = <Metric>(StringIO(script).count()
 ```
 
-For example, if one wants to count the number of lines of code:
+where <metric> has to be replaced with the name of the desired metric module to compute the value of a specific metric. <br>
+The difference between the *general* and the *playbook* modules lies in the fact that the *playbook* module contains metrics specific to playbooks (for example, the number of plays and tasks), while the *general* module contains metrics that can be generalized to other languages (for example, the lines of code).
+
+For example, to count the number of lines of code:
 
 ```python
 from io import StringIO
@@ -83,6 +154,29 @@ print('Lines of executable code:', metric.count())
 # > Lines of executable code: 5
 ```
 
+
+To extract the value for the 46 metrics at once,  import the ```ansiblemetrics.metrics_extractor``` package and call the method ```extract_all()``` (in this case the return value will be a json object):
+
+```python
+from io import StringIO
+from ansiblemetrics.metrics_extractor import extract_all
+
+script = """
+---
+- hosts: all
+
+  tasks:
+  - name: This is a task!
+    debug:
+      msg: "Hello World"
+"""
+
+metrics = extract_all(StringIO(script))
+print('Lines of executable code:', metrics['lines_code'])
+
+# This will result in 
+# > Lines of executable code: 5
+```
 
 ## How to contribute
 
