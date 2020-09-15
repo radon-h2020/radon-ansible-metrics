@@ -22,7 +22,7 @@ Download the tool and install it with:
 or, alternatively from the source code project directory:
 
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 pip install .
 ```
 
