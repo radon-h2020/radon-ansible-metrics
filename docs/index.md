@@ -1,5 +1,3 @@
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
 # Welcome to the AnsibleMetrics documentation
 
 **AnsibleMetrics** is a Python-based static source code analyzer for Ansible blueprints that helps to quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
