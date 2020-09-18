@@ -1,5 +1,10 @@
-[![Build Status](https://travis-ci.com/radon-h2020/radon-ansible-metrics.svg?token=5ombixLKK1T1YhFSj8KX&branch=master)](https://travis-ci.com/radon-h2020/radon-ansible-metrics)
-
+![Issues](https://img.shields.io/github/issues/radon-h2020/radon-ansible-metrics)
+![pypi-version](https://img.shields.io/pypi/v/ansiblemetrics)
+![pypi-status](https://img.shields.io/pypi/status/ansiblemetrics)
+![python-version](https://img.shields.io/pypi/pyversions/ansiblemetrics)
+![pypi-download](https://img.shields.io/pypi/dw/ansiblemetrics)
+![release-date](https://img.shields.io/github/release-date/radon-h2020/radon-ansible-metrics)
+![license](https://img.shields.io/pypi/l/ansiblemetrics)
 
 
 For full documentation visit the [radon-h2020.github.io](https://radon-h2020.github.io/radon-ansible-metrics/).

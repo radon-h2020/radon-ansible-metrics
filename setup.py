@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 
 setup(name='ansiblemetrics',
       version=VERSION,
-      description='A module to measure metrics on Ansible scripts',
+      description='A module to extract metrics from Ansible scripts',
       long_description=long_description,
       long_description_content_type="text/markdown",
       author='Stefano Dalla Palma',
@@ -22,7 +22,7 @@ setup(name='ansiblemetrics',
         'console_scripts': ['ansible-metrics=ansiblemetrics.command_line:cli'],
       },
       classifiers=[
-         "Development Status :: 4 - Beta",
+         "Development Status :: 5 - Stable",
          "Intended Audience :: Developers",
          "Programming Language :: Python :: 3.6",
          "License :: OSI Approved :: Apache Software License",

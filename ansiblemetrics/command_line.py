@@ -7,14 +7,16 @@ from io import StringIO
 
 from ansiblemetrics.metrics_extractor import extract_all
 
-VERSION = '0.3.2'
+VERSION = '0.3.3'
+
 
 def get_parser():
     description = 'Extract metrics from Ansible scripts.'
 
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(action='store', dest='src', help='source file (playbook or tasks file) or directory')
-    parser.add_argument('--omit-zero-metrics', dest='omit_zero_metrics', action='store_true', help='omit metrics with value equal 0')
+    parser.add_argument('--omit-zero-metrics', dest='omit_zero_metrics', action='store_true',
+                        help='omit metrics with value equal 0')
     parser.add_argument('-d', '--dest', help='destination path to save results')
     parser.add_argument('-o', '--output', action='store_true', help='shows output')
     parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + VERSION)
@@ -98,15 +100,15 @@ def cli():
         try:
             metrics = extract_all(script)
             metrics['filepath'] = file_path
-            
-            if args.omit_zero_metrics: # Show only non-zero metrics
-                metrics = {k:v for k,v in metrics.items() if v != 0}
+
+            if args.omit_zero_metrics:  # Show only non-zero metrics
+                metrics = {k: v for k, v in metrics.items() if v != 0}
 
             if args.dest:
                 save_output(metrics, args.dest)
 
             # Pretty-print json to screen (always print if args.dest in not defined)
-            if args.output or not args.dest:               
+            if args.output or not args.dest:
                 metrics_2_json = json.dumps(metrics, indent=4, sort_keys=True)
                 print(metrics_2_json)
 
