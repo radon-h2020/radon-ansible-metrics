@@ -55,14 +55,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command-line interface</a>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line">Command-line</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#python">Python</a>
     </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a>
-        <ul>
     <li class="toctree-l3"><a class="reference internal" href="#general">General</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#playbook">Playbook</a>
@@ -158,6 +154,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="playbook/NumPlays/">Number of plays</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="playbook/NumPrompts/">Number of prompts</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="playbook/NumRoles/">Number of roles</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="playbook/NumAuthorizedKey/">Number of SSH</a>
@@ -165,8 +163,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="playbook/NumTasks/">Number of tasks</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="playbook/NumUniqueNames/">Number of unique names</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumUserInteraction/">Number of user interactions</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="playbook/NumUri/">Number of urls</a>
                 </li>
@@ -176,7 +172,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="" href="about.md">About</a>
+                    <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
                     </li>
                 </ul>
       </div>
@@ -218,38 +214,98 @@
           <div role="main">
             <div class="section">
               
-                <p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h1 id="welcome-to-the-ansiblemetrics-documentation">Welcome to the AnsibleMetrics documentation</h1>
+                <h1 id="welcome-to-the-ansiblemetrics-documentation">Welcome to the AnsibleMetrics documentation</h1>
 <p><strong>AnsibleMetrics</strong> is a Python-based static source code analyzer for Ansible blueprints that helps to quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
 It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.</p>
 <p>It represents a step forward towards closing the gap for the implementation of software quality in-struments to support DevOps engineers when developing and maintaining infrastructure code and the development of measurement models for its quality!</p>
+<p><br></p>
 <h2 id="how-to-install">How to install</h2>
-<p>Installation is made simple by the PyPI repository.
-Download the tool and install it with:</p>
-<p><code>pip install ansible-metrics</code></p>
-<p>or, alternatively from the source code project directory:</p>
+<p>Installation is made simple by the PyPI repository. <br>
+Download the tool and install it with <code>pip install ansible-metrics</code>.<br>
+Alternatively, install it from the source code project directory with the following commands:</p>
 <pre><code>pip install -r requirements.txt
 pip install .
 </code></pre>
 
+<p><em>AnsibleMetrics</em> is now installed and can be used from both command-line and Python code.</p>
+<p><br></p>
 <h2 id="how-to-use">How to use</h2>
-<h3 id="command-line-interface"><strong>Command-line interface</strong></h3>
+<h3 id="command-line"><strong>Command-line</strong></h3>
 <p>Run <code>ansible-metrics --help</code> for instructions about the usage:</p>
-<pre><code>usage: ansible-metrics [-h] [-o] [-v] src dest
+<pre><code>usage: ansible-metrics [-h] [--omit-zero-metrics] [-d DEST] [-o] [-v] src
 
 Extract metrics from Ansible scripts.
 
 positional arguments:
-  src            source file (a playbook or directory of playbooks)
-  dest           destination file to save results
+  src                   source file (playbook or tasks file) or
+                        directory
 
 optional arguments:
-  -h, --help     shows this help message and exit
-  -o, --output   shows output
-  -v, --version  shows program's version number and exit
+  -h, --help            show this help message and exit
+  --omit-zero-metrics   omit metrics with value equal 0
+  -d DEST, --dest DEST  destination path to save results
+  -o, --output          shows output
+  -v, --version         show program's version number and exit
 </code></pre>
 
+<p>Assume that the following example is named <em>playbook1.yml</em>:</p>
+<pre><code class="yaml">---
+- hosts: webservers
+  vars:
+    http_port: 80
+  remote_user: root
+
+  tasks:
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+
+- hosts: databases
+  remote_user: root
+
+  tasks:
+  - name: ensure postgresql is at the latest version
+    yum:
+      name: postgresql
+      state: latest
+
+  - name: ensure that postgresql is started
+    service:
+      name: postgresql
+      state: started
+
+</code></pre>
+
+<p>and is located within the folder <em>playbooks</em> as follows:</p>
+<p>playbooks <br>
+&nbsp;&nbsp;&nbsp;|- playbook1.yml <br>
+&nbsp;&nbsp;&nbsp;|- playbook3.yml <br>
+&nbsp;&nbsp;&nbsp;|- playbook3.yml <br></p>
+<p>Also, assume the user's working directory is the <em>playbooks</em> folder. Then, it is possible to extract source code characteristics from that blueprint by running the following command:</p>
+<p><code>ansible-metrics --omit-zero-metrics playbook1.yml --dest report.json</code></p>
+<p>For this example, the \textit{report.json} will result in </p>
+<pre><code>{
+    &quot;filepath&quot;: &quot;playbook1.yml&quot;,
+    &quot;avg_play_size&quot;: 10,
+    &quot;avg_task_size&quot;: 4,
+    &quot;lines_blank&quot;: 4,
+    &quot;lines_code&quot;: 20,
+    &quot;num_keys&quot;: 20,
+    &quot;num_parameters&quot;: 6,
+    &quot;num_plays&quot;: 2,
+    &quot;num_tasks&quot;: 3,
+    &quot;num_tokens&quot;: 50,
+    &quot;num_unique_names&quot;: 3,
+    &quot;num_vars&quot;: 1,
+    &quot;text_entropy&quot;: 4.37
+}
+</code></pre>
+
+<p><br></p>
 <h3 id="python"><strong>Python</strong></h3>
+<p><em>AnsibleMetrics</em> currently supports up to 46 source code metrics, implemented in Python. 
+To extract the value for a given metric follow this pattern:</p>
 <pre><code class="python">from io import StringIO
 from ansiblemetrics.&lt;general|playbook&gt;.&lt;metric&gt; import &lt;Metric&gt;
 
@@ -257,7 +313,9 @@ script = 'a valid yaml script'
 value = &lt;Metric&gt;(StringIO(script).count()
 </code></pre>
 
-<p>For example, if one wants to count the number of lines of code:</p>
+<p>where <metric> has to be replaced with the name of the desired metric module to compute the value of a specific metric. <br>
+The difference between the <em>general</em> and the <em>playbook</em> modules lies in the fact that the <em>playbook</em> module contains metrics specific to playbooks (for example, the number of plays and tasks), while the <em>general</em> module contains metrics that can be generalized to other languages (for example, the lines of code).</p>
+<p>For example, to count the number of lines of code:</p>
 <pre><code class="python">from io import StringIO
 from ansiblemetrics.general.loc import LOC
 
@@ -278,11 +336,9 @@ print('Lines of executable code:', metric.count())
 # &gt; Lines of executable code: 5
 </code></pre>
 
-<h2 id="metrics">Metrics</h2>
-<p>AnsibleMetrics currently supports up to 46 source code metrics, implemented in Python.</p>
-<p>Import <code>ansiblemetrics.metrics_extractor</code> to extract all the metrics at once (in this case the return value will be a json object):</p>
+<p>To extract the value for the 46 metrics at once,  import the <code>ansiblemetrics.metrics_extractor</code> package and call the method <code>extract_all()</code> (in this case the return value will be a json object):</p>
 <pre><code class="python">from io import StringIO
-from ansiblemetrics.metrics_extractor import MetricsExtractor
+from ansiblemetrics.metrics_extractor import extract_all
 
 script = &quot;&quot;&quot;
 ---
@@ -294,16 +350,15 @@ script = &quot;&quot;&quot;
       msg: &quot;Hello World&quot;
 &quot;&quot;&quot;
 
-metrics = MetricsExtractor.run(StringIO(script))
+metrics = extract_all(StringIO(script))
 print('Lines of executable code:', metrics['lines_code'])
 
 # This will result in 
 # &gt; Lines of executable code: 5
 </code></pre>
 
-<p>Alternatively, import the <code>ansiblemetrics.playbook.&lt;metric&gt;</code> or the <code>ansiblemetrics.general.&lt;metric&gt;</code> (where \texttt{<metric>} has to be replaced with the name of the desired metric) module to compute the value of a specific metric.</p>
-<p>The difference between the <em>general</em> and the <em>playbook</em> modules lies in the fact that the <em>playbook</em> module contains metrics specific to playbooks (for example, the number of plays and tasks), while the <em>general</em> module contains metrics that can be generalized to other languages (for example, the lines of code).</p>
-<p>Below the list of the implemented metrics.</p>
+<p><br></p>
+<p>Below the list of the implemented metrics and their documentation.</p>
 <h3 id="general">General</h3>
 <ul>
 <li><a href="general/LinesBlank/">Lines blank</a></li>
@@ -347,34 +402,16 @@ print('Lines of executable code:', metrics['lines_code'])
 <li><a href="playbook/NumNameWithVars/">Number of name with variables</a></li>
 <li><a href="playbook/NumParameters/">Number of parameters</a></li>
 <li><a href="playbook/NumPaths/">Number of paths</a></li>
-<li><a href="playbook/NumRegex/">Number of regex</a></li>
 <li><a href="playbook/NumPlays/">Number of plays</a></li>
+<li><a href="playbook/NumPrompts/">Number of prompts</a></li>
+<li><a href="playbook/NumRegex/">Number of regex</a></li>
 <li><a href="playbook/NumRoles/">Number of roles</a></li>
 <li><a href="playbook/NumAuthorizedKey/">Number of SSH</a></li>
 <li><a href="playbook/NumTasks/">Number of tasks</a></li>
 <li><a href="playbook/NumUniqueNames/">Number of unique names</a></li>
 <li><a href="playbook/NumUri/">Number of urls</a></li>
-<li><a href="playbook/NumUserInteraction/">Number of user interactions</a></li>
 <li><a href="playbook/NumVars/">Number of variables</a></li>
 </ul>
-<!--
-## Project layout
-
-    ansiblemetrics/
-        ansible_metric.py   # Abstract class inherited by all the metrics
-        ansible_modules.py  # List of modules and deprecated modules mantained by the Ansible community
-        command_line.py # The comman line interface
-        import_metrics.py   # List of implemented metrics
-        lines_metric.py        # Abstract class inherited by all the metrics for counting lines
-        metrics_extractor.py    # Main class
-        utils.py    # Contains common methods 
-        general/    # Contains metrics tha can be used for languages besides Ansible
-        playbook/   # Metrics specific for Ansible
-    docs/
-        index.md  # The documentation homepage.
-        general/  # The documentation of general metrics
-        playbook/ # The documentation of playbook and task list metrics
--->
               
             </div>
           </div>
