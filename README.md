@@ -19,7 +19,7 @@ It represents a step forward towards closing the gap for the implementation of s
 
 ## How to install
 
-Installation is made simple by the PyPI repository.
+Installation is made simple by the [PyPI repository](https://pypi.org/project/ansiblemetrics).
 Download the tool and install it with:
 
 ```pip install ansible-metrics```
