@@ -7,8 +7,8 @@ from io import StringIO
 
 from ansiblemetrics.metrics_extractor import extract_all
 
-VERSION = '0.3.3'
-
+with open("config.json", "r") as fh:
+    config = json.load(fh)
 
 def get_parser():
     description = 'Extract metrics from Ansible scripts.'
@@ -19,7 +19,7 @@ def get_parser():
                         help='omit metrics with value equal 0')
     parser.add_argument('-d', '--dest', help='destination path to save results')
     parser.add_argument('-o', '--output', action='store_true', help='shows output')
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + VERSION)
+    parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + config.get("version", "0.0"))
 
     return parser
 
