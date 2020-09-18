@@ -1,11 +1,14 @@
 #!/usr/bin/env python
-
+import json
 from setuptools import setup, find_packages
 
-VERSION = '0.3.4'
+with open("config.json", "r") as fh:
+    config = json.load(fh)
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+
+VERSION = config.get("version", "0.0")
 
 setup(name='ansiblemetrics',
       version=VERSION,
