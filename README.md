@@ -246,6 +246,10 @@ Move to project folder and run the following commands:
 
 
 ## CHANGELOG
+### **0.3.5**
+
+- Fixed missing include in MANIFEST.in
+
 ### **0.3.4**
 
 - Added parameter ***--omit-zero-metrics*** to omit metrics equal to 0.
