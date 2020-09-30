@@ -20,4 +20,4 @@ class AvgTaskSize(AnsibleMetric):
             n_tasks += 1
             size += LinesCode(StringIO(yaml.dump(task))).count()
 
-        return int(round(size / n_tasks))
+        return int(round(size / n_tasks)) if n_tasks else 0
