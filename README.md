@@ -5,7 +5,7 @@
 ![pypi-download](https://img.shields.io/pypi/dw/ansiblemetrics)
 ![release-date](https://img.shields.io/github/release-date/radon-h2020/radon-ansible-metrics)
 ![license](https://img.shields.io/pypi/l/ansiblemetrics)
-
+![lgtm](https://img.shields.io/lgtm/grade/python/github/radon-h2020/radon-ansible-metrics)
 
 For full documentation visit the [radon-h2020.github.io](https://radon-h2020.github.io/radon-ansible-metrics/).
 
