@@ -1,5 +1,4 @@
 import re
-from collections import Counter
 
 from ansiblemetrics.ansible_metric import AnsibleMetric
 from ansiblemetrics.utils import key_value_list

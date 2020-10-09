@@ -1,5 +1,3 @@
-import yaml
-
 from io import StringIO
 from ansiblemetrics.import_metrics import general_metrics, playbook_metrics
 
