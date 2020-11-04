@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of ignore_errors";
-    var mkdocs_page_input_path = "playbook\\NumIgnoreErrors.md";
+    var mkdocs_page_input_path = "playbook/NumIgnoreErrors.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,11 +216,10 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html#ignoring-failed-commands">Ansible's documentation</a> repository has one <code>ignore_errors</code> (but it could be at least one per task):</p>
-<pre><code class="yaml">- name: this will not be counted as a failure
+<pre><code class="language-yaml">- name: this will not be counted as a failure
   command: /bin/false
   ignore_errors: yes
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -257,7 +256,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_ignore_errors import NumIgnoreErrors
 
 str = '- name: this will not be counted as a failure\n\tcommand: /bin/false\n\tignore_errors: yes' 

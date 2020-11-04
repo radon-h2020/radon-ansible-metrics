@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of file extists";
-    var mkdocs_page_input_path = "playbook\\NumFileExists.md";
+    var mkdocs_page_input_path = "playbook/NumFileExists.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,7 +216,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>two</strong> <code>mode</code> occurrences.</p>
-<pre><code class="yaml"># Determine if a path exists and is a symlink. Note that if the path does
+<pre><code class="language-yaml"># Determine if a path exists and is a symlink. Note that if the path does
 # not exist, and we test sym.stat.islnk, it will fail with an error. So
 # therefore, we must test whether it is defined.
 # Run this to understand the structure, the skipped ones do not pass the
@@ -230,7 +230,6 @@
   when: sym.stat.islnk is not defined  # file check
 
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -267,7 +266,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_file_exists import NumFileExists
 
 str = '- stat:\n\t\tpath: /path/to/something\n\tregister: sym\n\n- debug:\n\t\tmsg: &quot;islnk is not defined (path does not exist)&quot;\n\twhen: sym.stat.islnk is not defined'

@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of import_playbook";
-    var mkdocs_page_input_path = "playbook\\NumImportPlaybook.md";
+    var mkdocs_page_input_path = "playbook/NumImportPlaybook.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,13 +215,12 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>two</strong> <code>import_playbook</code> statements.</p>
-<pre><code class="yaml">- name: Include a play after another play
+<pre><code class="language-yaml">- name: Include a play after another play
   import_playbook: otherplays.yaml
 
 - name: This fails because I'm inside a play already
   import_playbook: stuff.yaml
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -258,7 +257,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_import_playbook import NumImportPlaybook
 
 str = '- name: Include a play after another play\n\timport_playbook: otherplays.yaml\n\n- name: This fails because I am inside a play already\n\timport_playbook: stuff.yaml' 

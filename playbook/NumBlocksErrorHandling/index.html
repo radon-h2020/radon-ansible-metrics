@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of block error handling";
-    var mkdocs_page_input_path = "playbook\\NumBlocksErrorHandling.md";
+    var mkdocs_page_input_path = "playbook/NumBlocksErrorHandling.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -217,7 +217,7 @@ The tasks in the block would execute normally, if there is any error the rescue 
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has 1 block error handling.</p>
-<pre><code class="yaml">- name: Attempt and graceful roll back demo
+<pre><code class="language-yaml">- name: Attempt and graceful roll back demo
   block:          # This block handle errors with rescue and always
     - debug:
         msg: 'I execute normally'
@@ -245,7 +245,6 @@ The tasks in the block would execute normally, if there is any error the rescue 
     - debug:
         msg: 'I never execute, due to the above task failing, :-('
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -282,7 +281,7 @@ The tasks in the block would execute normally, if there is any error the rescue 
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_blocks_error_handling import NumBlocksErrorHandling
 
 str = '- name: Attempt and graceful roll back demo\n\tblock:\t\t\t\t\t# This block handle errors with rescue and always\n\t\t- debug:\n\t\t\t\tmsg: \'I execute normally\'\n\t\t- name: i force a failure\n\t\t\tcommand: /bin/false\n\t\t- debug:\n\t\t\t\tmsg: \'I never execute, due to the above task failing, :-(\'\n\trescue:\n\t\t- debug:\n\t\t\t\tmsg: \'I caught an error\'\n\t\t- name: i force a failure in middle of recovery! &gt;:-)\n\t\t\tcommand: /bin/false\n\t\t- debug:\n\t\t\t\tmsg: \'I also never execute :-(\'\n\talways:\n\t\t- debug:\n\t\t\t\tmsg: &quot;This always executes&quot;\n\n- name: A task with a block that does not handle errors\n\tblock:\t\t\t\t# This block does not\n\t\t- debug:\n\t\t\t\tmsg: \'I execute normally\'\n\t\t- name: i force a failure\n\t\t\tcommand: /bin/false\n\t\t- debug:\n\t\t\t\tmsg: \'I never execute, due to the above task failing, :-(\'' 

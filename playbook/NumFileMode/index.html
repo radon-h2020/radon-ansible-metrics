@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of file mode";
-    var mkdocs_page_input_path = "playbook\\NumFileMode.md";
+    var mkdocs_page_input_path = "playbook/NumFileMode.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,7 +216,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>two</strong> <code>mode</code> occurrences.</p>
-<pre><code class="yaml">- name: Change file ownership, group and permissions
+<pre><code class="language-yaml">- name: Change file ownership, group and permissions
   file:
     path: /etc/foo.conf
     owner: foo
@@ -232,7 +232,6 @@
     group: root
     mode: '0644'    # 2nd occurrence
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -269,7 +268,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_file_mode import NumFileMode
 
 str = '- name: Change file ownership, group and permissions\n\tfile:\n\t\tpath: /etc/foo.conf\n\t\towner: foo\n\t\tgroup: foo\n\t\tmode: \'0644\'\n\n- name: Replace a localhost entry with our own\n\tlineinfile:\n\t\tpath: /etc/hosts\n\t\tregexp: \'^127\.0\.0\.1\'\n\t\tline: 127.0.0.1 localhost\n\t\towner: root\n\t\tgroup: root\n\t\tmode: \'0644\''

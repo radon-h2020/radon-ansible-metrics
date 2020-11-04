@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of loops";
-    var mkdocs_page_input_path = "playbook\\NumLoops.md";
+    var mkdocs_page_input_path = "playbook/NumLoops.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has two loops indicated by the keywords <code>loop</code> and <code>with_*</code></p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: with_list
   debug:
     msg: &quot;{{ item }}&quot;
@@ -230,7 +230,6 @@
     - one
     - two
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -267,7 +266,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_loops import NumLoops
 
 str = '- name: with_list\n\tdebug:\n\t\tmsg: &quot;{{ item }}&quot;\n\twith_list:\n\t\t- one\n\t\t- two\n\n- name: with_list -&gt; loop\n\tdebug:\n\t\tmsg: &quot;{{ item }}&quot;\n\tloop:\n\t\t- one\n\t\t- two' 

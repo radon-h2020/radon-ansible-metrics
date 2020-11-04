@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of deprecated keywords";
-    var mkdocs_page_input_path = "general\\NumDeprecatedKeywords.md";
+    var mkdocs_page_input_path = "general/NumDeprecatedKeywords.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has one depecrated keyword that occurs twice, namely <code>args</code>:</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - hosts: localhost
   tasks:
 
@@ -234,7 +234,6 @@
     register: async_hello_ansible
 
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -271,7 +270,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.num_deprecated_keywords import NumDeprecatedKeywords
 
 str = '---\n- hosts: localhost\n\ttasks:\n\t\n\t- name: Hello, Ansible!\n\t\taction: rust_helloworld\n\t\targs:\t\t\t\t\t\t\t\t\t\t\t\t\t # 1st deprecated keyword\n\t\t\tname: Ansible\n\t\tregister: hello_ansible\n\t\n\t- name: Async Hello, Ansible!\n\t\taction: rust_helloworld\n\t\targs:\t\t\t\t\t\t\t\t\t\t\t\t\t # 2nd deprecated keyword\n\t\t\tname: Ansible\n\t\tasync: 10\n\t\tpoll: 1\n\t\tregister: async_hello_ansible\n' 

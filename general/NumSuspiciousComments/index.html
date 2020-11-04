@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of suspicious comments";
-    var mkdocs_page_input_path = "general\\NumSuspiciousComments.md";
+    var mkdocs_page_input_path = "general/NumSuspiciousComments.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>two</strong> suspicious comments.</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 # TODO: Remove this task after Ansible 2.x npm module bug is fixed. See:
 # https://github.com/ansible/ansible-modules-extras/issues/1375
 - name: Ensure forever is installed (to run Node.js apps).
@@ -231,7 +231,6 @@
   become_user: &quot;{{ nodejs_install_npm_user }}&quot;
   when: nodejs_forever        
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -268,7 +267,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.num_suspicious_comments import NumSuspiciousComments
 
 str = '---\n# TODO: Remove this task after Ansible 2.x npm module bug is fixed. See:\n# https://github.com/ansible/ansible-modules-extras/issues/1375\n- name: Ensure forever is installed (to run Node.js apps).\n\tnpm: name=forever global=yes state=present\n\tbecome: yes\n\tbecome_user: &quot;{{ nodejs_install_npm_user }}&quot;\n\twhen: nodejs_forever\n# TODO: Remove this task after Ansible 2.x npm module bug is fixed. See:\n# https://github.com/ansible/ansible-modules-extras/issues/1375\n- name: Ensure forever is at the latest release.\n\tnpm: name=forever global=yes state=latest\n\tbecome: yes\n\tbecome_user: &quot;{{ nodejs_install_npm_user }}&quot;\n\twhen: nodejs_forever\t' 

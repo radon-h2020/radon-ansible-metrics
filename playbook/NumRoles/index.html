@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of roles";
-    var mkdocs_page_input_path = "playbook\\NumRoles.md";
+    var mkdocs_page_input_path = "playbook/NumRoles.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://docs.ansible.com/ansible/latest/user_guide/guide_rolling_upgrade.html?highlight=playbook">Ansible's documentation</a> is a site-wide deployment playbook with six roles, namely <code>common</code>, <code>db</code>, <code>base-apache</code>, <code>web</code>, <code>haproxy</code>, and <code>nagios</code>:</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - hosts: all            
   roles:
   - common              # 1st role
@@ -238,7 +238,6 @@
   - base-apache
   - nagios              # 6th role
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -275,7 +274,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_roles import NumRoles
 
 str = '---\n- hosts: all\n\troles:\n\t- common\n\n- hosts: dbservers\n\troles:\n\t- db\n\n- hosts: webservers\n\troles:\n\t- base-apache\n\t- web\n\n- hosts: lbservers\n\troles:\n\t- haproxy\n\n- hosts: monitoring\n\troles:\n\t- base-apache\n\t- nagios' 

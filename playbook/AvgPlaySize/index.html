@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Average play size";
-    var mkdocs_page_input_path = "playbook\\AvgPlaySize.md";
+    var mkdocs_page_input_path = "playbook/AvgPlaySize.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -218,7 +218,7 @@ The average size is the <a href="../../general/LinesCode/">number of executable 
 <h2 id="example">Example</h2>
 <p>The following example has 5 plays for a total of 17 executable lines of code. 
 The average play size is: <code>round(17/5) = round(3.4) = 3</code>.</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - hosts: all
   roles:
   - common
@@ -241,7 +241,6 @@ The average play size is: <code>round(17/5) = round(3.4) = 3</code>.</p>
   - base-apache
   - nagios
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -278,7 +277,7 @@ The average play size is: <code>round(17/5) = round(3.4) = 3</code>.</p>
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.avg_play_size import AvgPlaySize
 
 str = '---\n- hosts: all\n\troles:\n\t- common\n\n- hosts: dbservers\n\troles:\n\t- db\n\n- hosts: webservers\n\troles:\n\t- base-apache\n\t- web\n\n- hosts: lbservers\n\troles:\n\t- haproxy\n\n- hosts: monitoring\n\troles:\n\t- base-apache\n\t- nagios' 

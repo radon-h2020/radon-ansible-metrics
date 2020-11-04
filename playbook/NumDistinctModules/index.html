@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of distinct modules";
-    var mkdocs_page_input_path = "playbook\\NumDistinctModules.md";
+    var mkdocs_page_input_path = "playbook/NumDistinctModules.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -217,7 +217,7 @@
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://github.com/ansible/ansible-examples/blob/master/phillips_hue/on_off.yml">ansible-examples</a> 
 repository has three distinct modules, namely: <code>include_vars</code>, <code>uri</code> and <code>debug</code>:</p>
-<pre><code class="yaml">- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML
+<pre><code class="language-yaml">- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML
   include_vars:                                     # 1st distinct module
     file: username_info.yml
 
@@ -232,7 +232,6 @@ repository has three distinct modules, namely: <code>include_vars</code>, <code>
   debug:                                            # 3rd distinct module
     var: light_info.json.lights
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -269,7 +268,7 @@ repository has three distinct modules, namely: <code>include_vars</code>, <code>
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_distinct_modules import NumDistinctModules
 
 str = '- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML\n\tinclude_vars:\n\t\tfile: username_info.yml\n\n- name: GRAB HUE LIGHT INFORMATION\n\turi:\n\t\turl: &quot;http://{{ip_address}}/api/{{username}}&quot;\n\t\tmethod: GET\n\t\tbody: &quot;{{body_info|to_json}}&quot;\n\tregister: light_info\n\n- name: PRINT DATA TO TERMINAL WINDOW\n\tdebug:\n\t\tvar: light_info.json.lights' 

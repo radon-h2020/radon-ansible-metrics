@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of unique names";
-    var mkdocs_page_input_path = "playbook\\NumUniqueNames.md";
+    var mkdocs_page_input_path = "playbook/NumUniqueNames.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -218,7 +218,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example is a playbook contains three <code>name</code>, one of which is unique: </p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: demo the logic                    # unique name
   hosts: localhost
   gather_facts: false
@@ -235,7 +235,6 @@
       msg: &quot;Can you read me again?&quot;
     when: num3 &gt;= num1    
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -272,7 +271,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_unique_names import NumUniqueNames
 
 str = '- name: demo the logic\n\thosts: localhost\n\tgather_facts: false\n\tvars:\n\tnum1: 10\n\tnum3: 10\n\ttasks:\n\t- name: logic and comparison\n\t\tdebug:\n\t\t\tmsg: &quot;Can you read me?&quot;\n\t\twhen: num1 &gt;= num3 and num1 is even and num2 is not defined\n\t- name: logic and comparison\n\t\tdebug:\n\t\t\tmsg: &quot;Can you read me again?&quot;\n\t\twhen: num3 &gt;= num1' 

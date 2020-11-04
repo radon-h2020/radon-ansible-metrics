@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Lines of code";
-    var mkdocs_page_input_path = "general\\LinesCode.md";
+    var mkdocs_page_input_path = "general/LinesCode.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>8 executable lines of code</strong>. Blank and commented lines are not considered <em>executable</em> lines of code.</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - hosts: localhost
 
   tasks:
@@ -227,7 +227,6 @@
     include_vars:
       file: username_info.yml
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -264,7 +263,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.lines_code import LinesCode
 
 str = '---\n- hosts: localhost\n\n\ttasks:\n\t- name: task 1\n\t\tinclude_vars:\n\t\t\tfile: username_info.yml\n\n\t- name: task 2\n\t\tinclude_vars:\n\t\t\tfile: username_info.yml' 

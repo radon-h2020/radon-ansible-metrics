@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of include";
-    var mkdocs_page_input_path = "playbook\\NumInclude.md";
+    var mkdocs_page_input_path = "playbook/NumInclude.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,14 +215,13 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>one</strong> <code>include</code> statement.</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: Include a play after another play
   include: otherplays.yaml
 
 - name: Include task list in play
   include_role: role.yaml 
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -259,7 +258,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_include import NumInclude
 
 str = '---\n- name: Include a play after another play\n\tinclude: otherplays.yaml\n\n- name: Include task list in play\n\tinclude_role: role.yaml' 

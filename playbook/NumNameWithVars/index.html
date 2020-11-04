@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of name with variables";
-    var mkdocs_page_input_path = "playbook\\NumNameWithVars.md";
+    var mkdocs_page_input_path = "playbook/NumNameWithVars.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,7 +216,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <em>five names</em>, of which <strong>four using variables</strong>. </p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: play with a {{ var_name }}                  # 1st name with variable
   hosts: localhost
   vars:
@@ -239,7 +239,6 @@
     debug:
       msg: &quot;I am another mastery task&quot;
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -276,7 +275,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_name_with_variables import NumNameWithVariables
 
 str = '- name: play with a {{ var_name }}\n\thosts: localhost\n\tvars:\n\t\tvar_name: not-mastery\n\t\n\ttasks:\n\t- name: set a variable\n\t\tset_fact:\n\t\ttask_var_name: &quot;defined variable&quot;\n\n\t- name: task with a {{ task_var_name }}\n\t\tdebug:\n\t\tmsg: &quot;I am mastery task&quot;\n\n- name: second play with a {{ task_var_name }}\n\thosts: localhost\n\n\ttasks:\n\t- name: task with a {{ runtime_var_name }}\n\t\tdebug:\n\t\t\tmsg: &quot;I am another mastery task&quot;' 

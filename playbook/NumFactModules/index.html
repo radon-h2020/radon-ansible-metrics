@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of fact modules";
-    var mkdocs_page_input_path = "playbook\\NumFactModules.md";
+    var mkdocs_page_input_path = "playbook/NumFactModules.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -218,7 +218,7 @@ The assumption is that the lower the fact modules wrt the total number of module
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has 2 facts modules and three modules in total.</p>
-<pre><code class="yaml">tasks:
+<pre><code class="language-yaml">tasks:
   - name: Find all instances in the specified region    
     ali_instance_facts:                                   # 1st fact module
       alicloud_access_key: '{{ alicloud_access_key }}'
@@ -237,7 +237,6 @@ The assumption is that the lower the fact modules wrt the total number of module
     debug:                                                # not fact module
       msg: 'End of tasks'
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -274,7 +273,7 @@ The assumption is that the lower the fact modules wrt the total number of module
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_fact_modules import NumFactModules
 
 str = 'tasks:\n\t- name: Find all instances in the specified region\t\t\n\t\tali_instance_facts:\n\t\t\talicloud_access_key: &quot;{{ alicloud_access_key }}&quot;\n\t\t\talicloud_secret_key: &quot;{{ alicloud_secret_key }}&quot;\n\t\t\talicloud_region: &quot;{{ alicloud_region }}&quot;\n\t\tregister: all_instances\n\n\t- name: Find all instances based on the specified ids\n\t\tali_instance_facts:\n\t\t\talicloud_access_key: &quot;{{ alicloud_access_key }}&quot;\n\t\t\talicloud_secret_key: &quot;{{ alicloud_secret_key }}&quot;\n\t\t\talicloud_region: &quot;{{ alicloud_region }}&quot;\n\t\tregister: instances_by_ids\n\n\t- name: PRINT DATA TO TERMINAL WINDOW\n\t\tdebug:\n\t\t\tmsg: &quot;End of tasks&quot;' 

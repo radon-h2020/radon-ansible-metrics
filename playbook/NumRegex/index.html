@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of regex";
-    var mkdocs_page_input_path = "playbook\\NumRegex.md";
+    var mkdocs_page_input_path = "playbook/NumRegex.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example contains <strong>one</strong> <code>regexp</code></p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: Remove Password
   lineinfile:
     path: &quot;/opt/appdata/nzbget/nzbget.conf&quot; # 3rd path
@@ -224,7 +224,6 @@
     state: present
   when: nzbget_conf.stat.exists == False
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -261,7 +260,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_regex import NumRegex
 
 str = '- name: Remove Password\n\tlineinfile:\n\t\tpath: &quot;/opt/appdata/nzbget/nzbget.conf&quot; # 3rd path\n\t\tregexp: ControlPassword=tegbzn6789\n\t\tline: \'ControlPassword=\'\n\t\tstate: present\n\twhen: nzbget_conf.stat.exists == False' 

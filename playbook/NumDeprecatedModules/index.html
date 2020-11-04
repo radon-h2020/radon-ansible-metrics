@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of deprecated modules";
-    var mkdocs_page_input_path = "playbook\\NumDeprecatedModules.md";
+    var mkdocs_page_input_path = "playbook/NumDeprecatedModules.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example is a playbook containing one depecrated module, occurring twice, namely <code>oc</code>:</p>
-<pre><code class="yaml">- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML
+<pre><code class="language-yaml">- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML
   include_vars:                           # non deprecated module
     file: username_info.yml
 
@@ -233,7 +233,6 @@
     namespace: mynamespace
     kind: Service
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -270,7 +269,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_deprecated_modules import NumDeprecatedModules
 
 str = '- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML\n\tinclude_vars:\n\t\tfile: username_info.yml\n\n- name: Create a service\n\toc:\n\t\tstate: present\n\t\tname: myservice\n\t\tnamespace: mynamespace\n\t\tkind: Service\n\n- name: Delete a service\n\toc:\n\t\tstate: absent\n\t\tname: myservice\n\t\tnamespace: mynamespace\n\t\tkind: Service' 

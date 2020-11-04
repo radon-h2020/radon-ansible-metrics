@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of conditions";
-    var mkdocs_page_input_path = "general\\NumConditions.md";
+    var mkdocs_page_input_path = "general/NumConditions.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -218,7 +218,7 @@ Conditions are identified by the following comparison operators: <code>is, in, =
 <h2 id="example">Example</h2>
 <p>The following script extracted from <a href="http://www.mydailytutorials.com/working-ansible-variables-conditionals/">mydailytutorials</a>
 has <strong>five</strong> conditions</p>
-<pre><code class="yaml">- hosts: all
+<pre><code class="language-yaml">- hosts: all
   test1: &quot;Hello World&quot;
   tasks:
   - debug:
@@ -233,7 +233,6 @@ has <strong>five</strong> conditions</p>
       msg: &quot;Not Equals&quot;
       when: test1 &lt;= 5 or test1 &gt;= 10     # 4th condition
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -270,7 +269,7 @@ has <strong>five</strong> conditions</p>
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.num_conditions import NumConditions
 
 str = '- hosts: all\n\ttest1: &quot;Hello World&quot;\n\ttasks:\n\t- debug:\n\t\t\tmsg: &quot;Equals&quot;\n\t\t\twhen:\n\t\t\t\t- test1 == &quot;Hello World&quot;\t\t\t\t\t# 1st condition\n\t\t\t\t- test1 != &quot;Hello&quot;\t\t\t\t\t\t\t\t# 2nd condition\n\t- debug:\n\t\t\tmsg: &quot;Not Equals&quot;\n\t\t\twhen: test1 != &quot;Hello World&quot;\t\t\t\t# 3rd condition\n\t- debug:\n\t\t\tmsg: &quot;Not Equals&quot;\n\t\t\twhen: test1 &lt;= 5 or test1 &gt;= 10\t\t # 4th condition' 

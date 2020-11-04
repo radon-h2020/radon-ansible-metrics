@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of variables";
-    var mkdocs_page_input_path = "playbook\\NumVars.md";
+    var mkdocs_page_input_path = "playbook/NumVars.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -217,7 +217,7 @@ A major use of variables is running a command and registering the result of that
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has three variables, namely <code>http_port</code>, <code>app_path</code> and <code>favcolor</code>:</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - hosts: webservers
   vars:
     http_port: 80                       # 1st variable
@@ -233,7 +233,6 @@ A major use of variables is running a command and registering the result of that
   vars_files:                           # !!! vars_files is not supported by this version
     - /vars/external_vars.yml
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -270,7 +269,7 @@ A major use of variables is running a command and registering the result of that
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_vars import NumVars
 
 str = '---\n- hosts: webservers\n\tvars:\n\t\thttp_port: 80\n\t\t\n- hosts: app_servers\n\tvars:\n\t\tapp_path: &quot;{{ base_path }}/22&quot;\n\n- hosts: all\n\tremote_user: root\n\tvars:\n\t\tfavcolor: blue\n\tvars_files:\n\t\t- /vars/external_vars.yml' 

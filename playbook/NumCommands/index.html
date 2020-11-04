@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of commands";
-    var mkdocs_page_input_path = "playbook\\NumCommands.md";
+    var mkdocs_page_input_path = "playbook/NumCommands.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -225,7 +225,7 @@ This property counts the occurrences of the following modules in the script:</p>
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>eight</strong> <em>commands</em> (the <code>shell</code> command occurs twice).</p>
-<pre><code class="yaml">- name: return motd to registered var
+<pre><code class="language-yaml">- name: return motd to registered var
   command: cat /etc/motd
   register: mymotd
 
@@ -269,7 +269,6 @@ This property counts the occurrences of the following modules in the script:</p>
       - terminal length 0
       - show version
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -306,7 +305,7 @@ This property counts the occurrences of the following modules in the script:</p>
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_commands import NumCommands
 
 str = ''- name: return motd to registered var\n\tcommand: cat /etc/motd\n\tregister: mymotd\n\n- name: Case insensitive password string match\n\texpect:\n\t\tcommand: passwd username\n\t\tresponses:\n\t\t\t(?i)password: &quot;MySekretPa$$word&quot;\n\tno_log: true\n\n- name: Run a cmd.exe command\n\tpsexec:\n\t\thostname: server\n\t\tconnection_username: username\n\t\tconnection_password: password\n\t\texecutable: cmd.exe\n\t\targuments: /c echo Hello World\n\n- name: List user accounts on a Windows system\n\traw: Get-WmiObject -Class Win32_UserAccount\n\n- name: Run a script with arguments (free form)\n\tscript: /some/local/script.sh --some-argument 1234\n\n- name: Execute the command in remote shell; stdout goes to the specified file on the remote.\n\tshell: somescript.sh &gt;&gt; somelog.txt\n\n- name: Change the working directory to somedir/ before executing the command.\n\tshell: somescript.sh &gt;&gt; somelog.txt\n\targs:\n\t\tchdir: somedir/\n\n- name: run show commands\n\ttelnet:\n\t\tuser: cisco\n\t\tpassword: cisco\n\t\tlogin_prompt: &quot;Username: &quot;\n\t\tprompts:\n\t\t\t- &quot;[&gt;#]&quot;\n\t\tcommand:\n\t\t\t- terminal length 0\n\t\t\t- show version'' 

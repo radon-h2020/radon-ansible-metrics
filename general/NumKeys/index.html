@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of keys";
-    var mkdocs_page_input_path = "general\\NumKeys.md";
+    var mkdocs_page_input_path = "general/NumKeys.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>nine</strong> keys, namely 'hosts', 'roles', 'hosts', 'roles', 'tasks', 'name', 'mysql_db', 'name', 'state'.</p>
-<pre><code class="yaml">- hosts: all
+<pre><code class="language-yaml">- hosts: all
   roles:
   - common
 
@@ -230,7 +230,6 @@ tasks:
       name: &quot;{{ dbname }}&quot;
       state: present
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -267,7 +266,7 @@ tasks:
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.num_keys import NumKeys
 
 str = '- hosts: all\n\troles:\n\t- common\n\n# Configure and deploy database servers.\n- hosts: dbservers\n\troles:\n\t- db\n\ntasks: \n\t- name: Create Application Database\n\t\tmysql_db:\n\t\t\tname: &quot;{{ dbname }}&quot;\n\t\t\tstate: present' 

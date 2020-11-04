@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of tokens";
-    var mkdocs_page_input_path = "general\\NumTokens.md";
+    var mkdocs_page_input_path = "general/NumTokens.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,11 +215,10 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following script has <strong>nine</strong> tokens:</p>
-<pre><code class="yaml">- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML
+<pre><code class="language-yaml">- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML
   include_vars:                                     
     file: username_info.yml
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -256,7 +255,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.num_tokens import NumTokens
 
 str = '- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML\n\tinclude_vars:\n\t\tfile: username_info.yml' 

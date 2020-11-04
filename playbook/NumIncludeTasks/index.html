@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of include_tasks";
-    var mkdocs_page_input_path = "playbook\\NumIncludeTasks.md";
+    var mkdocs_page_input_path = "playbook/NumIncludeTasks.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has <strong>two</strong> <code>include_tasks</code> statements.</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: Include task list in play
   include_tasks: stuff.yaml
 
@@ -226,7 +226,6 @@
       tags:
         - install
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -263,7 +262,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_include_tasks import NumIncludeTasks
 
 str = '---\n- name: Include task list in play\n\tinclude_tasks: stuff.yaml\n\n- name: Apply tags to tasks within included file\n\tinclude_tasks:\n\t\tfile: install.yml\n\t\tapply:\n\t\t\ttags:\n\t\t\t\t- install' 

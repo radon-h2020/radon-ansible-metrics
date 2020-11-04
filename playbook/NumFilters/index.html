@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of filters";
-    var mkdocs_page_input_path = "playbook\\NumFilters.md";
+    var mkdocs_page_input_path = "playbook/NumFilters.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,14 +215,13 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html">Ansible's documentation</a> has two filters, namely <code>from_yaml_all</code> and <code>list</code>:</p>
-<pre><code class="yaml">tasks:
+<pre><code class="language-yaml">tasks:
   - shell: cat /some/path/to/multidoc-file.yaml
     register: result
   - debug:
       msg: '{{ item }}'
     loop: '{{ result.stdout | from_yaml_all | list }}'  # 2 filters 
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -259,7 +258,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_filters import NumFilters
 
 str = 'tasks:\n\t- shell: cat /some/path/to/multidoc-file.yaml\n\t\tregister: result\n\t- debug:\n\t\t\tmsg: '{{ item }}'\n\t\tloop: &quot;{{ result.stdout | from_yaml_all | list }}&quot;' 

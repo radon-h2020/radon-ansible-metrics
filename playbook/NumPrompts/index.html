@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of prompts";
-    var mkdocs_page_input_path = "playbook\\NumPrompts.md";
+    var mkdocs_page_input_path = "playbook/NumPrompts.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -215,7 +215,7 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://docs.ansible.com/ansible/2.5/user_guide/playbooks_prompts.html">Ansible's documentation</a> repository has <strong>three</strong> <code>prompts</code>:</p>
-<pre><code class="yaml">- hosts: all
+<pre><code class="language-yaml">- hosts: all
   remote_user: root
 
   vars_prompt:
@@ -226,7 +226,6 @@
     - name: &quot;favcolor&quot;
       prompt: &quot;what is your favorite color?&quot;
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -263,7 +262,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_user_initeraction import NumUserInteraction
 
 str = '- hosts: all\n\tremote_user: root\n\n\tvars_prompt:\n\t\t- name: &quot;name&quot;\n\t\t\tprompt: &quot;what is your name?&quot;\n\t\t- name: &quot;quest&quot;\n\t\t\tprompt: &quot;what is your quest?&quot;\n\t\t- name: &quot;favcolor&quot;\n\t\t\tprompt: &quot;what is your favorite color?&quot;' 

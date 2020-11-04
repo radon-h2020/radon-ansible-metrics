@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of SSH";
-    var mkdocs_page_input_path = "playbook\\NumAuthorizedKey.md";
+    var mkdocs_page_input_path = "playbook/NumAuthorizedKey.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,13 +216,12 @@
 <h2 id="this-property-counts-the-number-of-authorized_key-syntax-occurrences-used-to-adds-or-removes-ssh-authorized-keys-for-particular-user-accounts">This property counts the number of <a href="https://docs.ansible.com/ansible/latest/modules/authorized_key_module.html"><code>authorized_key</code></a>  syntax occurrences, used to adds or removes SSH authorized keys for particular user accounts.</h2>
 <h2 id="example">Example</h2>
 <p>The following example has <strong>one</strong> <code>authorized_key</code> occurrence.</p>
-<pre><code class="yaml">- name: Set authorized key taken from file
+<pre><code class="language-yaml">- name: Set authorized key taken from file
   authorized_key:
     user: charlie
     state: present
     key: &quot;{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}&quot;
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -259,7 +258,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_authorized_key import NumAuthorizedKey
 
 str = '- name: Set authorized key taken from file\n\tauthorized_key:\n\t\tuser: charlie\n\t\tstate: present\n\t\tkey: &quot;{{ lookup(\'file\', \'/home/charlie/.ssh/id_rsa.pub\') }}&quot;'

@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of math operations";
-    var mkdocs_page_input_path = "general\\NumMathOperations.md";
+    var mkdocs_page_input_path = "general/NumMathOperations.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -217,7 +217,7 @@ The following operators are considered for the calculation: <code>+, -, /, //, %
 <h2 id="example">Example</h2>
 <p>The following script extracted from <a href="http://www.mydailytutorials.com/ansible-arithmetic-operations/">mydailytutorials</a>
 has <strong>five</strong> math operands</p>
-<pre><code class="yaml">- hosts: localhost
+<pre><code class="language-yaml">- hosts: localhost
   tasks:
   - debug:
       msg: &quot;addition{{ 4 + 3 }}&quot;          # 1st operation
@@ -230,7 +230,6 @@ has <strong>five</strong> math operands</p>
   - debug:
       msg: &quot;floating division {{ 4 / 3}}&quot; # 5th operation
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -267,7 +266,7 @@ has <strong>five</strong> math operands</p>
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.general.num_math_operations import NumMathOperations
 
 str = '- hosts: localhost\n\ttasks:\n\t- debug:\n\t\t\tmsg: &quot;addition{{ 4 + 3 }}&quot;\n\t- debug:\n\t\t\tmsg: &quot;substraction {{ 4 - 3 }}&quot;\n\t- debug:\n\t\t\tmsg: &quot;multiplication {{ 4 * 3 }}&quot;\n\t- debug:\n\t\t\tmsg: &quot;Modulo operation {{ 7 % 4}}&quot;\n\t- debug:\n\t\t\tmsg: &quot;floating division {{ 4 / 3}}&quot;' 

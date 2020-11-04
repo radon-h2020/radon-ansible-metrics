@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Average task size";
-    var mkdocs_page_input_path = "playbook\\AvgTaskSize.md";
+    var mkdocs_page_input_path = "playbook/AvgTaskSize.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -217,7 +217,7 @@ The average size is the <em>number of executable lines of code of tasks</em> div
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example has 3 tasks, containing 3, 6, and 3 lines of code respectively. The average task size is measured as: <code>round((3+6+3)/3) = 4</code>.</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 - name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML   # 1st task
   include_vars:                                     
     file: username_info.yml
@@ -233,7 +233,6 @@ The average size is the <em>number of executable lines of code of tasks</em> div
   debug:                                            
     var: light_info.json.lights
 </code></pre>
-
 <p>--</p>
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -270,7 +269,7 @@ The average size is the <em>number of executable lines of code of tasks</em> div
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.avg_task_size import AvgTaskSize
 
 str = '---\n- name: INCLUDE UNIQUE USERNAME FROM REGISTER.YML\n\tinclude_vars:\n\t\tfile: username_info.yml\n\n- name: GRAB HUE LIGHT INFORMATION\n\turi:\n\t\turl: &quot;http://{{ip_address}}/api/{{username}}&quot;\n\t\tmethod: GET\n\t\tbody: '{{body_info|to_json}}'\n\tregister: light_info\n\n- name: PRINT DATA TO TERMINAL WINDOW\n\tdebug:\n\t\tvar: light_info.json.lights' 

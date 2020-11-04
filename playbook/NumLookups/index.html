@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of lookups";
-    var mkdocs_page_input_path = "playbook\\NumLookups.md";
+    var mkdocs_page_input_path = "playbook/NumLookups.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,11 +216,10 @@
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://ansible-manual.readthedocs.io/en/latest/playbooks_lookups.html">Ansible's documentation</a> has one <code>lookup</code>:</p>
-<pre><code class="yaml">- hosts: all
+<pre><code class="language-yaml">- hosts: all
   vars:
     contents: &quot;{{ lookup('file', '/etc/foo.txt') }}&quot;       # lookup
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -257,7 +256,7 @@
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_lookups import NumLookups
 
 str = '- hosts: all\n\tvars:\n\t\tcontents: &quot;{{ lookup('file', '/etc/foo.txt') }}&quot;' 

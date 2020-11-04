@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Number of blocks";
-    var mkdocs_page_input_path = "playbook\\NumBlocks.md";
+    var mkdocs_page_input_path = "playbook/NumBlocks.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -216,7 +216,7 @@ Blocks allow for logical grouping of tasks and in play error handling. Most of w
 <hr />
 <h2 id="example">Example</h2>
 <p>The following example from the <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_blocks.html">Ansible's documentation</a> repository has only one block:</p>
-<pre><code class="yaml">- name: Install, configure, and start Apache
+<pre><code class="language-yaml">- name: Install, configure, and start Apache
   block:         
   - name: install httpd and memcached
     yum:
@@ -232,7 +232,6 @@ Blocks allow for logical grouping of tasks and in play error handling. Most of w
       enabled: True
   when: ansible_facts[&quot;distribution&quot;] == &quot;CentOS&quot;
 </code></pre>
-
 <hr />
 <h2 id="parameters">Parameters</h2>
 <table>
@@ -269,7 +268,7 @@ Blocks allow for logical grouping of tasks and in play error handling. Most of w
 <hr />
 <h2 id="how-to-use">How to use</h2>
 <p>Below an example on how to call the metric and the expected output for the provided example:</p>
-<pre><code class="python">from io import StringIO
+<pre><code class="language-python">from io import StringIO
 from ansiblemetrics.playbook.num_blocks import NumBlocks
 
 str = '- name: Install, configure, and start Apache\n\tblock:\t\t\t\t \n\t- name: install httpd and memcached\n\t\tyum:\n\t\t\tname: &quot;{{ item }}&quot;\n\t\t\tstate: present\n\t\tloop:\n\t\t\t- httpd\n\t\t\t- memcached\n\t- name: start service bar and enable it\n\t\tservice:\n\t\t\tname: bar\n\t\t\tstate: started\n\t\t\tenabled: True\n\twhen: ansible_facts[&quot;distribution&quot;] == &quot;CentOS&quot;' 
