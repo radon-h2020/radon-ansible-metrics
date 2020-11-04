@@ -2,13 +2,10 @@
 import json
 from setuptools import setup, find_packages
 
-with open("config.json", "r") as fh:
-    config = json.load(fh)
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-VERSION = config.get("version", "0.0")
+VERSION = '0.3.7'
 
 setup(name='ansiblemetrics',
       version=VERSION,
@@ -28,6 +25,9 @@ setup(name='ansiblemetrics',
          "Development Status :: 5 - Production/Stable",
          "Intended Audience :: Developers",
          "Programming Language :: Python :: 3.6",
+         "Programming Language :: Python :: 3.7",
+         "Programming Language :: Python :: 3.8",
+         "Programming Language :: Python :: 3.9",
          "License :: OSI Approved :: Apache Software License",
          "Topic :: Software Development :: Libraries :: Python Modules",
          "Operating System :: OS Independent"

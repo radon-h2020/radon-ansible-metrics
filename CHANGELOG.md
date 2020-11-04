@@ -1,6 +1,8 @@
+### **0.3.7**
+- Fixed cli usage. Refactoring
+
 ### **0.3.6**
 - Bugfix: division-by-zero in avg_task_size.py
-
 
 ### **0.3.5**
 
