@@ -5,6 +5,7 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 from ansiblemetrics.general.lines_code import LinesCode
 from ansiblemetrics.playbook.num_plays import NumPlays
 
+
 class AveragePlaySize(AnsibleMetric):
     """ This class implements the metric 'Average Play Size' in an Ansible script. """
 
@@ -14,4 +15,4 @@ class AveragePlaySize(AnsibleMetric):
         loc = LinesCode(plainYaml).count()
         plays = NumPlays(plainYaml).count()
 
-        return round(loc/plays) if plays > 0 else 0
+        return round(loc / plays) if plays > 0 else 0
