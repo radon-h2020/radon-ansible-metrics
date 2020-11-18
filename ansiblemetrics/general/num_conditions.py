@@ -13,7 +13,7 @@ class NumConditions(AnsibleMetric):
 
         conditions = 0
         for k, v in key_value_list(self.playbook):
-            if k != 'when' or not v:
+            if k not in ('when', 'changed_when', 'failed_when') or v is None:
                 continue
 
             if type(v) == bool:
