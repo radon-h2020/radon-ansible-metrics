@@ -6,7 +6,7 @@ regex = re.compile(r'\band\b | \bor\b | \bnot\b', flags=re.X)
 
 
 class NumDecisions(AnsibleMetric):
-    """ This class implements the metric 'Number of logic operands' in an Ansible script. """
+    """ This class implements the metric 'Number of decisions' in an Ansible script. """
 
     def count(self):
 
@@ -22,19 +22,13 @@ class NumDecisions(AnsibleMetric):
 
             for k, v in d.items():
 
-                if k == 'when':
-                    # if a string (instead of list), add to list for next steps
+                if k in ('when', 'changed_when', 'failed_when'):
+
                     if type(v) == str:
-                        v = [v]
-                    elif type(v) == bool:
-                        v = [str(v)]
-
-                    for item in v:
-                        decisions += len(regex.findall(str(item)))
-
-                    # Multiple conditions that all need to be true (a logical 'and') can also be specified as a list
-                    # The following line keep track of it
-                    decisions += len(v) - 1
+                        decisions += len(regex.findall(v))
+                    if type(v) == list:
+                        stack.extend({k: item} for item in v)
+                        decisions += len(v) - 1
 
                 elif isinstance(v, dict):
                     stack.append(v)
