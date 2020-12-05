@@ -1,7 +1,5 @@
 import pytest
 from enum import Enum
-from io import StringIO
-from yaml import YAMLError
 
 from ansiblemetrics.lines_metric import LinesMetric
 
@@ -17,21 +15,21 @@ class Raised(Enum):
     TRUE = 'exception raised',
     FALSE = 'exception not raised'
 
+
 TEST_DATA = [
     (yaml_invalid_1, Raised.TRUE),
     (yaml_valid_1, Raised.FALSE)
 ]
 
+
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
-    script = StringIO(script.expandtabs(2))
+    script = script.expandtabs(2)
     raised = Raised.FALSE
 
     try:
-        metric = LinesMetric(script)
+        LinesMetric(script)
     except TypeError:
         raised = Raised.TRUE
-    finally:
-        script.close()
 
     assert raised == expected

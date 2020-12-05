@@ -1,25 +1,23 @@
 import yaml
-from io import StringIO
-
 
 class LinesMetric:
     """ This class is responsible for providing the methods to count the lines of code (loc) in a given .yaml file"""
 
-    def __init__(self, script: StringIO):
+    def __init__(self, script: str):
         """
         Initialize a new LOC AnsibleMetric.
-        script -- a StringIO object representing a valid yaml file
+        script -- a plain yaml file
         """
-        if not isinstance(script, StringIO):
-            raise TypeError('Expected a StringIO object')
+        if script is None:
+            raise TypeError("Parameter 'script' meant to be a string, not None.")
 
         try:
             # Check if is a valid yaml
-            self.__yml = yaml.safe_load(script.getvalue())
+            self.__yml = yaml.safe_load(script)
             if self.__yml is None:
                 raise TypeError("Expected a not empty Ansible script")
 
-            self.__yml = script.getvalue()
+            self.__yml = script
 
         except yaml.YAMLError:
             raise TypeError("Expected a valid Ansible script")
