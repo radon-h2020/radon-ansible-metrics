@@ -1,10 +1,9 @@
-from io import StringIO
 from ansiblemetrics.import_metrics import general_metrics, playbook_metrics
 
 
-def extract_all(script: StringIO):
+def extract_all(script: str):
     if script is None:
-        raise TypeError('Expected a StringIO object')
+        raise TypeError('Expected a string')
 
     # TODO: Add support for pre-tasks
     metrics = general_metrics
@@ -16,6 +15,5 @@ def extract_all(script: StringIO):
     for name in metrics:
         results[name] = metrics[name](script).count()
 
-    script.close()
-
     return results
+

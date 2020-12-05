@@ -1,5 +1,5 @@
 
-![img](ansible-metrics-logo.png)
+![img](logo.png)
 
 # AnsibleMetrics
 
@@ -143,11 +143,10 @@ For this example, the \textit{report.json} will result in
 To extract the value for a given metric follow this pattern:
 
 ```python
-from io import StringIO
-from ansiblemetrics.<general|playbook>.<metric> import <Metric>
+from ansiblemetrics.<general|playbook>.metric import Metric
 
 script = 'a valid yaml script'
-value = <Metric>(StringIO(script).count()
+value = Metric(script).count()
 ```
 
 where <metric> has to be replaced with the name of the desired metric module to compute the value of a specific metric. <br>
@@ -156,7 +155,6 @@ The difference between the *general* and the *playbook* modules lies in the fact
 For example, to count the number of lines of code:
 
 ```python
-from io import StringIO
 from ansiblemetrics.general.lines_code import LinesCode
 
 script = """
@@ -169,14 +167,13 @@ script = """
       msg: "Hello World"
 """
 
-print('Lines of executable code:', LinesCode(StringIO(script).count()))
+print('Lines of executable code:', LinesCode(script).count())
 ```
 
 
 To extract the value for the 46 metrics at once,  import the ```ansiblemetrics.metrics_extractor``` package and call the method ```extract_all()``` (in this case the return value will be a json object):
 
 ```python
-from io import StringIO
 from ansiblemetrics.metrics_extractor import extract_all
 
 script = """
@@ -189,11 +186,8 @@ script = """
       msg: "Hello World"
 """
 
-metrics = extract_all(StringIO(script))
+metrics = extract_all(script)
 print('Lines of executable code:', metrics['lines_code'])
-
-# This will result in 
-# > Lines of executable code: 5
 ```
 
 
