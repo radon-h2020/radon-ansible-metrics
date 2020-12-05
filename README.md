@@ -1,13 +1,3 @@
-![Build](https://github.com/radon-h2020/radon-ansible-metrics/workflows/Build/badge.svg)
-![Documentation](https://github.com/radon-h2020/radon-ansible-metrics/workflows/Documentation/badge.svg)
-![LGTM Grade](https://img.shields.io/lgtm/grade/python/github/radon-h2020/radon-ansible-metrics)
-![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/radon-h2020/radon-ansible-metrics)
-![pypi-version](https://img.shields.io/pypi/v/ansiblemetrics)
-![pypi-status](https://img.shields.io/pypi/status/ansiblemetrics)
-![release-date](https://img.shields.io/github/release-date/radon-h2020/radon-ansible-metrics)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![python-version](https://img.shields.io/pypi/pyversions/ansiblemetrics)
-
 
 ![img](ansible-metrics-logo.png)
 
@@ -16,6 +6,12 @@
 **AnsibleMetrics** is a Python-based static source code measurement tool to characterize Infrastructure-as-Code.
 It helps quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
 It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.
+
+![Build](https://github.com/radon-h2020/radon-ansible-metrics/workflows/Build/badge.svg)
+![Documentation](https://github.com/radon-h2020/radon-ansible-metrics/workflows/Documentation/badge.svg)
+![LGTM Grade](https://img.shields.io/lgtm/grade/python/github/radon-h2020/radon-ansible-metrics)
+![pypi-version](https://img.shields.io/pypi/v/ansiblemetrics)
+![python-version](https://img.shields.io/pypi/pyversions/ansiblemetrics)
 
 
 ## How to cite AnsibleMetrics
@@ -161,7 +157,7 @@ For example, to count the number of lines of code:
 
 ```python
 from io import StringIO
-from ansiblemetrics.general.loc import LOC
+from ansiblemetrics.general.lines_code import LinesCode
 
 script = """
 ---
@@ -173,11 +169,7 @@ script = """
       msg: "Hello World"
 """
 
-metric = LOC(StringIO(script))
-print('Lines of executable code:', metric.count())
-
-# This will result in 
-# > Lines of executable code: 5
+print('Lines of executable code:', LinesCode(StringIO(script).count()))
 ```
 
 
@@ -203,67 +195,6 @@ print('Lines of executable code:', metrics['lines_code'])
 # This will result in 
 # > Lines of executable code: 5
 ```
-
-## How to contribute
-
-First, clone the repository as following:
-
-```git clone https://github.com/radon-h2020/radon-ansible-metrics.git```
-
-Then, move to the folder location and run
-
-```pip install -r requirements.txt```
-
-to install dependencies.
-
-Execute ```pytest``` to run the test suite.
-
-
-### **Step 1: Create a new branch to work on the metric**
-Create a branch to implement (or update) and test a given metrics.
-
-Move to project folder and run the following commands:
-* ```git checkout master``` to move to branch ```master```
-* ```git pull``` to be sure to be updated with the latest version
-* ```git checkout -b <metric_name>``` to create and move to the new working branch.
-
-
-### **Step 2: Document metric**
-
-First, document the new metric with the intended behaviour and examples in the [docs](docs/) folder.
-
-Name the documentation file with the metric name and follow the format present in the existing metrics to describe it.
-
-
-### **Step 3: Create Test Case**
-
-Create a test case in the [tests](tests/) folder and name it as **tests_\<metric\>_count.py**. 
-
-
-### **Step 4: Implement metric**
-Finally, create the script that implement the metric in the folder [ansiblemetrics/<general|playbook>](ansiblemetrics/).
-
-Define the method to test with an empty body.
-
-Run ```pytest``` to make sure test cases implemented at Step 3 **fail**.
-
-Implement the body of the method.
-
-Run ```pytest``` again to make sure test cases implemented at Step 3 **pass**.
-
-
-### **Step 4: Commit your work**
-Move to project folder and run the following commands:
-
-* ```git add <modified_file>``` for each modified files, ```git add .``` to add all modified files (be carefull that the right files are added when using this option);
-
-* ```git status``` is helpful to check what files have been changed/added/deleted;
-
-* Once ready, run ```git commit -m "A message describing the work done"```;
-
-* Finally, ```git push origin/<branch_name>``` and open a pull request if you desire to integrate your changes to the master branch;
-
-<br>
 
 
 ## CHANGELOG
