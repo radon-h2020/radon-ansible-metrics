@@ -6,13 +6,13 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 class NumSuspiciousComments(AnsibleMetric):
     """ This class implements the metric 'Number of suspicious comments' in an Ansible script. """
 
-    def __init__(self, script):
+    def __init__(self, script: str):
         """
         Initialize a new Ansible Metric.
         ymlStream -- a StringIO object representing a valid yaml file
         """
         super().__init__(script)
-        self.__yml = script.getvalue()
+        self.__yml = script
 
     def count(self):
         """ Return the number of suspicious comments in the script. """
