@@ -9,14 +9,33 @@
 ![python-version](https://img.shields.io/pypi/pyversions/ansiblemetrics)
 
 
-For full documentation visit the [radon-h2020.github.io](https://radon-h2020.github.io/radon-ansible-metrics/).
+![img](ansible-metrics-logo.png)
 
 # AnsibleMetrics
 
-**AnsibleMetrics** is a Python-based static source code analyzer for Ansible blueprints that helps to quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
+**AnsibleMetrics** is a Python-based static source code measurement tool to characterize Infrastructure-as-Code.
+It helps quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
 It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.
 
-It represents a step forward towards closing the gap for the implementation of software quality in-struments to support DevOps engineers when developing and maintaining infrastructure code and the development of measurement models for its quality!
+
+## How to cite AnsibleMetrics
+
+```text
+@article{DALLAPALMA2020100633,
+    title = "AnsibleMetrics: A Python library for measuring Infrastructure-as-Code blueprints in Ansible",
+    journal = "SoftwareX",
+    volume = "12",
+    pages = "100633",
+    year = "2020",
+    issn = "2352-7110",
+    doi = "https://doi.org/10.1016/j.softx.2020.100633",
+    url = "http://www.sciencedirect.com/science/article/pii/S2352711020303460",
+    author = "Stefano {Dalla Palma} and Dario {Di Nucci} and Damian A. Tamburri",
+    keywords = "Infrastructure as Code, Software metrics, Software quality",
+    abstract = "Infrastructure-as-Code (IaC) has recently received increasing attention in the research community, mainly due to the paradigm shift it brings in software design, development, and operations management. However, while IaC represents an ever-increasing and widely adopted practice, concerns arise about the need for instruments that help DevOps engineers efficiently maintain, speedily evolve, and continuously improve Infrastructure-as-Code. In this paper, we present AnsibleMetrics, a Python-based static source code measurement tool to characterize Infrastructure-as-Code. Although we focus on Ansible, the most used language for IaC, our tool could be easily extended to support additional formats. AnsibleMetrics represents a step forward towards software quality support for DevOps engineers developing and maintaining infrastructure code."
+}
+```
+
 
 
 ## How to install
