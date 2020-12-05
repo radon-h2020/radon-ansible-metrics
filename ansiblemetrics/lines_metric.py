@@ -2,7 +2,7 @@ import yaml
 from io import StringIO
 
 
-class LinesMetric():
+class LinesMetric:
     """ This class is responsible for providing the methods to count the lines of code (loc) in a given .yaml file"""
 
     def __init__(self, script: StringIO):
