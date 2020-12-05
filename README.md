@@ -1,17 +1,22 @@
+<p align="center" width="100%">
+    <img src="logo.png"> 
+</p>
 
-![img](logo.png)
 
-# AnsibleMetrics
+<h2 align="center">The static source code measurement tool for Ansible</h2>
+<p align="center">
+<a><img alt="Build Status" src="https://github.com/radon-h2020/radon-ansible-metrics/workflows/Build/badge.svg"></a>
+<a><img alt="Documentation" src="https://github.com/radon-h2020/radon-ansible-metrics/workflows/Documentation/badge.svg"></a>
+<a><img alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/python/github/radon-h2020/radon-ansible-metrics"></a>
+<a><img alt="pypi-version" src="https://img.shields.io/pypi/v/ansiblemetrics"></a>
+<a><img alt="python-version" src="https://img.shields.io/pypi/pyversions/ansiblemetrics"></a>
+</p>
 
 **AnsibleMetrics** is a Python-based static source code measurement tool to characterize Infrastructure-as-Code.
 It helps quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
 It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.
 
-![Build](https://github.com/radon-h2020/radon-ansible-metrics/workflows/Build/badge.svg)
-![Documentation](https://github.com/radon-h2020/radon-ansible-metrics/workflows/Documentation/badge.svg)
-![LGTM Grade](https://img.shields.io/lgtm/grade/python/github/radon-h2020/radon-ansible-metrics)
-![pypi-version](https://img.shields.io/pypi/v/ansiblemetrics)
-![python-version](https://img.shields.io/pypi/pyversions/ansiblemetrics)
+
 
 
 ## How to cite AnsibleMetrics
