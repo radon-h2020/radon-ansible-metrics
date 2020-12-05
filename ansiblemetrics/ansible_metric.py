@@ -1,19 +1,18 @@
 import yaml
-from io import StringIO
 
 
-class AnsibleMetric():
+class AnsibleMetric:
 
-    def __init__(self, script: StringIO):
+    def __init__(self, script: str):
         """
         Initialize a new Ansible AnsibleMetric.
-        script -- a StringIO object representing the script or the tasks file to parse
+        script -- the plain script or the tasks file to parse
         """
-        if not isinstance(script, StringIO):
-            raise TypeError('Expected a StringIO object')
+        if script is None:
+            raise TypeError("Parameter 'script' meant to be a string, not None.")
 
         try:
-            self.__yml = yaml.safe_load(script.getvalue())
+            self.__yml = yaml.safe_load(script)
             if self.__yml is None:
                 raise TypeError("Expected a not empty Ansible script")
 
