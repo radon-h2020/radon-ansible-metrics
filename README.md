@@ -44,7 +44,7 @@ It currently supports 46 source code metrics, though other metrics can be derive
 Installation is made simple by the [PyPI repository](https://pypi.org/project/ansiblemetrics).
 Download the tool and install it with:
 
-```pip install ansible-metrics```
+```pip install ansiblemetrics```
 
 or, alternatively from the source code project directory:
 
