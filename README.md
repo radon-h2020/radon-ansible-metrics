@@ -21,6 +21,8 @@ It currently supports 46 source code metrics, though other metrics can be derive
 
 ## How to cite AnsibleMetrics
 
+If you use AnsibleMetrics in a scientific publication, we would appreciate citations to the following paper:
+
 ```text
 @article{DALLAPALMA2020100633,
     title = "AnsibleMetrics: A Python library for measuring Infrastructure-as-Code blueprints in Ansible",
