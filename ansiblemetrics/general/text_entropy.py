@@ -5,9 +5,41 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
 class TextEntropy(AnsibleMetric):
-    """ This class implements the metric 'Text Entropy' of an Ansible script. """
+    """ This class measure the Shannon entropy of a playbook's text.
+    The entropy is computed considering the tokens as symbols, rather than the letters.
+    """
 
     def count(self):
+        """Return the playbook's text entropy.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.text_entropy import TextEntropy
+
+            playbook = '''
+            ---
+            - hosts: all
+              roles:
+              - common
+
+            - hosts: dbservers
+              roles:
+              - db
+              - web
+            '''
+
+            TextEntropy(playbook).count()
+
+            >> 4.89
+
+        Returns
+        -------
+        float
+            Text entropy
+        """
 
         keys = utils.all_keys(self.playbook)
         values = utils.all_values(self.playbook)

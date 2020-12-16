@@ -1,26 +1,49 @@
 import re
 
-from ansiblemetrics.ansible_metric import AnsibleMetric
+from ansiblemetrics.lines_metric import LinesMetric
 
 
-class NumSuspiciousComments(AnsibleMetric):
-    """ This class implements the metric 'Number of suspicious comments' in an Ansible script. """
+class NumSuspiciousComments(LinesMetric):
+    """ This class measures the number of suspicious comments in a playbook.
 
-    def __init__(self, script: str):
-        """
-        Initialize a new Ansible Metric.
-        ymlStream -- a StringIO object representing a valid yaml file
-        """
-        super().__init__(script)
-        self.__yml = script
+    Suspicious comments contain at least one of the following keywords: TODO, FIXME, HACK, XXX, CHECKME, DOCME, TESTME, PENDING.
+    """
 
     def count(self):
-        """ Return the number of suspicious comments in the script. """
+        """Return the number of suspicious comments.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_suspicious_comments import NumSuspiciousComments
+
+            playbook = '''
+            ---
+            # TODO: Remove this task after Ansible 2.x npm module bug is fixed. See:
+            # https://github.com/ansible/ansible-modules-extras/issues/1375
+            - name: Ensure forever is installed (to run Node.js apps).
+              npm: name=forever global=yes state=present
+              become: yes
+              become_user: "{{ nodejs_install_npm_user }}"
+              when: nodejs_forever
+            '''
+
+            NumSuspiciousComments(playbook).count()
+
+            >> 1
+
+        Returns
+        -------
+        int
+            Number of suspicious comments
+        """
 
         suspicious = 0
 
-        for l in self.__yml.splitlines():
-            comment = re.search(r'#.+', str(l.strip()))
+        for line in self.yml.splitlines():
+            comment = re.search(r'#.+', str(line.strip()))
             if comment is not None:
                 if re.search(r'TODO|FIXME|HACK|XXX|CHECKME|DOCME|TESTME|PENDING', comment.group()) is not None:
                     suspicious += 1

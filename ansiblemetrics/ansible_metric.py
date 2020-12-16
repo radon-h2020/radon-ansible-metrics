@@ -4,10 +4,19 @@ import yaml
 class AnsibleMetric:
 
     def __init__(self, script: str):
+        """The class constructor.
+
+        Parameters
+        ----------
+        script : str
+            A plain Ansible file
+
+        Raises
+        ------
+        TypeError
+            If the script is empty or an invalid YAML file
         """
-        Initialize a new Ansible AnsibleMetric.
-        script -- the plain script or the tasks file to parse
-        """
+
         if script is None:
             raise TypeError("Parameter 'script' meant to be a string, not None.")
 
@@ -24,14 +33,15 @@ class AnsibleMetric:
 
     @property
     def playbook(self):
-        """
-        Always return a list of items.
-        If the yml is a single dictionary, then it return a list of one dictionary [self.__yml]
+        """The list of items plays and tasks in the playbook
         """
         return self.__yml
 
     @property
     def plays(self):
+        """The list of plays in the playbook
+        """
+
         if any('hosts' in d.keys() for d in self.__yml if type(d) == dict):
             return self.__yml
         else:
@@ -39,6 +49,8 @@ class AnsibleMetric:
 
     @property
     def tasks(self):
+        """The list of tasks in the playbook.
+        """
 
         if self.plays:
             tasks = list()
@@ -51,4 +63,14 @@ class AnsibleMetric:
             return self.playbook
 
     def count(self):
-        pass  # implementation not provided for the parent class
+        """Method to execute the metric.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.ansible_metric import AnsibleMetric
+            AnsibleMetric().count()
+        """
+        pass

@@ -6,9 +6,47 @@ regex = re.compile(r'\band\b | \bor\b | \bnot\b', flags=re.X)
 
 
 class NumDecisions(AnsibleMetric):
-    """ This class implements the metric 'Number of decisions' in an Ansible script. """
+    """ This class implements the metric 'Number of decisions' in an Ansible script.
+
+    A decision is a Boolean expression composed of conditions and one or more Boolean operators.
+    Decisions are identified by the following logical operators: ```and, or, not```.
+    """
 
     def count(self):
+        """Return the number of decisions.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_decisions import NumDecisions
+
+            playbook = '''
+            - hosts: all
+              vars:
+              - hello_msg: "Hello World"
+
+              tasks:
+              - debug:
+                  msg: "{{ hello_msg }}"
+                when: "Hello" in hello_msg and "World" in hello_msg   # 1st decision
+
+              - debug:
+                  msg: "Goodbye World"
+                when:
+                    - "World" in hello_msg and not "Hello" in hello_msg    # 2nd (and) and 3rd (not) decision
+            '''
+
+            NumDecisions(playbook).count()
+
+            >> 3
+
+        Returns
+        -------
+        int
+            Number of decisions
+        """
 
         decisions = 0
 

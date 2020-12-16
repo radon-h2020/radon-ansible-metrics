@@ -1,13 +1,20 @@
 import yaml
 
+
 class LinesMetric:
-    """ This class is responsible for providing the methods to count the lines of code (loc) in a given .yaml file"""
+    """ This is an abstract class the concrete classes measuring lines of code will extend.
+    """
 
     def __init__(self, script: str):
+        """The class constructor.
+
+        Parameters
+        ----------
+        script : str
+            A plain Ansible file
+
         """
-        Initialize a new LOC AnsibleMetric.
-        script -- a plain yaml file
-        """
+
         if script is None:
             raise TypeError("Parameter 'script' meant to be a string, not None.")
 
@@ -24,7 +31,19 @@ class LinesMetric:
 
     @property
     def yml(self):
+        """The plain Ansible file
+        """
         return self.__yml
 
     def count(self):
+        """Method to execute the metric.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.lines_metric import LinesMetric
+            LinesMetric().count()
+        """
         pass
