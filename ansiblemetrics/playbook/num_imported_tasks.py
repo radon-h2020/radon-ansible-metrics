@@ -3,7 +3,7 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
 class NumImportTasks(AnsibleMetric):
-    """ This class implements the metric 'Number of import_tasks' in an Ansible script. """
+    """ This class measures the number of imported tasks in a playbook"""
 
     def count(self):
         script = self.playbook
