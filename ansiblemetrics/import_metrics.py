@@ -12,7 +12,7 @@ from ansiblemetrics.general.num_tokens import NumTokens
 from ansiblemetrics.general.text_entropy import TextEntropy
 
 # Playbook scope
-from ansiblemetrics.playbook.avg_play_size import AveragePlaySize
+from ansiblemetrics.playbook.avg_play_size import AvgPlaySize
 from ansiblemetrics.playbook.avg_task_size import AvgTaskSize
 from ansiblemetrics.playbook.num_authorized_key import NumAuthorizedKey
 from ansiblemetrics.playbook.num_blocks import NumBlocks
@@ -27,13 +27,13 @@ from ansiblemetrics.playbook.num_file_mode import NumFileMode
 from ansiblemetrics.playbook.num_file_modules import NumFileModules
 from ansiblemetrics.playbook.num_filters import NumFilters
 from ansiblemetrics.playbook.num_ignore_errors import NumIgnoreErrors
-from ansiblemetrics.playbook.num_import_playbook import NumImportPlaybook
-from ansiblemetrics.playbook.num_import_role import NumImportRole
-from ansiblemetrics.playbook.num_import_tasks import NumImportTasks
-from ansiblemetrics.playbook.num_include import NumInclude
-from ansiblemetrics.playbook.num_include_role import NumIncludeRole
-from ansiblemetrics.playbook.num_include_tasks import NumIncludeTasks
-from ansiblemetrics.playbook.num_include_vars import NumIncludeVars
+from ansiblemetrics.playbook.num_imported_playbooks import NumImportedPlaybooks
+from ansiblemetrics.playbook.num_imported_roles import NumImportedRoles
+from ansiblemetrics.playbook.num_imported_tasks import NumImportedTasks
+from ansiblemetrics.playbook.num_includes import NumIncludes
+from ansiblemetrics.playbook.num_included_roles import NumIncludedRoles
+from ansiblemetrics.playbook.num_included_tasks import NumIncludedTasks
+from ansiblemetrics.playbook.num_included_vars import NumIncludedVars
 from ansiblemetrics.playbook.num_lookups import NumLookups
 from ansiblemetrics.playbook.num_loops import NumLoops
 from ansiblemetrics.playbook.num_name_with_vars import NumNameWithVars
@@ -63,7 +63,7 @@ general_metrics = {
 }
 
 playbook_metrics = {
-    'avg_play_size': AveragePlaySize,
+    'avg_play_size': AvgPlaySize,
     'avg_task_size': AvgTaskSize,
     'num_authorized_key': NumAuthorizedKey,
     'num_blocks': NumBlocks,
@@ -78,13 +78,13 @@ playbook_metrics = {
     'num_file_modules': NumFileModules,
     'num_filters': NumFilters,
     'num_ignore_errors': NumIgnoreErrors,
-    'num_import_playbook': NumImportPlaybook,
-    'num_import_role': NumImportRole,
-    'num_import_tasks': NumImportTasks,
-    'num_include': NumInclude,
-    'num_include_role': NumIncludeRole,
-    'num_include_tasks': NumIncludeTasks,
-    'num_include_vars': NumIncludeVars,
+    'num_import_playbook': NumImportedPlaybooks,
+    'num_import_role': NumImportedRoles,
+    'num_import_tasks': NumImportedTasks,
+    'num_include': NumIncludes,
+    'num_include_role': NumIncludedRoles,
+    'num_include_tasks': NumIncludedTasks,
+    'num_include_vars': NumIncludedVars,
     'num_lookups': NumLookups,
     'num_loops': NumLoops,
     'num_names_with_vars': NumNameWithVars,

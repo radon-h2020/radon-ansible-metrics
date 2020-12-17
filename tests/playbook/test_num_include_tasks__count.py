@@ -1,5 +1,5 @@
 import pytest
-from ansiblemetrics.playbook.num_include_tasks import NumIncludeTasks
+from ansiblemetrics.playbook.num_included_tasks import NumIncludedTasks
 
 script_0 = '- name: Include task list in play\n\tdebug:\n\t\tmsg: task1'
 script_2 = '- name: Include task list in play\n\tinclude_tasks: stuff.yaml\n\n- debug:\n\t\tmsg: task10\n\n- name: ' \
@@ -15,4 +15,4 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = script.expandtabs(2)
-    assert NumIncludeTasks(script).count() == expected
+    assert NumIncludedTasks(script).count() == expected

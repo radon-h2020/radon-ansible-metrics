@@ -1,5 +1,5 @@
 import pytest
-from ansiblemetrics.playbook.avg_play_size import AveragePlaySize
+from ansiblemetrics.playbook.avg_play_size import AvgPlaySize
 
 script_0_1 = 'tasks:\n\n- name: GRAB HUE LIGHT INFORMATION\n\turi:\n\t\turl: "http://{{ip_address}}/api/{{' \
              'username}}"\n\t\tmethod: GET\n\t\tbody: \'{{body_info|to_json}}\'\n\tregister: light_info\n\n '
@@ -20,4 +20,4 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = script.expandtabs(2)
-    assert AveragePlaySize(script).count() == expected
+    assert AvgPlaySize(script).count() == expected

@@ -7,10 +7,37 @@ filter_regex = re.compile(r'[^\|]+(\|)[^\|]')
 
 
 class NumFilters(AnsibleMetric):
-    """ This class implements the metric 'Number Of Filters' in an Ansible script. """
+    """ This class measures the number of filters in a playbook.
+    """
 
     def count(self):
-        """  Return the number of filters. """
+        """Return the number of filters.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_filters import NumFilters
+
+            playbook = '''
+            - shell: cat /some/path/to/multidoc-file.yaml
+              register: result
+            - debug:
+                msg: '{{ item }}'
+              loop: '{{ result.stdout | from_yaml_all | list }}'  # 2 filters
+            '''
+
+            NumFilters(playbook).count()
+
+            >> 2
+
+        Returns
+        -------
+        int
+            number of filters
+
+        """
         filters = 0
 
         for item in key_value_list(self.playbook):

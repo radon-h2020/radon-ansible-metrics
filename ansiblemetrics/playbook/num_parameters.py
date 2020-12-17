@@ -3,10 +3,42 @@ from ansiblemetrics.ansible_modules import ANSIBLE_MODULES_LIST
 
 
 class NumParameters(AnsibleMetric):
-    """ This class implements the metric 'Number of parameters in an Ansible script. """
+    """ This class measures the number of parameters in a playbook.
+
+    Modules in Ansible have paramaters that describe the desired state of the module;
+    each parameter handles some aspect of the module.
+    For example, the module file has a mode parameter that specifies the permissions for the file.
+
+    """
 
     def count(self):
-        """ Count the number of parameters """
+        """Return the number of modules parameters.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_parameters import NumParameters
+
+            playbook = '''
+            - name: Create two hard links
+              file:
+                src: '/tmp/foo'
+                dest: '/tmp/bar'
+                state: hard
+            '''
+
+            NumParameters(playbook).count()
+
+            >> 3
+
+        Returns
+        -------
+        int
+            number of modules parameters
+
+        """
 
         n_params = 0
 

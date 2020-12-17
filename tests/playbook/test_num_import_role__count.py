@@ -1,5 +1,5 @@
 import pytest
-from ansiblemetrics.playbook.num_import_role import NumImportRole
+from ansiblemetrics.playbook.num_imported_roles import NumImportedRoles
 
 script_0 = "- name: Run tasks/other.yaml instead of 'main'\n- name: Pass variables to role\n- name: Apply condition " \
            "to each task in role "
@@ -17,4 +17,4 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = script.expandtabs(2)
-    assert NumImportRole(script).count() == expected
+    assert NumImportedRoles(script).count() == expected

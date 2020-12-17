@@ -2,12 +2,40 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
 class NumVars(AnsibleMetric):
-    """ This class implements the metric 'Number Of Vars' (Variables) in an Ansible script. 
+    """ This class measures the number of variables in a playbook.
+
     TODO add support for included and imported variables
     """
 
     def count(self):
-        """ Return the number of vars in a playbook. """
+        """Return the number of variables.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_vars import NumVars
+
+            playbook = '''
+            - hosts: all
+              remote_user: root
+              vars:
+                favcolor: blue                      # 1st variable
+              vars_files:                           # vars_files is not supported by this version
+              - /vars/external_vars.yml
+            '''
+
+            NumVars(playbook).count()
+
+            >> 1
+
+        Returns
+        -------
+        int
+            number of variables.
+
+        """
         stack = self.playbook
         vars = 0
         while stack:

@@ -1,5 +1,5 @@
 import pytest
-from ansiblemetrics.playbook.num_include_role import NumIncludeRole
+from ansiblemetrics.playbook.num_included_roles import NumIncludedRoles
 
 script_0 = '- name: Include task list in play\n\tdebug:\n\t\tmsg: hello'
 script_2 = '- name: Include task list in play\n\tinclude_role: role1.yaml\n- name: Include task list in ' \
@@ -14,4 +14,4 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = script.expandtabs(2)
-    assert NumIncludeRole(script).count() == expected
+    assert NumIncludedRoles(script).count() == expected

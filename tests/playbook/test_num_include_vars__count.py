@@ -1,5 +1,5 @@
 import pytest
-from ansiblemetrics.playbook.num_include_vars import NumIncludeVars
+from ansiblemetrics.playbook.num_included_vars import NumIncludedVars
 
 script_0 = "- name: Include task list in play\n\tinclude_role: role.yaml"
 script_1 = "- name: Include a play after another play\n\tinclude_vars: myvars.yaml\n- name: Include task list in " \
@@ -14,4 +14,4 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = script.expandtabs(2)
-    assert NumIncludeVars(script).count() == expected
+    assert NumIncludedVars(script).count() == expected

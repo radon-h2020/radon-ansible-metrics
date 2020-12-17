@@ -1,5 +1,5 @@
 import pytest
-from ansiblemetrics.playbook.num_import_playbook import NumImportPlaybook
+from ansiblemetrics.playbook.num_imported_playbooks import NumImportedPlaybooks
 
 script_0 = "- debug:\n\tmsg: task1\n- name: This fails because I'm inside a play already"
 script_2 = "- debug:\n\tmsg: play1\n\n- name: Include a play after another play\n\timport_playbook: " \
@@ -14,4 +14,4 @@ TEST_DATA = [
 @pytest.mark.parametrize('script, expected', TEST_DATA)
 def test(script, expected):
     script = script.expandtabs(2)
-    assert NumImportPlaybook(script).count() == expected
+    assert NumImportedPlaybooks(script).count() == expected

@@ -32,13 +32,13 @@ nav:
             - Number of file modules: playbook/NumFileModules.md
             - Number of filters: playbook/NumFilters.md
             - Number of ignore_errors: playbook/NumIgnoreErrors.md
-            - Number of import_playbook: playbook/NumImportPlaybook.md
-            - Number of import_role: playbook/NumImportRole.md
-            - Number of import_tasks: playbook/NumImportTasks.md
-            - Number of include: playbook/NumInclude.md
-            - Number of include_role: playbook/NumIncludeRole.md
-            - Number of include_tasks: playbook/NumIncludeTasks.md
-            - Number of include_vars: playbook/NumIncludeVars.md
+            - Number of import_playbook: playbook/NumImportedPlaybooks.md
+            - Number of import_role: playbook/NumImportedRoles.md
+            - Number of import_tasks: playbook/NumImportedTasks.md
+            - Number of include: playbook/NumIncludes.md
+            - Number of include_role: playbook/NumIncludedRoles.md
+            - Number of include_tasks: playbook/NumIncludedTasks.md
+            - Number of include_vars: playbook/NumIncludedVars.md
             - Number of lookups: playbook/NumLookups.md
             - Number of loops: playbook/NumLoops.md
             - Number of name with variables: playbook/NumNameWithVars.md

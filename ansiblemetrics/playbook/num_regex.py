@@ -2,10 +2,40 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
 class NumRegex(AnsibleMetric):
-    """ This class implements the metric 'Number of regex' in an Ansible script. """
+    """ This class measures the number of regular expressions in a playbook.
+    """
 
     def count(self):
-        """ Return the number of regexp in a playbook. """
+        """Return the number of regular expressions.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_regex import NumRegex
+
+            playbook = '''
+            ---
+            - name: Remove Password
+              lineinfile:
+                path: "/opt/appdata/nzbget/nzbget.conf"
+                regexp: ControlPassword=tegbzn6789
+                line: 'ControlPassword='
+                state: present
+              when: nzbget_conf.stat.exists == False
+            '''
+
+            NumRegex(playbook).count()
+
+            >> 1
+
+        Returns
+        -------
+        int
+            number of regular expressions
+
+        """
 
         regex = 0
 

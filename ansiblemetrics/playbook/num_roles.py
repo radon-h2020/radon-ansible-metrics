@@ -2,10 +2,41 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
 class NumRoles(AnsibleMetric):
-    """ This class implements the metric 'Number Of Roles' in an Ansible script. """
+    """ This class measures the number of roles in a playbook.
+    """
 
     def count(self):
-        """ Counts the number of roles in a playbook."""
+        """Return the number of roles.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_roles import NumRoles
+
+            playbook = '''
+            ---
+            - hosts: all
+              roles:
+              - common  # 1st role
+
+            - hosts: dbservers
+              roles:
+              - db  # 2nd role
+
+            '''
+
+            NumRoles(playbook).count()
+
+            >> 2
+
+        Returns
+        -------
+        int
+            number of roles
+
+        """
 
         stack = self.playbook
         roles = set()

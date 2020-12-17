@@ -4,11 +4,48 @@ from ansiblemetrics.ansible_metric import AnsibleMetric
 
 
 class NumFileExists(AnsibleMetric):
-    """ This class implements the metric 'Number of file exists (exists, islink etc.)' in an Ansible script. """
+    """ This class measures the number of time a playbook checks the existence of a file.
 
-    # TODO: replace with a more representative name, es Files Check
+    In particular, the module stat retrieves facts for a file similar to the Linux/Unix stat command, and can be used to
+    check for the existence of a file or directory.
+
+    This property is measured by counting the matches of the following regular expression:
+
+    *.(win_)?stat.* is (not)? defined
+
+    to check if the file or directory exist.
+    """
+
     def count(self):
-        """ Count the number of checks to file existance in a playbook. """
+        """Return the number of file existence checks.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_fact_modules import NumFileExists
+
+            playbook = '''
+            - stat:
+                path: /path/to/something
+              register: sym
+
+            - debug:
+                msg: "islnk isn't defined (path doesn't exist)"
+              when: sym.stat.islnk is not defined  # file existence check
+            '''
+
+            NumFileExists(playbook).count()
+
+            >> 1
+
+        Returns
+        -------
+        int
+            number of file existence checks
+
+        """
 
         n_checks = 0
 

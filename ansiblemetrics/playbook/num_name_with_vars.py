@@ -5,12 +5,49 @@ from ansiblemetrics.utils import key_value_list
 
 
 class NumNameWithVars(AnsibleMetric):
-    """ This class implements the metric 'Number Of Names With Varable' in an Ansible script. """
+    """ This class measures the number of names that use variables.
 
-    def count(self, relative=False):
-        """
-        Counts the number of names using variables in the script.
-        relative: boolean - if True returns the relative number, in the interval [0-1], of names using variables in the script. Default is False.
+    With uniqueness as a goal, many playbook authors look to variables to satisfy this constraint.
+    This strategy may work well but authors need to take care as to the source of the variable data they are referencing.
+    Variable data can come from a variety of locations, and the values assigned to variables can be defined at a variety
+    of times. For the sake of play and task names, it is important to remember that only variables for which the values
+    can be determined at playbook parse time will parse and render correctly. If the data of a referenced variable is
+    discovered via a task or other operation, the variable string will be displayed unparsed in the output.
+
+    """
+
+    def count(self):
+        """Return the number of plays and tasks with names referencing variables.
+
+        Example
+        -------
+        .. highlight:: python
+        .. code-block:: python
+
+            from ansiblemetrics.general.num_name_with_vars import NumNameWithVars
+
+            playbook = '''
+            - name: play with a {{ var_name }}    # uses variable
+              hosts: localhost
+              vars:
+                var_name: not-mastery
+
+              tasks:
+              - name: set a variable    # does not use variable
+                set_fact:
+                task_var_name: "defined variable"
+
+            '''
+
+            NumNameWithVars(playbook).count()
+
+            >> 1
+
+        Returns
+        -------
+        int
+            number of plays and tasks with names referencing variables
+
         """
         names_with_vars = 0
 
