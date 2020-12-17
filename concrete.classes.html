@@ -1,0 +1,2924 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Concrete Classes &mdash; radon-ansible-metrics 0.3.8 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Abstract Classes" href="abstract.classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> radon-ansible-metrics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="apis.html">APIs Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="abstract.classes.html">Abstract Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Concrete Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-metrics">General Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linesblank">LinesBlank</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linescode">LinesCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linescomments">LinesComments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numconditions">NumConditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numdecisions">NumDecisions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numdeprecatedkeywords">NumDeprecatedKeywords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numkeys">NumKeys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nummathoperations">NumMathOperations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numsuspiciouscomments">NumSuspiciousComments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numtokens">NumTokens</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#textentropy">TextEntropy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#playbook-metrics">Playbook Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avgplaysize">AvgPlaySize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avgtasksize">AvgTaskSize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numauthorizedkey">NumAuthorizedKey</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numblocks">NumBlocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numblockserrorhandling">NumBlocksErrorHandling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numcommands">NumCommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numdeprecatedmodules">NumDeprecatedModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numdistinctmodules">NumDistinctModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numexternalmodules">NumExternalModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numfactmodules">NumFactModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numfileexists">NumFileExists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numfilemode">NumFileMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numfilemodules">NumFileModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numfilters">NumFilters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numignoreerrors">NumIgnoreErrors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numimportedplaybooks">NumImportedPlaybooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numimportedroles">NumImportedRoles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numimporttasks">NumImportTasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numincludes">NumIncludes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numincludedrole">NumIncludedRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numincludedtasks">NumIncludedTasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numincludedvars">NumIncludedVars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numlookups">NumLookups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numloops">NumLoops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numnamewithvars">NumNameWithVars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numparameters">NumParameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numpaths">NumPaths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numplays">NumPlays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numprompts">NumPrompts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numregex">NumRegex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numroles">NumRoles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numtasks">NumTasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numuniquenames">NumUniqueNames</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numuri">NumUri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numvars">NumVars</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Need Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radon-ansible-metrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="apis.html">APIs Reference</a> &raquo;</li>
+        
+      <li>Concrete Classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/concrete.classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="concrete-classes">
+<h1>Concrete Classes<a class="headerlink" href="#concrete-classes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-metrics">
+<h2>General Metrics<a class="headerlink" href="#general-metrics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linesblank">
+<h3>LinesBlank<a class="headerlink" href="#linesblank" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.lines_blank.LinesBlank">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.lines_blank.</code><code class="sig-name descname">LinesBlank</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_blank.LinesBlank" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the blank lines in a playbook</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.lines_blank.LinesBlank.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_blank.LinesBlank.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.lines_blank.LinesBlank.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_blank.LinesBlank.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of blank lines</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.lines_blank</span> <span class="kn">import</span> <span class="n">LinesBlank</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- hosts: localhost</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - name: task 1</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &#39;Hello&#39;</span>
+
+<span class="s1">  - name: task 2</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &#39;World&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">LinesBlank</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of blank lines</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="linescode">
+<h3>LinesCode<a class="headerlink" href="#linescode" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.lines_code.LinesCode">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.lines_code.</code><code class="sig-name descname">LinesCode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_code.LinesCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of executable lines of code in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.lines_code.LinesCode.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_code.LinesCode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.lines_code.LinesCode.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_code.LinesCode.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of executable lines of code.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.lines_code</span> <span class="kn">import</span> <span class="n">LinesCode</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- hosts: localhost</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - name: task 1</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &#39;Hello&#39;</span>
+
+<span class="s1">  - name: task 2</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &#39;World&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">LinesCode</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of lines of code</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="linescomments">
+<h3>LinesComments<a class="headerlink" href="#linescomments" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.lines_comment.LinesComment">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.lines_comment.</code><code class="sig-name descname">LinesComment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_comment.LinesComment" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of comments in a playbook</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.lines_comment.LinesComment.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_comment.LinesComment.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.lines_comment.LinesComment.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.lines_comment.LinesComment.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of commented lines</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.lines_comments</span> <span class="kn">import</span> <span class="n">LinesComments</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- hosts: localhost</span>
+
+<span class="s1">  tasks:</span>
+
+<span class="s1">  # A task to say Hello World!</span>
+<span class="s1">  - name: task 1</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &#39;Hello World!&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">LinesComments</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of commented lines</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numconditions">
+<h3>NumConditions<a class="headerlink" href="#numconditions" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_conditions.NumConditions">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_conditions.</code><code class="sig-name descname">NumConditions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_conditions.NumConditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of conditions in a playbook</p>
+<p>A condition is a Boolean expression containing no Boolean operators.
+Conditions are identified by the following comparison operators: is, in, ==, !=, &gt;, &gt;=, &lt;, &lt;=.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_conditions.NumConditions.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_conditions.NumConditions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_conditions.NumConditions.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_conditions.NumConditions.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of conditions.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_conditions</span> <span class="kn">import</span> <span class="n">NumConditions</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  vars:</span>
+<span class="s1">  - hello_msg: &quot;Hello World&quot;</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;Equals&quot;</span>
+<span class="s1">      when:</span>
+<span class="s1">        - &quot;Hello&quot; in hello_msg    # 1st condition</span>
+<span class="s1">        - &quot;World&quot; in hello_msg    # 2nd condition</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumConditions</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of conditions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numdecisions">
+<h3>NumDecisions<a class="headerlink" href="#numdecisions" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_decisions.NumDecisions">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_decisions.</code><code class="sig-name descname">NumDecisions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_decisions.NumDecisions" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class implements the metric ‘Number of decisions’ in an Ansible script.</p>
+<p>A decision is a Boolean expression composed of conditions and one or more Boolean operators.
+Decisions are identified by the following logical operators: <code class="docutils literal notranslate"><span class="pre">`and,</span> <span class="pre">or,</span> <span class="pre">not`</span></code>.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_decisions.NumDecisions.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_decisions.NumDecisions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_decisions.NumDecisions.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_decisions.NumDecisions.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of decisions.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_decisions</span> <span class="kn">import</span> <span class="n">NumDecisions</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  vars:</span>
+<span class="s1">  - hello_msg: &quot;Hello World&quot;</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;{{ hello_msg }}&quot;</span>
+<span class="s1">    when: &quot;Hello&quot; in hello_msg and &quot;World&quot; in hello_msg   # 1st decision</span>
+
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;Goodbye World&quot;</span>
+<span class="s1">    when:</span>
+<span class="s1">        - &quot;World&quot; in hello_msg and not &quot;Hello&quot; in hello_msg    # 2nd (and) and 3rd (not) decision</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumDecisions</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of decisions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numdeprecatedkeywords">
+<h3>NumDeprecatedKeywords<a class="headerlink" href="#numdeprecatedkeywords" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_deprecated_keywords.NumDeprecatedKeywords">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_deprecated_keywords.</code><code class="sig-name descname">NumDeprecatedKeywords</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_deprecated_keywords.NumDeprecatedKeywords" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of deprecated keywords in a playbook</p>
+<p>More info about Ansible deprecated keywords can be found at: <a class="reference external" href="https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html">https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html</a></p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_deprecated_keywords.NumDeprecatedKeywords.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_deprecated_keywords.NumDeprecatedKeywords.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_deprecated_keywords.NumDeprecatedKeywords.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_deprecated_keywords.NumDeprecatedKeywords.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of Ansible deprecated keywords.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_deprecated_keywords</span> <span class="kn">import</span> <span class="n">NumDeprecatedKeywords</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: localhost</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - name: Hello, Ansible!</span>
+<span class="s1">    action: rust_helloworld</span>
+<span class="s1">    args:   # Deprecated keyword</span>
+<span class="s1">      name: Ansible</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumDeprecatedKeywords</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of deprecated keywords</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numkeys">
+<h3>NumKeys<a class="headerlink" href="#numkeys" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_keys.NumKeys">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_keys.</code><code class="sig-name descname">NumKeys</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_keys.NumKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>A playbook is YAML-based, and is treated as a dictionary.
+This class measures the number of keys in the dictionary representing the playbook</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_keys.NumKeys.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_keys.NumKeys.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_keys.NumKeys.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_keys.NumKeys.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of keys of the dictionary representing the playbook.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_keys</span> <span class="kn">import</span> <span class="n">NumKeys</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;Hello World&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumKeys</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="nummathoperations">
+<h3>NumMathOperations<a class="headerlink" href="#nummathoperations" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_math_operations.NumMathOperations">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_math_operations.</code><code class="sig-name descname">NumMathOperations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_math_operations.NumMathOperations" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of math operations in a playbook.
+The following operators are considered for the calculation: +, -, /, //, %, <em>, *</em>.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_math_operations.NumMathOperations.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_math_operations.NumMathOperations.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_math_operations.NumMathOperations.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_math_operations.NumMathOperations.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of mathematical operations.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_math_operations</span> <span class="kn">import</span> <span class="n">NumMathOperations</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: localhost</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;addition: {{ 4 + 3 }}&quot;  # 1st operation</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;subtraction: {{ 4 - 3 }}&quot;   # 2nd operation</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;multiplication: {{ 4 * 3 }}&quot;    # 3rd operation</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;Modulo operation: {{ 7 % 4}}&quot;   # 4th operation</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;floating division: {{ 4 / 3}}&quot;  # 5th operation</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumMathOperations</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of math operations</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numsuspiciouscomments">
+<h3>NumSuspiciousComments<a class="headerlink" href="#numsuspiciouscomments" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_suspicious_comments.NumSuspiciousComments">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_suspicious_comments.</code><code class="sig-name descname">NumSuspiciousComments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_suspicious_comments.NumSuspiciousComments" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of suspicious comments in a playbook.</p>
+<p>Suspicious comments contain at least one of the following keywords: TODO, FIXME, HACK, XXX, CHECKME, DOCME, TESTME, PENDING.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_suspicious_comments.NumSuspiciousComments.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_suspicious_comments.NumSuspiciousComments.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_suspicious_comments.NumSuspiciousComments.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_suspicious_comments.NumSuspiciousComments.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of suspicious comments.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_suspicious_comments</span> <span class="kn">import</span> <span class="n">NumSuspiciousComments</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1"># TODO: Remove this task after Ansible 2.x npm module bug is fixed. See:</span>
+<span class="s1"># https://github.com/ansible/ansible-modules-extras/issues/1375</span>
+<span class="s1">- name: Ensure forever is installed (to run Node.js apps).</span>
+<span class="s1">  npm: name=forever global=yes state=present</span>
+<span class="s1">  become: yes</span>
+<span class="s1">  become_user: &quot;{{ nodejs_install_npm_user }}&quot;</span>
+<span class="s1">  when: nodejs_forever</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumSuspiciousComments</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of suspicious comments</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numtokens">
+<h3>NumTokens<a class="headerlink" href="#numtokens" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.num_tokens.NumTokens">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.num_tokens.</code><code class="sig-name descname">NumTokens</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_tokens.NumTokens" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of tokens (separated by blank spaces) in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_tokens.NumTokens.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_tokens.NumTokens.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.num_tokens.NumTokens.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.num_tokens.NumTokens.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of tokens.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_tokens</span> <span class="kn">import</span> <span class="n">NumTokens</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - debug:</span>
+<span class="s1">      msg: &quot;Hello World&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumTokens</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">7</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of tokens</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="textentropy">
+<h3>TextEntropy<a class="headerlink" href="#textentropy" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.general.text_entropy.TextEntropy">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.general.text_entropy.</code><code class="sig-name descname">TextEntropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.text_entropy.TextEntropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measure the Shannon entropy of a playbook’s text.
+The entropy is computed considering the tokens as symbols, rather than the letters.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.general.text_entropy.TextEntropy.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.text_entropy.TextEntropy.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.general.text_entropy.TextEntropy.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.general.text_entropy.TextEntropy.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the playbook’s text entropy.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.text_entropy</span> <span class="kn">import</span> <span class="n">TextEntropy</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - common</span>
+
+<span class="s1">- hosts: dbservers</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - db</span>
+<span class="s1">  - web</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">TextEntropy</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mf">4.89</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Text entropy</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="playbook-metrics">
+<h2>Playbook Metrics<a class="headerlink" href="#playbook-metrics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="avgplaysize">
+<h3>AvgPlaySize<a class="headerlink" href="#avgplaysize" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.avg_play_size.AvgPlaySize">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.avg_play_size.</code><code class="sig-name descname">AvgPlaySize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.avg_play_size.AvgPlaySize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures a play’s average number of lines of code.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.avg_play_size.AvgPlaySize.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.avg_play_size.AvgPlaySize.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.avg_play_size.AvgPlaySize.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.avg_play_size.AvgPlaySize.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the average play size.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.avg_play_size</span> <span class="kn">import</span> <span class="n">AvgPlaySize</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1"># 1st play</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - common</span>
+
+<span class="s1"># 2nd play</span>
+<span class="s1">- hosts: monitoring</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - base-apache</span>
+<span class="s1">  - nagios</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">AvgPlaySize</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Average play size, rounded to the nearest unit</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="avgtasksize">
+<h3>AvgTaskSize<a class="headerlink" href="#avgtasksize" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.avg_task_size.AvgTaskSize">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.avg_task_size.</code><code class="sig-name descname">AvgTaskSize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.avg_task_size.AvgTaskSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures a task’s average number of lines of code.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.avg_task_size.AvgTaskSize.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.avg_task_size.AvgTaskSize.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.avg_task_size.AvgTaskSize.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.avg_task_size.AvgTaskSize.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the average task size.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.avg_task_size</span> <span class="kn">import</span> <span class="n">AvgTaskSize</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: 1st task</span>
+<span class="s1">  include_vars:</span>
+<span class="s1">    file: username_info.yml</span>
+
+<span class="s1">- name: 2nd task</span>
+<span class="s1">  uri:</span>
+<span class="s1">    url: &quot;http://{{ip_address}}/api/{{username}}&quot;</span>
+<span class="s1">    method: GET</span>
+<span class="s1">    body: &#39;{{body_info|to_json}}&#39;</span>
+<span class="s1">  register: light_info</span>
+
+<span class="s1">- name: 3rd task</span>
+<span class="s1">  debug:</span>
+<span class="s1">    var: light_info.json.lights</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">AvgTaskSize</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Average task size, rounded to the nearest unit</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numauthorizedkey">
+<h3>NumAuthorizedKey<a class="headerlink" href="#numauthorizedkey" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_authorized_key.NumAuthorizedKey">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_authorized_key.</code><code class="sig-name descname">NumAuthorizedKey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_authorized_key.NumAuthorizedKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of times a SSH key is set and/or updated in a playbook.</p>
+<p>The authorized_key property is used to add or remove SSH authorized keys for particular user accounts.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_authorized_key.NumAuthorizedKey.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_authorized_key.NumAuthorizedKey.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_authorized_key.NumAuthorizedKey.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_authorized_key.NumAuthorizedKey.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the occurrences of the authorized_key keyword.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_authorized_key</span> <span class="kn">import</span> <span class="n">NumAuthorizedKey</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: Set authorized key taken from file</span>
+<span class="s1">  authorized_key:</span>
+<span class="s1">    user: charlie</span>
+<span class="s1">    state: present</span>
+<span class="s1">    key: &quot;{{ lookup(&#39;file&#39;, &#39;/home/charlie/.ssh/id_rsa.pub&#39;) }}&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumAuthorizedKey</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>authorized_key occurrences</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numblocks">
+<h3>NumBlocks<a class="headerlink" href="#numblocks" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_blocks.NumBlocks">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_blocks.</code><code class="sig-name descname">NumBlocks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_blocks.NumBlocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of block sections in a playbook.</p>
+<p>Blocks allow for logical grouping of tasks and in play error handling.
+Most of what you can apply to a single task (with the exception of loops) can be applied at the block level, which
+also makes it much easier to set data or directives common to the tasks. This does not mean the directive affects
+the block itself, but is inherited by the tasks enclosed by a block, i.e. a when will be applied to the tasks,
+not the block itself.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_blocks.NumBlocks.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_blocks.NumBlocks.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_blocks.NumBlocks.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_blocks.NumBlocks.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of block sections.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_blocks</span> <span class="kn">import</span> <span class="n">NumBlocks</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: Install, configure, and start Apache</span>
+<span class="s1">  block:</span>
+<span class="s1">  - name: install httpd and memcached</span>
+<span class="s1">    yum:</span>
+<span class="s1">      name: &quot;{{ item }}&quot;</span>
+<span class="s1">      state: present</span>
+<span class="s1">    loop:</span>
+<span class="s1">      - httpd</span>
+<span class="s1">      - memcached</span>
+<span class="s1">  - name: start service bar and enable it</span>
+<span class="s1">    service:</span>
+<span class="s1">      name: bar</span>
+<span class="s1">      state: started</span>
+<span class="s1">      enabled: True</span>
+<span class="s1">  when: ansible_facts[&quot;distribution&quot;] == &quot;CentOS&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumBlocks</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>block occurrences</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numblockserrorhandling">
+<h3>NumBlocksErrorHandling<a class="headerlink" href="#numblockserrorhandling" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_blocks_error_handling.NumBlocksErrorHandling">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_blocks_error_handling.</code><code class="sig-name descname">NumBlocksErrorHandling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_blocks_error_handling.NumBlocksErrorHandling" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of times errors are handled within the blocks tasks.</p>
+<p>Blocks introduce the ability to handle errors in a way similar to exceptions in most programming languages.
+The tasks in the block would execute normally, if there is any error the rescue section would get executed with
+whatever you need to do to recover from the previous error.
+The always section runs no matter what previous error did or did not occur in the block and rescue sections.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_blocks_error_handling.NumBlocksErrorHandling.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_blocks_error_handling.NumBlocksErrorHandling.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_blocks_error_handling.NumBlocksErrorHandling.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_blocks_error_handling.NumBlocksErrorHandling.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of blocks error handling.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_blocks_error_handling</span> <span class="kn">import</span> <span class="n">NumBlocksErrorHandling</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Attempt and graceful roll back demo</span>
+<span class="s1">  block:    # This block handle errors with rescue and always</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &#39;I execute normally&#39;</span>
+<span class="s1">    - name: i force a failure</span>
+<span class="s1">      command: /bin/false</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &#39;I never execute, due to the above task failing, :-(&#39;</span>
+<span class="s1">  rescue:</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &#39;I caught an error&#39;</span>
+<span class="s1">    - name: i force a failure in middle of recovery! &gt;:-)</span>
+<span class="s1">      command: /bin/false</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &#39;I also never execute :-(&#39;</span>
+<span class="s1">  always:</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &quot;This always executes&quot;</span>
+
+<span class="s1">- name: A task with a block that does not handle errors</span>
+<span class="s1">  block:    # This block does not</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &#39;I execute normally&#39;</span>
+<span class="s1">    - name: i force a failure</span>
+<span class="s1">      command: /bin/false</span>
+<span class="s1">    - debug:</span>
+<span class="s1">        msg: &#39;I never execute, due to the above task failing, :-(&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumBlocksErrorHandling</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of times blocks are used to handle errors</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numcommands">
+<h3>NumCommands<a class="headerlink" href="#numcommands" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_commands.NumCommands">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_commands.</code><code class="sig-name descname">NumCommands</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_commands.NumCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the occurrences of the following modules in a playbook:</p>
+<ul class="simple">
+<li><p>command: execute commands on targets;</p></li>
+<li><p>expect: executes a command and responds to prompts;</p></li>
+<li><p>psexec: runs commands on a remote Windows host based on the PsExec model;</p></li>
+<li><p>raw: executes a low-down and dirty command;</p></li>
+<li><p>script: runs a local script on a remote node after transferring it;</p></li>
+<li><p>shell: execute shell commands on targets;</p></li>
+<li><p>telnet: executes a low-down and dirty telnet command.</p></li>
+</ul>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_commands.NumCommands.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_commands.NumCommands.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_commands.NumCommands.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_commands.NumCommands.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of commands.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_commands</span> <span class="kn">import</span> <span class="n">NumCommands</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: return motd to registered var</span>
+<span class="s1">  command: cat /etc/motd</span>
+<span class="s1">  register: mymotd</span>
+
+<span class="s1">- name: List user accounts on a Windows system</span>
+<span class="s1">  raw: Get-WmiObject -Class Win32_UserAccount</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumCommands</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of commands</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numdeprecatedmodules">
+<h3>NumDeprecatedModules<a class="headerlink" href="#numdeprecatedmodules" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_deprecated_modules.NumDeprecatedModules">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_deprecated_modules.</code><code class="sig-name descname">NumDeprecatedModules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_deprecated_modules.NumDeprecatedModules" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of times tasks use deprecated modules.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_deprecated_modules.NumDeprecatedModules.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_deprecated_modules.NumDeprecatedModules.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_deprecated_modules.NumDeprecatedModules.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_deprecated_modules.NumDeprecatedModules.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the deprecated modules occurrence.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_deprecated_modules</span> <span class="kn">import</span> <span class="n">NumDeprecatedModules</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include unique username from register.yml</span>
+<span class="s1">  include_vars:   # non deprecated module</span>
+<span class="s1">    file: username_info.yml</span>
+
+<span class="s1">- name: Create a service</span>
+<span class="s1">  oc:   # deprecated module</span>
+<span class="s1">    state: present</span>
+<span class="s1">    name: myservice</span>
+<span class="s1">    namespace: mynamespace</span>
+<span class="s1">    kind: Service</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumDeprecatedModules</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>deprecated modules occurrence</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numdistinctmodules">
+<h3>NumDistinctModules<a class="headerlink" href="#numdistinctmodules" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_distinct_modules.NumDistinctModules">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_distinct_modules.</code><code class="sig-name descname">NumDistinctModules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_distinct_modules.NumDistinctModules" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of distinct modules in the script.</p>
+<p>It  differs from ansiblemetrics.playbook.NumTasks as it counts the number of distinct modules in the script without
+duplicates.
+If a module occurs twice or more among tasks it is counted only once.
+Recall that the goal of a task is to execute a module, so the total number of modules (with duplicates) equals the
+number of tasks.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_distinct_modules.NumDistinctModules.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_distinct_modules.NumDistinctModules.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_distinct_modules.NumDistinctModules.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_distinct_modules.NumDistinctModules.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of distinct modules.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_distinct_modules</span> <span class="kn">import</span> <span class="n">NumDistinctModules</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include username_info</span>
+<span class="s1">  include_vars:  # module</span>
+<span class="s1">    file: username_info.yml</span>
+
+<span class="s1">- name: Include settings_info</span>
+<span class="s1">  include_vars:  # module</span>
+<span class="s1">    file: settings_info.yml</span>
+
+<span class="s1">- name: Grab HUE light info</span>
+<span class="s1">  uri:  # module</span>
+<span class="s1">    url: &quot;http://{{ip_address}}/api/{{username}}&quot;</span>
+<span class="s1">    method: GET</span>
+<span class="s1">    body: &#39;{{body_info|to_json}}&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumDistinctModules</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of distinct modules</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numexternalmodules">
+<h3>NumExternalModules<a class="headerlink" href="#numexternalmodules" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_external_modules.NumExternalModules">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_external_modules.</code><code class="sig-name descname">NumExternalModules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_external_modules.NumExternalModules" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of modules in a playbook that do not belong to the core Ansible modules or are
+not maintained by the Ansible community.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_external_modules.NumExternalModules.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_external_modules.NumExternalModules.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_external_modules.NumExternalModules.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_external_modules.NumExternalModules.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of external modules.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_external_modules</span> <span class="kn">import</span> <span class="n">NumExternalModules</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: ensure foo</span>
+<span class="s1">  file:   # Core module</span>
+<span class="s1">    path: /tmp/foo</span>
+<span class="s1">    state: touch</span>
+
+<span class="s1">- name: do a remote copy</span>
+<span class="s1">  remote_copy:    # External module</span>
+<span class="s1">    source: /tmp/foo</span>
+<span class="s1">    dest: /tmp/bar</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumExternalModules</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of external modules</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numfactmodules">
+<h3>NumFactModules<a class="headerlink" href="#numfactmodules" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_fact_modules.NumFactModules">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_fact_modules.</code><code class="sig-name descname">NumFactModules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_fact_modules.NumFactModules" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of fact modules in a playbook.</p>
+<p>Fact modules are modules that do not alter state but rather return data.
+Knowing the number of fact modules in a playbook could represent a measure of the responsibility of the playbook.
+The assumption is that the lower the fact modules wrt the total number of modules in the script,
+the more unstable is the class behaviour, as the other modules alter its state.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_fact_modules.NumFactModules.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_fact_modules.NumFactModules.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_fact_modules.NumFactModules.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_fact_modules.NumFactModules.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of external modules.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_fact_modules</span> <span class="kn">import</span> <span class="n">NumFactModules</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Find all instances in the specified region</span>
+<span class="s1">  ali_instance_facts:   # Fact module</span>
+<span class="s1">    alicloud_access_key: &quot;{{ alicloud_access_key }}&quot;</span>
+<span class="s1">    alicloud_secret_key: &quot;{{ alicloud_secret_key }}&quot;</span>
+<span class="s1">    alicloud_region: &#39;{{ alicloud_region }}&#39;</span>
+<span class="s1">  register: all_instances</span>
+
+<span class="s1">- name: Print data to terminal window</span>
+<span class="s1">  debug:    # not fact module</span>
+<span class="s1">    msg: &#39;End of tasks&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumFactModules</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of external modules</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numfileexists">
+<h3>NumFileExists<a class="headerlink" href="#numfileexists" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_file_exists.NumFileExists">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_file_exists.</code><code class="sig-name descname">NumFileExists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_exists.NumFileExists" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of time a playbook checks the existence of a file.</p>
+<p>In particular, the module stat retrieves facts for a file similar to the Linux/Unix stat command, and can be used to
+check for the existence of a file or directory.</p>
+<p>This property is measured by counting the matches of the following regular expression:</p>
+<p><em>.(win_)?stat.</em> is (not)? defined</p>
+<p>to check if the file or directory exist.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_file_exists.NumFileExists.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_exists.NumFileExists.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_file_exists.NumFileExists.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_exists.NumFileExists.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of file existence checks.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_fact_modules</span> <span class="kn">import</span> <span class="n">NumFileExists</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- stat:</span>
+<span class="s1">    path: /path/to/something</span>
+<span class="s1">  register: sym</span>
+
+<span class="s1">- debug:</span>
+<span class="s1">    msg: &quot;islnk isn&#39;t defined (path doesn&#39;t exist)&quot;</span>
+<span class="s1">  when: sym.stat.islnk is not defined  # file existence check</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumFileExists</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of file existence checks</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numfilemode">
+<h3>NumFileMode<a class="headerlink" href="#numfilemode" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_file_mode.NumFileMode">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_file_mode.</code><code class="sig-name descname">NumFileMode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_mode.NumFileMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of times playbook manages a file’s permissions.</p>
+<p>File ‘mode’ is a source code property used to manage files, directories and symbolic links.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_file_mode.NumFileMode.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_mode.NumFileMode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_file_mode.NumFileMode.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_mode.NumFileMode.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of file’s mode syntax occurrences.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_fact_modules</span> <span class="kn">import</span> <span class="n">NumFileMode</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Change file ownership, group and permissions</span>
+<span class="s1">  file:</span>
+<span class="s1">    path: /etc/foo.conf</span>
+<span class="s1">    owner: foo</span>
+<span class="s1">    group: foo</span>
+<span class="s1">    mode: &#39;0644&#39;    # 1st occurrence</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumFileMode</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of file’s mode syntax occurrences</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numfilemodules">
+<h3>NumFileModules<a class="headerlink" href="#numfilemodules" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_file_modules.NumFileModules">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_file_modules.</code><code class="sig-name descname">NumFileModules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_modules.NumFileModules" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the occurrences of the file module in a playbook.</p>
+<p>The file module is used to manage files and their properties.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_file_modules.NumFileModules.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_modules.NumFileModules.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_file_modules.NumFileModules.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_file_modules.NumFileModules.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the file module occurrences.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_file_modules</span> <span class="kn">import</span> <span class="n">NumFileModules</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Change file ownership, group and permissions</span>
+<span class="s1">  file:    # 1st occurrence</span>
+<span class="s1">    path: /etc/foo.conf</span>
+<span class="s1">    owner: foo</span>
+<span class="s1">    group: foo</span>
+<span class="s1">    mode: &#39;0644&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumFileModules</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of file module occurrences</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numfilters">
+<h3>NumFilters<a class="headerlink" href="#numfilters" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_filters.NumFilters">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_filters.</code><code class="sig-name descname">NumFilters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_filters.NumFilters" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of filters in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_filters.NumFilters.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_filters.NumFilters.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_filters.NumFilters.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_filters.NumFilters.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of filters.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_filters</span> <span class="kn">import</span> <span class="n">NumFilters</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- shell: cat /some/path/to/multidoc-file.yaml</span>
+<span class="s1">  register: result</span>
+<span class="s1">- debug:</span>
+<span class="s1">    msg: &#39;{{ item }}&#39;</span>
+<span class="s1">  loop: &#39;{{ result.stdout | from_yaml_all | list }}&#39;  # 2 filters</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumFilters</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of filters</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numignoreerrors">
+<h3>NumIgnoreErrors<a class="headerlink" href="#numignoreerrors" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_ignore_errors.NumIgnoreErrors">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_ignore_errors.</code><code class="sig-name descname">NumIgnoreErrors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_ignore_errors.NumIgnoreErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of times a playbook ignore errors through the property ignore_errors.</p>
+<p>Ignoring errors is considered as a bad practice, since ignore errors only obscures error handling.
+There are better ways for handling errors. See <a class="reference external" href="https://blog.newrelic.com/engineering/ansible-best-practices-guide/">https://blog.newrelic.com/engineering/ansible-best-practices-guide/</a>
+for more details.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_ignore_errors.NumIgnoreErrors.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_ignore_errors.NumIgnoreErrors.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_ignore_errors.NumIgnoreErrors.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_ignore_errors.NumIgnoreErrors.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of ignore_errors: yes/True.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_ignore_errors</span> <span class="kn">import</span> <span class="n">NumIgnoreErrors</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: this will not be counted as a failure</span>
+<span class="s1">  command: /bin/false</span>
+<span class="s1">  ignore_errors: yes</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumIgnoreErrors</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of ignore_errors set to True or yes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numimportedplaybooks">
+<h3>NumImportedPlaybooks<a class="headerlink" href="#numimportedplaybooks" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_imported_playbooks.NumImportedPlaybooks">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_imported_playbooks.</code><code class="sig-name descname">NumImportedPlaybooks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_playbooks.NumImportedPlaybooks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of imported playbooks in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_imported_playbooks.NumImportedPlaybooks.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_playbooks.NumImportedPlaybooks.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_imported_playbooks.NumImportedPlaybooks.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_playbooks.NumImportedPlaybooks.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of imported playbooks.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_imported_playbooks</span> <span class="kn">import</span> <span class="n">NumImportedPlaybooks</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include a play after another play</span>
+<span class="s1">  import_playbook: otherplays.yml</span>
+
+<span class="s1">- name: This fails because I&#39;m inside a play already</span>
+<span class="s1">  import_playbook: stuff.yaml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumImportedPlaybooks</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of imported playbooks</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numimportedroles">
+<h3>NumImportedRoles<a class="headerlink" href="#numimportedroles" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_imported_roles.NumImportedRoles">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_imported_roles.</code><code class="sig-name descname">NumImportedRoles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_roles.NumImportedRoles" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of imported roles in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_imported_roles.NumImportedRoles.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_roles.NumImportedRoles.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_imported_roles.NumImportedRoles.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_roles.NumImportedRoles.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of imported roles.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_import_roles</span> <span class="kn">import</span> <span class="n">NumImportedRoles</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- import_role:</span>
+<span class="s1">    name: myrole</span>
+
+<span class="s1">- name: Run tasks/other.yaml instead of &quot;main&quot;</span>
+<span class="s1">  import_role:</span>
+<span class="s1">    name: myrole</span>
+<span class="s1">    tasks_from: other</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumImportedRoles</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of imported roles</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numimporttasks">
+<h3>NumImportTasks<a class="headerlink" href="#numimporttasks" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_imported_tasks.NumImportedTasks">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_imported_tasks.</code><code class="sig-name descname">NumImportedTasks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_tasks.NumImportedTasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of imported tasks list in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_imported_tasks.NumImportedTasks.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_tasks.NumImportedTasks.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_imported_tasks.NumImportedTasks.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_imported_tasks.NumImportedTasks.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of imported tasks.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_imported_tasks</span> <span class="kn">import</span> <span class="n">NumImportedTasks</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include task list in play</span>
+<span class="s1">  import_tasks: stuff.yaml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumImportedTasks</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of imported tasks</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numincludes">
+<h3>NumIncludes<a class="headerlink" href="#numincludes" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_includes.NumIncludes">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_includes.</code><code class="sig-name descname">NumIncludes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_includes.NumIncludes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of includes in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_includes.NumIncludes.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_includes.NumIncludes.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_includes.NumIncludes.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_includes.NumIncludes.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of includes.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_includes</span> <span class="kn">import</span> <span class="n">NumIncludes</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include a play after another play</span>
+<span class="s1">  include: otherplays.yaml</span>
+
+<span class="s1">- name: Include task list in play</span>
+<span class="s1">  include_role: role.yaml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumIncludes</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of includes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numincludedrole">
+<h3>NumIncludedRole<a class="headerlink" href="#numincludedrole" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_included_roles.NumIncludedRoles">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_included_roles.</code><code class="sig-name descname">NumIncludedRoles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_roles.NumIncludedRoles" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of included roles in a playbook</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_included_roles.NumIncludedRoles.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_roles.NumIncludedRoles.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_included_roles.NumIncludedRoles.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_roles.NumIncludedRoles.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of included roles</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_included_roles</span> <span class="kn">import</span> <span class="n">NumIncludedRoles</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include task list in play</span>
+<span class="s1">  include_role: role.yaml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumIncludedRoles</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of included roles</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numincludedtasks">
+<h3>NumIncludedTasks<a class="headerlink" href="#numincludedtasks" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_included_tasks.NumIncludedTasks">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_included_tasks.</code><code class="sig-name descname">NumIncludedTasks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_tasks.NumIncludedTasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of included tasks in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_included_tasks.NumIncludedTasks.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_tasks.NumIncludedTasks.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_included_tasks.NumIncludedTasks.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_tasks.NumIncludedTasks.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of included tasks.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_included_tasks</span> <span class="kn">import</span> <span class="n">NumIncludedTasks</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include task list in play</span>
+<span class="s1">  include_tasks: stuff.yaml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumIncludedTasks</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of included tasks</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numincludedvars">
+<h3>NumIncludedVars<a class="headerlink" href="#numincludedvars" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_included_vars.NumIncludedVars">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_included_vars.</code><code class="sig-name descname">NumIncludedVars</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_vars.NumIncludedVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of included variables in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_included_vars.NumIncludedVars.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_vars.NumIncludedVars.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_included_vars.NumIncludedVars.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_included_vars.NumIncludedVars.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of included variables.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_included_vars</span> <span class="kn">import</span> <span class="n">NumIncludedVars</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Include a play after another play</span>
+<span class="s1">  include_vars: myvars.yaml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumIncludedVars</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of included variables</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numlookups">
+<h3>NumLookups<a class="headerlink" href="#numlookups" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_lookups.NumLookups">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_lookups.</code><code class="sig-name descname">NumLookups</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_lookups.NumLookups" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of lookups in a playbook.</p>
+<p>Lookups are evaluated when the task referencing them is executed, which allows for dynamic data discovery.
+To reuse a particular lookup in multiple tasks and re-evaluate it each time, a playbook variable can be defined
+with a lookup value. Each time the playbook variable is referenced the lookup will be executed, potentially
+providing different values over time.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_lookups.NumLookups.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_lookups.NumLookups.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_lookups.NumLookups.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_lookups.NumLookups.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of lookups.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_lookups</span> <span class="kn">import</span> <span class="n">NumLookups</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  vars:</span>
+<span class="s1">    contents: &quot;{{ lookup(&#39;file&#39;, &#39;/etc/foo.txt&#39;) }}&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumLookups</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of lookups</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numloops">
+<h3>NumLoops<a class="headerlink" href="#numloops" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_loops.NumLoops">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_loops.</code><code class="sig-name descname">NumLoops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_loops.NumLoops" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of loops in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_loops.NumLoops.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_loops.NumLoops.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_loops.NumLoops.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_loops.NumLoops.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of loops.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_loops</span> <span class="kn">import</span> <span class="n">NumLoops</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: with_list</span>
+<span class="s1">  debug:</span>
+<span class="s1">    msg: &quot;{{ item }}&quot;</span>
+<span class="s1">  with_list:    # 1st loop</span>
+<span class="s1">    - one</span>
+<span class="s1">    - two</span>
+
+<span class="s1">- name: with_list -&gt; loop</span>
+<span class="s1">  debug:</span>
+<span class="s1">    msg: &quot;{{ item }}&quot;</span>
+<span class="s1">  loop:    # 2nd loop</span>
+<span class="s1">    - one</span>
+<span class="s1">    - two</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumLoops</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of loops</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numnamewithvars">
+<h3>NumNameWithVars<a class="headerlink" href="#numnamewithvars" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_name_with_vars.NumNameWithVars">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_name_with_vars.</code><code class="sig-name descname">NumNameWithVars</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_name_with_vars.NumNameWithVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of names that use variables.</p>
+<p>With uniqueness as a goal, many playbook authors look to variables to satisfy this constraint.
+This strategy may work well but authors need to take care as to the source of the variable data they are referencing.
+Variable data can come from a variety of locations, and the values assigned to variables can be defined at a variety
+of times. For the sake of play and task names, it is important to remember that only variables for which the values
+can be determined at playbook parse time will parse and render correctly. If the data of a referenced variable is
+discovered via a task or other operation, the variable string will be displayed unparsed in the output.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_name_with_vars.NumNameWithVars.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_name_with_vars.NumNameWithVars.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_name_with_vars.NumNameWithVars.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_name_with_vars.NumNameWithVars.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of plays and tasks with names referencing variables.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_name_with_vars</span> <span class="kn">import</span> <span class="n">NumNameWithVars</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: play with a {{ var_name }}    # uses variable</span>
+<span class="s1">  hosts: localhost</span>
+<span class="s1">  vars:</span>
+<span class="s1">    var_name: not-mastery</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - name: set a variable    # does not use variable</span>
+<span class="s1">    set_fact:</span>
+<span class="s1">    task_var_name: &quot;defined variable&quot;</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumNameWithVars</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of plays and tasks with names referencing variables</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numparameters">
+<h3>NumParameters<a class="headerlink" href="#numparameters" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_parameters.NumParameters">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_parameters.</code><code class="sig-name descname">NumParameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_parameters.NumParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of parameters in a playbook.</p>
+<p>Modules in Ansible have paramaters that describe the desired state of the module;
+each parameter handles some aspect of the module.
+For example, the module file has a mode parameter that specifies the permissions for the file.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_parameters.NumParameters.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_parameters.NumParameters.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_parameters.NumParameters.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_parameters.NumParameters.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of modules parameters.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_parameters</span> <span class="kn">import</span> <span class="n">NumParameters</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Create two hard links</span>
+<span class="s1">  file:</span>
+<span class="s1">    src: &#39;/tmp/foo&#39;</span>
+<span class="s1">    dest: &#39;/tmp/bar&#39;</span>
+<span class="s1">    state: hard</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumParameters</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of modules parameters</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numpaths">
+<h3>NumPaths<a class="headerlink" href="#numpaths" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_paths.NumPaths">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_paths.</code><code class="sig-name descname">NumPaths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_paths.NumPaths" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of paths in a playbook.</p>
+<p>Paths are identified by analyzing the parameters path, src, dest</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_paths.NumPaths.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_paths.NumPaths.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_paths.NumPaths.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_paths.NumPaths.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of paths.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_paths</span> <span class="kn">import</span> <span class="n">NumPaths</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: &quot;Downloading {{program_var.stdout}} from Google Drive&quot;</span>
+<span class="s1">  synchronize:</span>
+<span class="s1">    src: &quot;/mnt/gdrive/plexguide/backup/{{program_var.stdout}.tar&quot;</span>
+<span class="s1">    dest: &quot;/tmp&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumPaths</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of paths</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numplays">
+<h3>NumPlays<a class="headerlink" href="#numplays" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_plays.NumPlays">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_plays.</code><code class="sig-name descname">NumPlays</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_plays.NumPlays" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of plays in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_plays.NumPlays.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_plays.NumPlays.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_plays.NumPlays.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_plays.NumPlays.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of plays.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_plays</span> <span class="kn">import</span> <span class="n">NumPlays</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - common</span>
+
+<span class="s1">- hosts: dbservers</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - db</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumPlays</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of plays</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numprompts">
+<h3>NumPrompts<a class="headerlink" href="#numprompts" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_prompts.NumPrompts">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_prompts.</code><code class="sig-name descname">NumPrompts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_prompts.NumPrompts" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of interactions with users by means of the module prompt.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_prompts.NumPrompts.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_prompts.NumPrompts.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_prompts.NumPrompts.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_prompts.NumPrompts.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_prompts</span> <span class="kn">import</span> <span class="n">NumPrompts</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  remote_user: root</span>
+
+<span class="s1">  vars_prompt:</span>
+<span class="s1">    - name: &quot;name&quot;</span>
+<span class="s1">      prompt: &quot;what is your name?&quot;</span>
+<span class="s1">    - name: &quot;quest&quot;</span>
+<span class="s1">      prompt: &quot;what is your quest?&quot;</span>
+<span class="s1">    - name: &quot;favcolor&quot;</span>
+<span class="s1">      prompt: &quot;what is your favorite color?&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumPrompts</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numregex">
+<h3>NumRegex<a class="headerlink" href="#numregex" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_regex.NumRegex">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_regex.</code><code class="sig-name descname">NumRegex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_regex.NumRegex" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of regular expressions in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_regex.NumRegex.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_regex.NumRegex.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_regex.NumRegex.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_regex.NumRegex.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of regular expressions.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_regex</span> <span class="kn">import</span> <span class="n">NumRegex</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: Remove Password</span>
+<span class="s1">  lineinfile:</span>
+<span class="s1">    path: &quot;/opt/appdata/nzbget/nzbget.conf&quot;</span>
+<span class="s1">    regexp: ControlPassword=tegbzn6789</span>
+<span class="s1">    line: &#39;ControlPassword=&#39;</span>
+<span class="s1">    state: present</span>
+<span class="s1">  when: nzbget_conf.stat.exists == False</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumRegex</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of regular expressions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numroles">
+<h3>NumRoles<a class="headerlink" href="#numroles" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_roles.NumRoles">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_roles.</code><code class="sig-name descname">NumRoles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_roles.NumRoles" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of roles in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_roles.NumRoles.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_roles.NumRoles.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_roles.NumRoles.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_roles.NumRoles.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of roles.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_roles</span> <span class="kn">import</span> <span class="n">NumRoles</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - common  # 1st role</span>
+
+<span class="s1">- hosts: dbservers</span>
+<span class="s1">  roles:</span>
+<span class="s1">  - db  # 2nd role</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumRoles</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of roles</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numtasks">
+<h3>NumTasks<a class="headerlink" href="#numtasks" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_tasks.NumTasks">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_tasks.</code><code class="sig-name descname">NumTasks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_tasks.NumTasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of tasks in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_tasks.NumTasks.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_tasks.NumTasks.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_tasks.NumTasks.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_tasks.NumTasks.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of tasks.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_tasks</span> <span class="kn">import</span> <span class="n">NumTasks</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Say Hello</span>
+<span class="s1">  debug:</span>
+<span class="s1">    msg: &quot;Hello&quot;</span>
+
+<span class="s1">- name: Say World!</span>
+<span class="s1">  debug:</span>
+<span class="s1">    msg: &quot;World!&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumTasks</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of tasks</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numuniquenames">
+<h3>NumUniqueNames<a class="headerlink" href="#numuniquenames" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_unique_names.NumUniqueNames">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_unique_names.</code><code class="sig-name descname">NumUniqueNames</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_unique_names.NumUniqueNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of plays and tasks with unique a name.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_unique_names.NumUniqueNames.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_unique_names.NumUniqueNames.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_unique_names.NumUniqueNames.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_unique_names.NumUniqueNames.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of plays and tasks with a unique name.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_unique_names</span> <span class="kn">import</span> <span class="n">NumUniqueNames</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">- name: demo the logic                    # unique name</span>
+<span class="s1">  hosts: localhost</span>
+<span class="s1">  gather_facts: false</span>
+<span class="s1">  vars:</span>
+<span class="s1">    num1: 10</span>
+<span class="s1">    num3: 10</span>
+
+<span class="s1">  tasks:</span>
+<span class="s1">  - name: logic and comparison            # duplicate</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &quot;Can you read me?&quot;</span>
+<span class="s1">    when: num1 &gt;= num3 and num1 is even and num2 is not defined</span>
+
+<span class="s1">  - name: logic and comparison            # duplicate</span>
+<span class="s1">    debug:</span>
+<span class="s1">      msg: &quot;Can you read me again?&quot;</span>
+<span class="s1">    when: num3 &gt;= num1</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumUniqueNames</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of plays and tasks with a unique name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numuri">
+<h3>NumUri<a class="headerlink" href="#numuri" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_uri.NumUri">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_uri.</code><code class="sig-name descname">NumUri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_uri.NumUri" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of URIs in a playbook.</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_uri.NumUri.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_uri.NumUri.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_uri.NumUri.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_uri.NumUri.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of URIs</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_uri</span> <span class="kn">import</span> <span class="n">NumUri</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Check that you can connect (GET) to a page and it returns a status 200</span>
+<span class="s1">  uri:</span>
+<span class="s1">    url: http://www.example.com</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumUri</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of URIs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="numvars">
+<h3>NumVars<a class="headerlink" href="#numvars" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="ansiblemetrics.playbook.num_vars.NumVars">
+<em class="property">class </em><code class="sig-prename descclassname">ansiblemetrics.playbook.num_vars.</code><code class="sig-name descname">NumVars</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_vars.NumVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class measures the number of variables in a playbook.</p>
+<p>TODO add support for included and imported variables</p>
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_vars.NumVars.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_vars.NumVars.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – A plain Ansible file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the script is empty or an invalid YAML file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ansiblemetrics.playbook.num_vars.NumVars.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ansiblemetrics.playbook.num_vars.NumVars.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of variables.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ansiblemetrics.general.num_vars</span> <span class="kn">import</span> <span class="n">NumVars</span>
+
+<span class="n">playbook</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: all</span>
+<span class="s1">  remote_user: root</span>
+<span class="s1">  vars:</span>
+<span class="s1">    favcolor: blue                      # 1st variable</span>
+<span class="s1">  vars_files:                           # vars_files is not supported by this version</span>
+<span class="s1">  - /vars/external_vars.yml</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">NumVars</span><span class="p">(</span><span class="n">playbook</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of variables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="abstract.classes.html" class="btn btn-neutral float-left" title="Abstract Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, RADON-H2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

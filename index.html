@@ -1,418 +1,292 @@
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <title>Welcome to the AnsibleMetrics documentation! &mdash; radon-ansible-metrics 0.3.8 documentation</title>
   
-  
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Quick Start - AnsibleMetrics</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="css/theme.css" />
-  <link rel="stylesheet" href="css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Quick Start";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
-</head>
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
-<body class="wy-body-for-nav" role="document">
+  
+  
+  
+  
 
-  <div class="wy-grid-for-nav">
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> AnsibleMetrics</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> radon-ansible-metrics
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <p class="caption"><span class="caption-text">Getting Started</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Quick Start</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-install">How to install</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#command-line">Command-line</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#python">Python</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#general">General</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#playbook">Playbook</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Metrics</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="general/LinesBlank/">Lines blank</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/LinesCode/">Lines of code</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/LinesComment/">Lines of comment</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumConditions/">Number of conditions</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumDecisions/">Number of decisions</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumDeprecatedKeywords/">Number of deprecated keywords</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumKeys/">Number of keys</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumMathOperations/">Number of math operations</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumSuspiciousComments/">Number of suspicious comments</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/NumTokens/">Number of tokens</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="general/TextEntropy/">Text entropy</a>
-                </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Playbook</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/AvgPlaySize/">Average play size</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/AvgTaskSize/">Average task size</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumBlocks/">Number of blocks</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumBlocksErrorHandling/">Number of block error handling</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumCommands/">Number of commands</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumDeprecatedModules/">Number of deprecated modules</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumDistinctModules/">Number of distinct modules</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumExternalModules/">Number of external modules</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFactModules/">Number of fact modules</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFileExists/">Number of file extists</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFileMode/">Number of file mode</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFileModules/">Number of file modules</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumFilters/">Number of filters</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIgnoreErrors/">Number of ignore_errors</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumImportPlaybook/">Number of import_playbook</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumImportRole/">Number of import_role</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumImportTasks/">Number of import_tasks</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumInclude/">Number of include</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIncludeRole/">Number of include_role</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIncludeTasks/">Number of include_tasks</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumIncludeVars/">Number of include_vars</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumLookups/">Number of lookups</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumLoops/">Number of loops</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumNameWithVars/">Number of name with variables</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumParameters/">Number of parameters</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumPaths/">Number of paths</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumRegex/">Number of regex</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumPlays/">Number of plays</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumPrompts/">Number of prompts</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumRoles/">Number of roles</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumAuthorizedKey/">Number of SSH</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumTasks/">Number of tasks</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumUniqueNames/">Number of unique names</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumUri/">Number of urls</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="playbook/NumVars/">Number of variables</a>
-                </li>
-    </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
-                    </li>
-                </ul>
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apis.html">APIs Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Need Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
       </div>
-    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">AnsibleMetrics</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">radon-ansible-metrics</a>
+        
       </nav>
 
-      
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
     
-      
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-          <li>Getting Started &raquo;</li>
-        
-      
+      <li>Welcome to the AnsibleMetrics documentation!</li>
     
-    <li>Quick Start</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/radon-h2020/radon-ansible-metrics/edit/master/docs/index.md"
-          class="icon icon-github"> Edit on GitHub</a>
-      
-    </li>
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
   </ul>
+
   
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="welcome-to-the-ansiblemetrics-documentation">Welcome to the AnsibleMetrics documentation</h1>
-<p><strong>AnsibleMetrics</strong> is a Python-based static source code analyzer for Ansible blueprints that helps to quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it. 
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-the-ansiblemetrics-documentation">
+<h1>Welcome to the AnsibleMetrics documentation!<a class="headerlink" href="#welcome-to-the-ansiblemetrics-documentation" title="Permalink to this headline">¶</a></h1>
+<p><strong>AnsibleMetrics</strong> is a Python-based static source code measurement tool to characterize Infrastructure-as-Code.
+It helps quantify the characteristics of infrastructure code to support DevOps engineers when maintaining and evolving it.
 It currently supports 46 source code metrics, though other metrics can be derived by combining the implemented ones.</p>
-<p>It represents a step forward towards closing the gap for the implementation of software quality in-struments to support DevOps engineers when developing and maintaining infrastructure code and the development of measurement models for its quality!</p>
-<p><br></p>
-<h2 id="how-to-install">How to install</h2>
-<p>Installation is made simple by the PyPI repository. <br>
-Download the tool and install it with <code>pip install ansiblemetrics</code>.<br>
-Alternatively, install it from the source code project directory with the following commands:</p>
-<pre><code>pip install -r requirements.txt
-pip install .
-</code></pre>
-<p><em>AnsibleMetrics</em> is now installed and can be used from both command-line and Python code.</p>
-<p><br></p>
-<h2 id="how-to-use">How to use</h2>
-<h3 id="command-line"><strong>Command-line</strong></h3>
-<p>Run <code>ansible-metrics --help</code> for instructions about the usage:</p>
-<pre><code>usage: ansible-metrics [-h] [--omit-zero-metrics] [-d DEST] [-o] [-v] src
-
-Extract metrics from Ansible scripts.
-
-positional arguments:
-  src                   source file (playbook or tasks file) or
-                        directory
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --omit-zero-metrics   omit metrics with value equal 0
-  -d DEST, --dest DEST  destination path to save results
-  -o, --output          shows output
-  -v, --version         show program's version number and exit
-</code></pre>
-<p>Assume that the following example is named <em>playbook1.yml</em>:</p>
-<pre><code class="language-yaml">---
-- hosts: webservers
-  vars:
-    http_port: 80
-  remote_user: root
-
-  tasks:
-  - name: ensure apache is at the latest version
-    yum:
-      name: httpd
-      state: latest
-
-- hosts: databases
-  remote_user: root
-
-  tasks:
-  - name: ensure postgresql is at the latest version
-    yum:
-      name: postgresql
-      state: latest
-
-  - name: ensure that postgresql is started
-    service:
-      name: postgresql
-      state: started
-
-</code></pre>
-<p>and is located within the folder <em>playbooks</em> as follows:</p>
-<p>playbooks <br>
-&nbsp;&nbsp;&nbsp;|- playbook1.yml <br>
-&nbsp;&nbsp;&nbsp;|- playbook3.yml <br>
-&nbsp;&nbsp;&nbsp;|- playbook3.yml <br></p>
-<p>Also, assume the user's working directory is the <em>playbooks</em> folder. Then, it is possible to extract source code characteristics from that blueprint by running the following command:</p>
-<p><code>ansible-metrics --omit-zero-metrics playbook1.yml --dest report.json</code></p>
-<p>For this example, the \textit{report.json} will result in </p>
-<pre><code>{
-    &quot;filepath&quot;: &quot;playbook1.yml&quot;,
-    &quot;avg_play_size&quot;: 10,
-    &quot;avg_task_size&quot;: 4,
-    &quot;lines_blank&quot;: 4,
-    &quot;lines_code&quot;: 20,
-    &quot;num_keys&quot;: 20,
-    &quot;num_parameters&quot;: 6,
-    &quot;num_plays&quot;: 2,
-    &quot;num_tasks&quot;: 3,
-    &quot;num_tokens&quot;: 50,
-    &quot;num_unique_names&quot;: 3,
-    &quot;num_vars&quot;: 1,
-    &quot;text_entropy&quot;: 4.37
-}
-</code></pre>
-<p><br></p>
-<h3 id="python"><strong>Python</strong></h3>
-<p><em>AnsibleMetrics</em> currently supports up to 46 source code metrics, implemented in Python. 
-To extract the value for a given metric follow this pattern:</p>
-<pre><code class="language-python">from io import StringIO
-from ansiblemetrics.&lt;general|playbook&gt;.&lt;metric&gt; import &lt;Metric&gt;
-
-script = 'a valid yaml script'
-value = &lt;Metric&gt;(StringIO(script).count()
-</code></pre>
-<p>where <metric> has to be replaced with the name of the desired metric module to compute the value of a specific metric. <br>
-The difference between the <em>general</em> and the <em>playbook</em> modules lies in the fact that the <em>playbook</em> module contains metrics specific to playbooks (for example, the number of plays and tasks), while the <em>general</em> module contains metrics that can be generalized to other languages (for example, the lines of code).</p>
-<p>For example, to count the number of lines of code:</p>
-<pre><code class="language-python">from io import StringIO
-from ansiblemetrics.general.loc import LOC
-
-script = &quot;&quot;&quot;
----
-- hosts: all
-
-  tasks:
-  - name: This is a task!
-    debug:
-      msg: &quot;Hello World&quot;
-&quot;&quot;&quot;
-
-metric = LOC(StringIO(script))
-print('Lines of executable code:', metric.count())
-
-# This will result in 
-# &gt; Lines of executable code: 5
-</code></pre>
-<p>To extract the value for the 46 metrics at once,  import the <code>ansiblemetrics.metrics_extractor</code> package and call the method <code>extract_all()</code> (in this case the return value will be a json object):</p>
-<pre><code class="language-python">from io import StringIO
-from ansiblemetrics.metrics_extractor import extract_all
-
-script = &quot;&quot;&quot;
----
-- hosts: all
-
-  tasks:
-  - name: This is a task!
-    debug:
-      msg: &quot;Hello World&quot;
-&quot;&quot;&quot;
-
-metrics = extract_all(StringIO(script))
-print('Lines of executable code:', metrics['lines_code'])
-
-# This will result in 
-# &gt; Lines of executable code: 5
-</code></pre>
-<p><br></p>
-<p>Below the list of the implemented metrics and their documentation.</p>
-<h3 id="general">General</h3>
+<p>The metrics, along with their selection rationale, are described in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">DALLAPALMA2020110726</span><span class="p">,</span>
+   <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Toward a catalog of software quality metrics for infrastructure code&quot;</span><span class="p">,</span>
+   <span class="n">journal</span> <span class="o">=</span> <span class="s2">&quot;Journal of Systems and Software&quot;</span><span class="p">,</span>
+   <span class="n">volume</span> <span class="o">=</span> <span class="s2">&quot;170&quot;</span><span class="p">,</span>
+   <span class="n">pages</span> <span class="o">=</span> <span class="s2">&quot;110726&quot;</span><span class="p">,</span>
+   <span class="n">year</span> <span class="o">=</span> <span class="s2">&quot;2020&quot;</span><span class="p">,</span>
+   <span class="n">issn</span> <span class="o">=</span> <span class="s2">&quot;0164-1212&quot;</span><span class="p">,</span>
+   <span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;https://doi.org/10.1016/j.jss.2020.110726&quot;</span><span class="p">,</span>
+   <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.sciencedirect.com/science/article/pii/S0164121220301618&quot;</span><span class="p">,</span>
+   <span class="n">author</span> <span class="o">=</span> <span class="s2">&quot;Stefano {Dalla Palma} and Dario {Di Nucci} and Fabio Palomba and Damian Andrew Tamburri&quot;</span><span class="p">,</span>
+   <span class="n">keywords</span> <span class="o">=</span> <span class="s2">&quot;Infrastructure as code, Software metrics, Software quality&quot;</span><span class="p">,</span>
+   <span class="n">abstract</span> <span class="o">=</span> <span class="s2">&quot;Infrastructure-as-code (IaC) is a practice to implement continuous deployment by allowing management and provisioning of infrastructure through the definition of machine-readable files and automation around them, rather than physical hardware configuration or interactive configuration tools. On the one hand, although IaC represents an ever-increasing widely adopted practice nowadays, still little is known concerning how to best maintain, speedily evolve, and continuously improve the code behind the IaC practice in a measurable fashion. On the other hand, source code measurements are often computed and analyzed to evaluate the different quality aspects of the software developed. However, unlike general-purpose programming languages (GPLs), IaC scripts use domain-specific languages, and metrics used for GPLs may not be applicable for IaC scripts. This article proposes a catalog consisting of 46 metrics to identify IaC properties focusing on Ansible, one of the most popular IaC language to date, and shows how they can be used to analyze IaC scripts.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>While the tool is described in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">DALLAPALMA2020100633</span><span class="p">,</span>
+   <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;AnsibleMetrics: A Python library for measuring Infrastructure-as-Code blueprints in Ansible&quot;</span><span class="p">,</span>
+   <span class="n">journal</span> <span class="o">=</span> <span class="s2">&quot;SoftwareX&quot;</span><span class="p">,</span>
+   <span class="n">volume</span> <span class="o">=</span> <span class="s2">&quot;12&quot;</span><span class="p">,</span>
+   <span class="n">pages</span> <span class="o">=</span> <span class="s2">&quot;100633&quot;</span><span class="p">,</span>
+   <span class="n">year</span> <span class="o">=</span> <span class="s2">&quot;2020&quot;</span><span class="p">,</span>
+   <span class="n">issn</span> <span class="o">=</span> <span class="s2">&quot;2352-7110&quot;</span><span class="p">,</span>
+   <span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;https://doi.org/10.1016/j.softx.2020.100633&quot;</span><span class="p">,</span>
+   <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.sciencedirect.com/science/article/pii/S2352711020303460&quot;</span><span class="p">,</span>
+   <span class="n">author</span> <span class="o">=</span> <span class="s2">&quot;Stefano {Dalla Palma} and Dario {Di Nucci} and Damian A. Tamburri&quot;</span><span class="p">,</span>
+   <span class="n">keywords</span> <span class="o">=</span> <span class="s2">&quot;Infrastructure as Code, Software metrics, Software quality&quot;</span><span class="p">,</span>
+   <span class="n">abstract</span> <span class="o">=</span> <span class="s2">&quot;Infrastructure-as-Code (IaC) has recently received increasing attention in the research community, mainly due to the paradigm shift it brings in software design, development, and operations management. However, while IaC represents an ever-increasing and widely adopted practice, concerns arise about the need for instruments that help DevOps engineers efficiently maintain, speedily evolve, and continuously improve Infrastructure-as-Code. In this paper, we present AnsibleMetrics, a Python-based static source code measurement tool to characterize Infrastructure-as-Code. Although we focus on Ansible, the most used language for IaC, our tool could be easily extended to support additional formats. AnsibleMetrics represents a step forward towards software quality support for DevOps engineers developing and maintaining infrastructure code.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Content</span></p>
 <ul>
-<li><a href="general/LinesBlank/">Lines blank</a></li>
-<li><a href="general/LinesCode/">Lines of code</a></li>
-<li><a href="general/LinesComment/">Lines of comment</a></li>
-<li><a href="general/NumConditions/">Number of conditions</a></li>
-<li><a href="general/NumDecisions/">Number of decisions</a></li>
-<li><a href="general/NumDeprecatedKeywords/">Number of deprecated keywords</a></li>
-<li><a href="general/NumKeys/">Number of keys</a></li>
-<li><a href="general/NumMathOperations/">Number of math operations</a></li>
-<li><a href="general/NumSuspiciousComments/">Number of suspicious comments</a></li>
-<li><a href="general/NumTokens/">Number of tokens</a></li>
-<li><a href="general/TextEntropy/">Text entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#python-usage">Python Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_start.html#run-all-metrics">Run all metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_start.html#run-specific-metrics">Run specific metrics</a></li>
 </ul>
-<h3 id="playbook">Playbook</h3>
-<ul>
-<li><a href="playbook/AvgPlaySize/">Average play size</a></li>
-<li><a href="playbook/AvgTaskSize/">Average task size</a></li>
-<li><a href="playbook/NumBlocks/">Number of blocks</a></li>
-<li><a href="playbook/NumBlocksErrorHandling/">Number of block error handling</a></li>
-<li><a href="playbook/NumCommands/">Number of commands</a></li>
-<li><a href="playbook/NumDeprecatedModules/">Number of deprecated modules</a></li>
-<li><a href="playbook/NumDistinctModules/">Number of distinct modules</a></li>
-<li><a href="playbook/NumExternalModules/">Number of external modules</a></li>
-<li><a href="playbook/NumFactModules/">Number of fact modules</a></li>
-<li><a href="playbook/NumFactModules/">Number of fact modules</a></li>
-<li><a href="playbook/NumFileExists/">Number of file extists</a></li>
-<li><a href="playbook/NumFileMode/">Number of file mode</a></li>
-<li><a href="playbook/NumFileModules/">Number of file modules</a></li>
-<li><a href="playbook/NumFilters/">Number of filters</a></li>
-<li><a href="playbook/NumIgnoreErrors/">Number of ignore_error</a></li>
-<li><a href="playbook/NumImportPlaybook/">Number of import_playbook</a></li>
-<li><a href="playbook/NumImportRole/">Number of import_role</a></li>
-<li><a href="playbook/NumImportTasks/">Number of import_tasks</a></li>
-<li><a href="playbook/NumInclude/">Number of include</a></li>
-<li><a href="playbook/NumIncludeRole/">Number of include_role</a></li>
-<li><a href="playbook/NumIncludeTasks/">Number of include_tasks</a></li>
-<li><a href="playbook/NumIncludeVars/">Number of include_vars</a></li>
-<li><a href="playbook/NumLookups/">Number of lookups</a></li>
-<li><a href="playbook/NumLoops/">Number of loops</a></li>
-<li><a href="playbook/NumNameWithVars/">Number of name with variables</a></li>
-<li><a href="playbook/NumParameters/">Number of parameters</a></li>
-<li><a href="playbook/NumPaths/">Number of paths</a></li>
-<li><a href="playbook/NumPlays/">Number of plays</a></li>
-<li><a href="playbook/NumPrompts/">Number of prompts</a></li>
-<li><a href="playbook/NumRegex/">Number of regex</a></li>
-<li><a href="playbook/NumRoles/">Number of roles</a></li>
-<li><a href="playbook/NumAuthorizedKey/">Number of SSH</a></li>
-<li><a href="playbook/NumTasks/">Number of tasks</a></li>
-<li><a href="playbook/NumUniqueNames/">Number of unique names</a></li>
-<li><a href="playbook/NumUri/">Number of urls</a></li>
-<li><a href="playbook/NumVars/">Number of variables</a></li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#command-line-usage">Command-Line Usage</a></li>
 </ul>
-              
-            </div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apis.html">APIs Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="abstract.classes.html">Abstract Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="abstract.classes.html#linesmetric">LinesMetric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract.classes.html#ansiblemetric">AnsibleMetric</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="concrete.classes.html">Concrete Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="concrete.classes.html#general-metrics">General Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#linesblank">LinesBlank</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#linescode">LinesCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#linescomments">LinesComments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numconditions">NumConditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numdecisions">NumDecisions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numdeprecatedkeywords">NumDeprecatedKeywords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numkeys">NumKeys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#nummathoperations">NumMathOperations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numsuspiciouscomments">NumSuspiciousComments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numtokens">NumTokens</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#textentropy">TextEntropy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="concrete.classes.html#playbook-metrics">Playbook Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#avgplaysize">AvgPlaySize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#avgtasksize">AvgTaskSize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numauthorizedkey">NumAuthorizedKey</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numblocks">NumBlocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numblockserrorhandling">NumBlocksErrorHandling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numcommands">NumCommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numdeprecatedmodules">NumDeprecatedModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numdistinctmodules">NumDistinctModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numexternalmodules">NumExternalModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numfactmodules">NumFactModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numfileexists">NumFileExists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numfilemode">NumFileMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numfilemodules">NumFileModules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numfilters">NumFilters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numignoreerrors">NumIgnoreErrors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numimportedplaybooks">NumImportedPlaybooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numimportedroles">NumImportedRoles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numimporttasks">NumImportTasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numincludes">NumIncludes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numincludedrole">NumIncludedRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numincludedtasks">NumIncludedTasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numincludedvars">NumIncludedVars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numlookups">NumLookups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numloops">NumLoops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numnamewithvars">NumNameWithVars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numparameters">NumParameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numpaths">NumPaths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numplays">NumPlays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numprompts">NumPrompts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numregex">NumRegex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numroles">NumRoles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numtasks">NumTasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numuniquenames">NumUniqueNames</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numuri">NumUri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="concrete.classes.html#numvars">NumVars</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Need Help</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="general/LinesBlank/" class="btn btn-neutral float-right" title="Lines blank">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="quick_start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -421,39 +295,41 @@ print('Lines of executable code:', metrics['lines_code'])
   <hr/>
 
   <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
+    <p>
+        
+        &copy; Copyright 2020, RADON-H2020
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
 </footer>
-      
+
         </div>
       </div>
 
     </section>
 
   </div>
+  
 
-  <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/radon-h2020/radon-ansible-metrics/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-      
-        <span style="margin-left: 15px"><a href="general/LinesBlank/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
-</div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
