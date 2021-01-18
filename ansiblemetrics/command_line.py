@@ -24,13 +24,12 @@ def get_parser():
     return parser
 
 
-def load_file(path: str) -> StringIO:
-    """ Returns a StringIO object representing the content of the file at <path>, if any; None otherwise """
+def load_file(path: str) -> str:
+    """ Returns a String object representing the content of the file at <path>, if any; None otherwise """
     if os.path.isfile(path):
-        content = StringIO()
+        content = ''
         with open(path, 'r') as file:
-            for line in file.readlines():
-                content.write(re.sub(r'\s{2,2}', '\\t', line).expandtabs(2))
+            content = file.read()
 
         return content
 
