@@ -114,7 +114,7 @@ and is located within the folder *playbooks* as follows:
 
 playbooks <br>
 &nbsp;&nbsp;&nbsp;|- playbook1.yml <br>
-&nbsp;&nbsp;&nbsp;|- playbook3.yml <br>
+&nbsp;&nbsp;&nbsp;|- playbook2.yml <br>
 &nbsp;&nbsp;&nbsp;|- playbook3.yml <br>
 
 
