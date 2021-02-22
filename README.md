@@ -122,7 +122,7 @@ Also, assume the user's working directory is the *playbooks* folder. Then, it is
 
 ```ansible-metrics --omit-zero-metrics playbook1.yml --dest report.json```
 
-For this example, the \textit{report.json} will result in 
+For this example, the report.json will result in 
 
 ```
 {
@@ -196,7 +196,3 @@ script = """
 metrics = extract_all(script)
 print('Lines of executable code:', metrics['lines_code'])
 ```
-
-
-## CHANGELOG
-For information about the releases history see the [CHANGELOG](CHANGELOG.md)
