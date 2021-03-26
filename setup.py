@@ -33,7 +33,7 @@ setup(name='ansiblemetrics',
          "Operating System :: OS Independent"
       ],
       install_requires=[
-        'pyyaml==5.3.1'
+        'pyyaml==5.4'
       ],
       test_requirements=[
         'pytest==5.4.2'
