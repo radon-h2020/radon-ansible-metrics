@@ -7,6 +7,7 @@
 <p align="center">
 <a><img alt="Build Status" src="https://github.com/radon-h2020/radon-ansible-metrics/workflows/Build/badge.svg"></a>
 <a><img alt="Documentation" src="https://github.com/radon-h2020/radon-ansible-metrics/workflows/Documentation/badge.svg"></a>
+<a><img alt="Codecov" src="https://img.shields.io/codecov/c/github/radon-h2020/radon-ansible-metrics"></a>
 <a><img alt="LGTM Grade" src="https://img.shields.io/lgtm/grade/python/github/radon-h2020/radon-ansible-metrics"></a>
 <a><img alt="pypi-version" src="https://img.shields.io/pypi/v/ansiblemetrics"></a>
 <a><img alt="python-version" src="https://img.shields.io/pypi/pyversions/ansiblemetrics"></a>
