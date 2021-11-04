@@ -157,7 +157,7 @@ script = 'a valid yaml script'
 value = Metric(script).count()
 ```
 
-where <metric> has to be replaced with the name of the desired metric module to compute the value of a specific metric. <br>
+where _metric_ and _Metric_ have to be replaced with the name of the desired metric module to compute the value of a specific metric. <br>
 The difference between the *general* and the *playbook* modules lies in the fact that the *playbook* module contains metrics specific to playbooks (for example, the number of plays and tasks), while the *general* module contains metrics that can be generalized to other languages (for example, the lines of code).
 
 For example, to count the number of lines of code:
