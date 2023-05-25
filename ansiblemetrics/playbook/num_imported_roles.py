@@ -38,4 +38,4 @@ class NumImportedRoles(AnsibleMetric):
         """
         script = self.playbook
         keys = utils.all_keys(script)
-        return sum(1 for i in keys if i == 'import_role')
+        return sum(1 for i in keys if i == 'import_role' or i == 'ansible.builtin.import_role')

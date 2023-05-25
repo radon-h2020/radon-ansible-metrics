@@ -33,4 +33,4 @@ class NumImportedTasks(AnsibleMetric):
         """
         script = self.playbook
         keys = utils.all_keys(script)
-        return sum(1 for i in keys if i == 'import_tasks')
+        return sum(1 for i in keys if i == 'import_tasks' or i == 'ansible.builtin.import_tasks')
