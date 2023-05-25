@@ -7,10 +7,15 @@ script_4 = "- import_role:\n\t\tname: myrole\n\n- name: Run tasks/other.yaml ins
            "'main'\n\timport_role:\n\t\tname: myrole\n\t\ttasks_from: other\n\n- name: Pass variables to " \
            "role\n\timport_role:\n\t\tname: myrole\n\tvars:\n\t\trolevar1: value from task\n\n- name: Apply condition " \
            "to each task in role\n\timport_role:\n\t\tname: myrole\n\twhen: not idontwanttorun "
+script_4_1 = "- ansible.builtin.import_role:\n\t\tname: myrole\n\n- name: Run tasks/other.yaml instead of " \
+           "'main'\n\tansible.builtin.import_role:\n\t\tname: myrole\n\t\ttasks_from: other\n\n- name: Pass variables to " \
+           "role\n\tansible.builtin.import_role:\n\t\tname: myrole\n\tvars:\n\t\trolevar1: value from task\n\n- name: Apply condition " \
+           "to each task in role\n\tansible.builtin.import_role:\n\t\tname: myrole\n\twhen: not idontwanttorun "
 
 TEST_DATA = [
     (script_0, 0),
-    (script_4, 4)
+    (script_4, 4),
+    (script_4_1, 4)
 ]
 
 

@@ -32,4 +32,4 @@ class NumIncludedRoles(AnsibleMetric):
         """
         script = self.playbook
         keys = utils.all_keys(script)
-        return sum(1 for i in keys if i == 'include_role')
+        return sum(1 for i in keys if i == 'include_role' or i == 'ansible.builtin.include_role')

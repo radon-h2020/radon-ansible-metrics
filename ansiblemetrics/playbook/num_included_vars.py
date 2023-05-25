@@ -33,4 +33,4 @@ class NumIncludedVars(AnsibleMetric):
         """
         script = self.playbook
         keys = utils.all_keys(script)
-        return sum(1 for i in keys if i == 'include_vars')
+        return sum(1 for i in keys if i == 'include_vars' or i == 'ansible.builtin.include_vars')

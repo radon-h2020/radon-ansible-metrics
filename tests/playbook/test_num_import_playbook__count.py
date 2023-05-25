@@ -4,10 +4,13 @@ from ansiblemetrics.playbook.num_imported_playbooks import NumImportedPlaybooks
 script_0 = "- debug:\n\tmsg: task1\n- name: This fails because I'm inside a play already"
 script_2 = "- debug:\n\tmsg: play1\n\n- name: Include a play after another play\n\timport_playbook: " \
            "otherplays.yaml\n- name: This fails because I'm inside a play already\n\timport_playbook: stuff.yaml "
+script_2_1 = "- debug:\n\tmsg: play1\n\n- name: FQCN-Include a play after another play\n\tansible.builtin.import_playbook: " \
+           "otherplays.yaml\n- name: This fails because I'm inside a play already\n\tansible.builtin.import_playbook: stuff.yaml "
 
 TEST_DATA = [
     (script_0, 0),
-    (script_2, 2)
+    (script_2, 2),
+    (script_2_1, 2)
 ]
 
 
