@@ -7,7 +7,7 @@ from io import StringIO
 
 from ansiblemetrics.metrics_extractor import extract_all
 
-VERSION = '0.3.12'
+VERSION = '0.4.1'
 
 
 def get_parser():
