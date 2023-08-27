@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-VERSION = '0.4'
+VERSION = '0.4.1'
 
 setup(name='ansiblemetrics',
       version=VERSION,
@@ -33,7 +33,7 @@ setup(name='ansiblemetrics',
          "Operating System :: OS Independent"
       ],
       install_requires=[
-        'pyyaml==5.4'
+        'pyyaml==6.0.1'
       ],
       test_requirements=[
         'pytest==5.4.2'
